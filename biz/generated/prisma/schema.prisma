@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../biz/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model nft_project_daily_amount {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_id  String    @db.Uuid
+  sale_date   DateTime  @db.Date
+  sale_amount Decimal   @default(0) @db.Decimal(16, 2)
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime  @default(now()) @db.Timestamptz(6)
+  version     BigInt    @default(0)
+  deleted_at  DateTime? @db.Timestamptz(6)
+}

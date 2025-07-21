@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: Ping API
+  version: 1.0.0
+paths:
+  /ping:
+    get:
+      operationId: ping            # 关键！要和 handler 同名
+      summary: Health check
+      responses:
+        "200":
+          description: Pong
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pong"
+components:
+  schemas:
+    Pong:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+          example: pong

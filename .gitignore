@@ -141,3 +141,5 @@ vite.config.ts.timestamp-*
 ./docker/data
 
 biz/.env
+
+config.yaml

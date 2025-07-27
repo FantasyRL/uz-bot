@@ -44,7 +44,7 @@ make dev # 需要能够运行makefile
 │   ├── idl                       #
 │   │   └── ping.yaml             #   OpenAPI 3 规范文件
 │   └── sql                       #
-│       └── test.sql              #   示例 SQL / 数据准备
+│       └── uz.sql              #   示例 SQL / 数据准备
 ├── openapitools.json             # openapi-generator CLI 本地配置
 ├── package.json                  # NPM 依赖及脚本；_moduleAliases 定义 @ → dist
 ├── package-lock.json             # 锁文件，用 `npm ci` 精准复现依赖

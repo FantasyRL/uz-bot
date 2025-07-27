@@ -14,10 +14,25 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model nft_project_daily_amount
- * 
+ * Model operation_logs
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
-export type nft_project_daily_amount = $Result.DefaultSelection<Prisma.$nft_project_daily_amountPayload>
+export type operation_logs = $Result.DefaultSelection<Prisma.$operation_logsPayload>
+/**
+ * Model payment_orders
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type payment_orders = $Result.DefaultSelection<Prisma.$payment_ordersPayload>
+/**
+ * Model user_play_logs
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type user_play_logs = $Result.DefaultSelection<Prisma.$user_play_logsPayload>
+/**
+ * Model users
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +41,8 @@ export type nft_project_daily_amount = $Result.DefaultSelection<Prisma.$nft_proj
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Nft_project_daily_amounts
- * const nft_project_daily_amounts = await prisma.nft_project_daily_amount.findMany()
+ * // Fetch zero or more Operation_logs
+ * const operation_logs = await prisma.operation_logs.findMany()
  * ```
  *
  *
@@ -47,8 +62,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Nft_project_daily_amounts
-   * const nft_project_daily_amounts = await prisma.nft_project_daily_amount.findMany()
+   * // Fetch zero or more Operation_logs
+   * const operation_logs = await prisma.operation_logs.findMany()
    * ```
    *
    *
@@ -145,14 +160,44 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.nft_project_daily_amount`: Exposes CRUD operations for the **nft_project_daily_amount** model.
+   * `prisma.operation_logs`: Exposes CRUD operations for the **operation_logs** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Nft_project_daily_amounts
-    * const nft_project_daily_amounts = await prisma.nft_project_daily_amount.findMany()
+    * // Fetch zero or more Operation_logs
+    * const operation_logs = await prisma.operation_logs.findMany()
     * ```
     */
-  get nft_project_daily_amount(): Prisma.nft_project_daily_amountDelegate<ExtArgs, ClientOptions>;
+  get operation_logs(): Prisma.operation_logsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.payment_orders`: Exposes CRUD operations for the **payment_orders** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Payment_orders
+    * const payment_orders = await prisma.payment_orders.findMany()
+    * ```
+    */
+  get payment_orders(): Prisma.payment_ordersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_play_logs`: Exposes CRUD operations for the **user_play_logs** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_play_logs
+    * const user_play_logs = await prisma.user_play_logs.findMany()
+    * ```
+    */
+  get user_play_logs(): Prisma.user_play_logsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.users`: Exposes CRUD operations for the **users** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.users.findMany()
+    * ```
+    */
+  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +638,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    nft_project_daily_amount: 'nft_project_daily_amount'
+    operation_logs: 'operation_logs',
+    payment_orders: 'payment_orders',
+    user_play_logs: 'user_play_logs',
+    users: 'users'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,81 +660,303 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "nft_project_daily_amount"
+      modelProps: "operation_logs" | "payment_orders" | "user_play_logs" | "users"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      nft_project_daily_amount: {
-        payload: Prisma.$nft_project_daily_amountPayload<ExtArgs>
-        fields: Prisma.nft_project_daily_amountFieldRefs
+      operation_logs: {
+        payload: Prisma.$operation_logsPayload<ExtArgs>
+        fields: Prisma.operation_logsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.nft_project_daily_amountFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload> | null
+            args: Prisma.operation_logsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.nft_project_daily_amountFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           findFirst: {
-            args: Prisma.nft_project_daily_amountFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload> | null
+            args: Prisma.operation_logsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.nft_project_daily_amountFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           findMany: {
-            args: Prisma.nft_project_daily_amountFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>[]
+            args: Prisma.operation_logsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>[]
           }
           create: {
-            args: Prisma.nft_project_daily_amountCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           createMany: {
-            args: Prisma.nft_project_daily_amountCreateManyArgs<ExtArgs>
+            args: Prisma.operation_logsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.nft_project_daily_amountCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>[]
+            args: Prisma.operation_logsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>[]
           }
           delete: {
-            args: Prisma.nft_project_daily_amountDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           update: {
-            args: Prisma.nft_project_daily_amountUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           deleteMany: {
-            args: Prisma.nft_project_daily_amountDeleteManyArgs<ExtArgs>
+            args: Prisma.operation_logsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.nft_project_daily_amountUpdateManyArgs<ExtArgs>
+            args: Prisma.operation_logsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.nft_project_daily_amountUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>[]
+            args: Prisma.operation_logsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>[]
           }
           upsert: {
-            args: Prisma.nft_project_daily_amountUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$nft_project_daily_amountPayload>
+            args: Prisma.operation_logsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$operation_logsPayload>
           }
           aggregate: {
-            args: Prisma.Nft_project_daily_amountAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateNft_project_daily_amount>
+            args: Prisma.Operation_logsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOperation_logs>
           }
           groupBy: {
-            args: Prisma.nft_project_daily_amountGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Nft_project_daily_amountGroupByOutputType>[]
+            args: Prisma.operation_logsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Operation_logsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.nft_project_daily_amountCountArgs<ExtArgs>
-            result: $Utils.Optional<Nft_project_daily_amountCountAggregateOutputType> | number
+            args: Prisma.operation_logsCountArgs<ExtArgs>
+            result: $Utils.Optional<Operation_logsCountAggregateOutputType> | number
+          }
+        }
+      }
+      payment_orders: {
+        payload: Prisma.$payment_ordersPayload<ExtArgs>
+        fields: Prisma.payment_ordersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.payment_ordersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.payment_ordersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          findFirst: {
+            args: Prisma.payment_ordersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.payment_ordersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          findMany: {
+            args: Prisma.payment_ordersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>[]
+          }
+          create: {
+            args: Prisma.payment_ordersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          createMany: {
+            args: Prisma.payment_ordersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.payment_ordersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>[]
+          }
+          delete: {
+            args: Prisma.payment_ordersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          update: {
+            args: Prisma.payment_ordersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          deleteMany: {
+            args: Prisma.payment_ordersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.payment_ordersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.payment_ordersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>[]
+          }
+          upsert: {
+            args: Prisma.payment_ordersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$payment_ordersPayload>
+          }
+          aggregate: {
+            args: Prisma.Payment_ordersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePayment_orders>
+          }
+          groupBy: {
+            args: Prisma.payment_ordersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Payment_ordersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.payment_ordersCountArgs<ExtArgs>
+            result: $Utils.Optional<Payment_ordersCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_play_logs: {
+        payload: Prisma.$user_play_logsPayload<ExtArgs>
+        fields: Prisma.user_play_logsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_play_logsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_play_logsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          findFirst: {
+            args: Prisma.user_play_logsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_play_logsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          findMany: {
+            args: Prisma.user_play_logsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>[]
+          }
+          create: {
+            args: Prisma.user_play_logsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          createMany: {
+            args: Prisma.user_play_logsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.user_play_logsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>[]
+          }
+          delete: {
+            args: Prisma.user_play_logsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          update: {
+            args: Prisma.user_play_logsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_play_logsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_play_logsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.user_play_logsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>[]
+          }
+          upsert: {
+            args: Prisma.user_play_logsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_play_logsPayload>
+          }
+          aggregate: {
+            args: Prisma.User_play_logsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_play_logs>
+          }
+          groupBy: {
+            args: Prisma.user_play_logsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_play_logsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_play_logsCountArgs<ExtArgs>
+            result: $Utils.Optional<User_play_logsCountAggregateOutputType> | number
+          }
+        }
+      }
+      users: {
+        payload: Prisma.$usersPayload<ExtArgs>
+        fields: Prisma.usersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findFirst: {
+            args: Prisma.usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          findMany: {
+            args: Prisma.usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          create: {
+            args: Prisma.usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          createMany: {
+            args: Prisma.usersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          delete: {
+            args: Prisma.usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          update: {
+            args: Prisma.usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          deleteMany: {
+            args: Prisma.usersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.usersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
+          }
+          upsert: {
+            args: Prisma.usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
+          }
+          aggregate: {
+            args: Prisma.UsersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsers>
+          }
+          groupBy: {
+            args: Prisma.usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.usersCountArgs<ExtArgs>
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
           }
         }
       }
@@ -774,7 +1044,10 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    nft_project_daily_amount?: nft_project_daily_amountOmit
+    operation_logs?: operation_logsOmit
+    payment_orders?: payment_ordersOmit
+    user_play_logs?: user_play_logsOmit
+    users?: usersOmit
   }
 
   /* Types for Logging */
@@ -870,410 +1143,360 @@ export namespace Prisma {
    */
 
   /**
-   * Model nft_project_daily_amount
+   * Model operation_logs
    */
 
-  export type AggregateNft_project_daily_amount = {
-    _count: Nft_project_daily_amountCountAggregateOutputType | null
-    _avg: Nft_project_daily_amountAvgAggregateOutputType | null
-    _sum: Nft_project_daily_amountSumAggregateOutputType | null
-    _min: Nft_project_daily_amountMinAggregateOutputType | null
-    _max: Nft_project_daily_amountMaxAggregateOutputType | null
+  export type AggregateOperation_logs = {
+    _count: Operation_logsCountAggregateOutputType | null
+    _min: Operation_logsMinAggregateOutputType | null
+    _max: Operation_logsMaxAggregateOutputType | null
   }
 
-  export type Nft_project_daily_amountAvgAggregateOutputType = {
-    sale_amount: Decimal | null
-    version: number | null
-  }
-
-  export type Nft_project_daily_amountSumAggregateOutputType = {
-    sale_amount: Decimal | null
-    version: bigint | null
-  }
-
-  export type Nft_project_daily_amountMinAggregateOutputType = {
+  export type Operation_logsMinAggregateOutputType = {
     id: string | null
-    project_id: string | null
-    sale_date: Date | null
-    sale_amount: Decimal | null
+    user_id: string | null
+    qq_number: string | null
+    operation: string | null
     created_at: Date | null
     updated_at: Date | null
-    version: bigint | null
     deleted_at: Date | null
   }
 
-  export type Nft_project_daily_amountMaxAggregateOutputType = {
+  export type Operation_logsMaxAggregateOutputType = {
     id: string | null
-    project_id: string | null
-    sale_date: Date | null
-    sale_amount: Decimal | null
+    user_id: string | null
+    qq_number: string | null
+    operation: string | null
     created_at: Date | null
     updated_at: Date | null
-    version: bigint | null
     deleted_at: Date | null
   }
 
-  export type Nft_project_daily_amountCountAggregateOutputType = {
+  export type Operation_logsCountAggregateOutputType = {
     id: number
-    project_id: number
-    sale_date: number
-    sale_amount: number
+    user_id: number
+    qq_number: number
+    operation: number
     created_at: number
     updated_at: number
-    version: number
     deleted_at: number
     _all: number
   }
 
 
-  export type Nft_project_daily_amountAvgAggregateInputType = {
-    sale_amount?: true
-    version?: true
-  }
-
-  export type Nft_project_daily_amountSumAggregateInputType = {
-    sale_amount?: true
-    version?: true
-  }
-
-  export type Nft_project_daily_amountMinAggregateInputType = {
+  export type Operation_logsMinAggregateInputType = {
     id?: true
-    project_id?: true
-    sale_date?: true
-    sale_amount?: true
+    user_id?: true
+    qq_number?: true
+    operation?: true
     created_at?: true
     updated_at?: true
-    version?: true
     deleted_at?: true
   }
 
-  export type Nft_project_daily_amountMaxAggregateInputType = {
+  export type Operation_logsMaxAggregateInputType = {
     id?: true
-    project_id?: true
-    sale_date?: true
-    sale_amount?: true
+    user_id?: true
+    qq_number?: true
+    operation?: true
     created_at?: true
     updated_at?: true
-    version?: true
     deleted_at?: true
   }
 
-  export type Nft_project_daily_amountCountAggregateInputType = {
+  export type Operation_logsCountAggregateInputType = {
     id?: true
-    project_id?: true
-    sale_date?: true
-    sale_amount?: true
+    user_id?: true
+    qq_number?: true
+    operation?: true
     created_at?: true
     updated_at?: true
-    version?: true
     deleted_at?: true
     _all?: true
   }
 
-  export type Nft_project_daily_amountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Operation_logsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which nft_project_daily_amount to aggregate.
+     * Filter which operation_logs to aggregate.
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of nft_project_daily_amounts to fetch.
+     * Determine the order of operation_logs to fetch.
      */
-    orderBy?: nft_project_daily_amountOrderByWithRelationInput | nft_project_daily_amountOrderByWithRelationInput[]
+    orderBy?: operation_logsOrderByWithRelationInput | operation_logsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: nft_project_daily_amountWhereUniqueInput
+    cursor?: operation_logsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` nft_project_daily_amounts from the position of the cursor.
+     * Take `±n` operation_logs from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` nft_project_daily_amounts.
+     * Skip the first `n` operation_logs.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned nft_project_daily_amounts
+     * Count returned operation_logs
     **/
-    _count?: true | Nft_project_daily_amountCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Nft_project_daily_amountAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Nft_project_daily_amountSumAggregateInputType
+    _count?: true | Operation_logsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Nft_project_daily_amountMinAggregateInputType
+    _min?: Operation_logsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Nft_project_daily_amountMaxAggregateInputType
+    _max?: Operation_logsMaxAggregateInputType
   }
 
-  export type GetNft_project_daily_amountAggregateType<T extends Nft_project_daily_amountAggregateArgs> = {
-        [P in keyof T & keyof AggregateNft_project_daily_amount]: P extends '_count' | 'count'
+  export type GetOperation_logsAggregateType<T extends Operation_logsAggregateArgs> = {
+        [P in keyof T & keyof AggregateOperation_logs]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateNft_project_daily_amount[P]>
-      : GetScalarType<T[P], AggregateNft_project_daily_amount[P]>
+        : GetScalarType<T[P], AggregateOperation_logs[P]>
+      : GetScalarType<T[P], AggregateOperation_logs[P]>
   }
 
 
 
 
-  export type nft_project_daily_amountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: nft_project_daily_amountWhereInput
-    orderBy?: nft_project_daily_amountOrderByWithAggregationInput | nft_project_daily_amountOrderByWithAggregationInput[]
-    by: Nft_project_daily_amountScalarFieldEnum[] | Nft_project_daily_amountScalarFieldEnum
-    having?: nft_project_daily_amountScalarWhereWithAggregatesInput
+  export type operation_logsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: operation_logsWhereInput
+    orderBy?: operation_logsOrderByWithAggregationInput | operation_logsOrderByWithAggregationInput[]
+    by: Operation_logsScalarFieldEnum[] | Operation_logsScalarFieldEnum
+    having?: operation_logsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Nft_project_daily_amountCountAggregateInputType | true
-    _avg?: Nft_project_daily_amountAvgAggregateInputType
-    _sum?: Nft_project_daily_amountSumAggregateInputType
-    _min?: Nft_project_daily_amountMinAggregateInputType
-    _max?: Nft_project_daily_amountMaxAggregateInputType
+    _count?: Operation_logsCountAggregateInputType | true
+    _min?: Operation_logsMinAggregateInputType
+    _max?: Operation_logsMaxAggregateInputType
   }
 
-  export type Nft_project_daily_amountGroupByOutputType = {
+  export type Operation_logsGroupByOutputType = {
     id: string
-    project_id: string
-    sale_date: Date
-    sale_amount: Decimal
+    user_id: string
+    qq_number: string
+    operation: string
     created_at: Date
     updated_at: Date
-    version: bigint
     deleted_at: Date | null
-    _count: Nft_project_daily_amountCountAggregateOutputType | null
-    _avg: Nft_project_daily_amountAvgAggregateOutputType | null
-    _sum: Nft_project_daily_amountSumAggregateOutputType | null
-    _min: Nft_project_daily_amountMinAggregateOutputType | null
-    _max: Nft_project_daily_amountMaxAggregateOutputType | null
+    _count: Operation_logsCountAggregateOutputType | null
+    _min: Operation_logsMinAggregateOutputType | null
+    _max: Operation_logsMaxAggregateOutputType | null
   }
 
-  type GetNft_project_daily_amountGroupByPayload<T extends nft_project_daily_amountGroupByArgs> = Prisma.PrismaPromise<
+  type GetOperation_logsGroupByPayload<T extends operation_logsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Nft_project_daily_amountGroupByOutputType, T['by']> &
+      PickEnumerable<Operation_logsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Nft_project_daily_amountGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Operation_logsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Nft_project_daily_amountGroupByOutputType[P]>
-            : GetScalarType<T[P], Nft_project_daily_amountGroupByOutputType[P]>
+              : GetScalarType<T[P], Operation_logsGroupByOutputType[P]>
+            : GetScalarType<T[P], Operation_logsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type nft_project_daily_amountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type operation_logsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    project_id?: boolean
-    sale_date?: boolean
-    sale_amount?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    operation?: boolean
     created_at?: boolean
     updated_at?: boolean
-    version?: boolean
     deleted_at?: boolean
-  }, ExtArgs["result"]["nft_project_daily_amount"]>
+  }, ExtArgs["result"]["operation_logs"]>
 
-  export type nft_project_daily_amountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type operation_logsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    project_id?: boolean
-    sale_date?: boolean
-    sale_amount?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    operation?: boolean
     created_at?: boolean
     updated_at?: boolean
-    version?: boolean
     deleted_at?: boolean
-  }, ExtArgs["result"]["nft_project_daily_amount"]>
+  }, ExtArgs["result"]["operation_logs"]>
 
-  export type nft_project_daily_amountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type operation_logsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    project_id?: boolean
-    sale_date?: boolean
-    sale_amount?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    operation?: boolean
     created_at?: boolean
     updated_at?: boolean
-    version?: boolean
     deleted_at?: boolean
-  }, ExtArgs["result"]["nft_project_daily_amount"]>
+  }, ExtArgs["result"]["operation_logs"]>
 
-  export type nft_project_daily_amountSelectScalar = {
+  export type operation_logsSelectScalar = {
     id?: boolean
-    project_id?: boolean
-    sale_date?: boolean
-    sale_amount?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    operation?: boolean
     created_at?: boolean
     updated_at?: boolean
-    version?: boolean
     deleted_at?: boolean
   }
 
-  export type nft_project_daily_amountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_id" | "sale_date" | "sale_amount" | "created_at" | "updated_at" | "version" | "deleted_at", ExtArgs["result"]["nft_project_daily_amount"]>
+  export type operation_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "qq_number" | "operation" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["operation_logs"]>
 
-  export type $nft_project_daily_amountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "nft_project_daily_amount"
+  export type $operation_logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "operation_logs"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      project_id: string
-      sale_date: Date
-      sale_amount: Prisma.Decimal
+      user_id: string
+      qq_number: string
+      operation: string
       created_at: Date
       updated_at: Date
-      version: bigint
       deleted_at: Date | null
-    }, ExtArgs["result"]["nft_project_daily_amount"]>
+    }, ExtArgs["result"]["operation_logs"]>
     composites: {}
   }
 
-  type nft_project_daily_amountGetPayload<S extends boolean | null | undefined | nft_project_daily_amountDefaultArgs> = $Result.GetResult<Prisma.$nft_project_daily_amountPayload, S>
+  type operation_logsGetPayload<S extends boolean | null | undefined | operation_logsDefaultArgs> = $Result.GetResult<Prisma.$operation_logsPayload, S>
 
-  type nft_project_daily_amountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<nft_project_daily_amountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Nft_project_daily_amountCountAggregateInputType | true
+  type operation_logsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<operation_logsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Operation_logsCountAggregateInputType | true
     }
 
-  export interface nft_project_daily_amountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['nft_project_daily_amount'], meta: { name: 'nft_project_daily_amount' } }
+  export interface operation_logsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['operation_logs'], meta: { name: 'operation_logs' } }
     /**
-     * Find zero or one Nft_project_daily_amount that matches the filter.
-     * @param {nft_project_daily_amountFindUniqueArgs} args - Arguments to find a Nft_project_daily_amount
+     * Find zero or one Operation_logs that matches the filter.
+     * @param {operation_logsFindUniqueArgs} args - Arguments to find a Operation_logs
      * @example
-     * // Get one Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.findUnique({
+     * // Get one Operation_logs
+     * const operation_logs = await prisma.operation_logs.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends nft_project_daily_amountFindUniqueArgs>(args: SelectSubset<T, nft_project_daily_amountFindUniqueArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends operation_logsFindUniqueArgs>(args: SelectSubset<T, operation_logsFindUniqueArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Nft_project_daily_amount that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Operation_logs that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {nft_project_daily_amountFindUniqueOrThrowArgs} args - Arguments to find a Nft_project_daily_amount
+     * @param {operation_logsFindUniqueOrThrowArgs} args - Arguments to find a Operation_logs
      * @example
-     * // Get one Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.findUniqueOrThrow({
+     * // Get one Operation_logs
+     * const operation_logs = await prisma.operation_logs.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends nft_project_daily_amountFindUniqueOrThrowArgs>(args: SelectSubset<T, nft_project_daily_amountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends operation_logsFindUniqueOrThrowArgs>(args: SelectSubset<T, operation_logsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Nft_project_daily_amount that matches the filter.
+     * Find the first Operation_logs that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountFindFirstArgs} args - Arguments to find a Nft_project_daily_amount
+     * @param {operation_logsFindFirstArgs} args - Arguments to find a Operation_logs
      * @example
-     * // Get one Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.findFirst({
+     * // Get one Operation_logs
+     * const operation_logs = await prisma.operation_logs.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends nft_project_daily_amountFindFirstArgs>(args?: SelectSubset<T, nft_project_daily_amountFindFirstArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends operation_logsFindFirstArgs>(args?: SelectSubset<T, operation_logsFindFirstArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Nft_project_daily_amount that matches the filter or
+     * Find the first Operation_logs that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountFindFirstOrThrowArgs} args - Arguments to find a Nft_project_daily_amount
+     * @param {operation_logsFindFirstOrThrowArgs} args - Arguments to find a Operation_logs
      * @example
-     * // Get one Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.findFirstOrThrow({
+     * // Get one Operation_logs
+     * const operation_logs = await prisma.operation_logs.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends nft_project_daily_amountFindFirstOrThrowArgs>(args?: SelectSubset<T, nft_project_daily_amountFindFirstOrThrowArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends operation_logsFindFirstOrThrowArgs>(args?: SelectSubset<T, operation_logsFindFirstOrThrowArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Nft_project_daily_amounts that matches the filter.
+     * Find zero or more Operation_logs that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {operation_logsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Nft_project_daily_amounts
-     * const nft_project_daily_amounts = await prisma.nft_project_daily_amount.findMany()
+     * // Get all Operation_logs
+     * const operation_logs = await prisma.operation_logs.findMany()
      * 
-     * // Get first 10 Nft_project_daily_amounts
-     * const nft_project_daily_amounts = await prisma.nft_project_daily_amount.findMany({ take: 10 })
+     * // Get first 10 Operation_logs
+     * const operation_logs = await prisma.operation_logs.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const nft_project_daily_amountWithIdOnly = await prisma.nft_project_daily_amount.findMany({ select: { id: true } })
+     * const operation_logsWithIdOnly = await prisma.operation_logs.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends nft_project_daily_amountFindManyArgs>(args?: SelectSubset<T, nft_project_daily_amountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends operation_logsFindManyArgs>(args?: SelectSubset<T, operation_logsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Nft_project_daily_amount.
-     * @param {nft_project_daily_amountCreateArgs} args - Arguments to create a Nft_project_daily_amount.
+     * Create a Operation_logs.
+     * @param {operation_logsCreateArgs} args - Arguments to create a Operation_logs.
      * @example
-     * // Create one Nft_project_daily_amount
-     * const Nft_project_daily_amount = await prisma.nft_project_daily_amount.create({
+     * // Create one Operation_logs
+     * const Operation_logs = await prisma.operation_logs.create({
      *   data: {
-     *     // ... data to create a Nft_project_daily_amount
+     *     // ... data to create a Operation_logs
      *   }
      * })
      * 
      */
-    create<T extends nft_project_daily_amountCreateArgs>(args: SelectSubset<T, nft_project_daily_amountCreateArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends operation_logsCreateArgs>(args: SelectSubset<T, operation_logsCreateArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Nft_project_daily_amounts.
-     * @param {nft_project_daily_amountCreateManyArgs} args - Arguments to create many Nft_project_daily_amounts.
+     * Create many Operation_logs.
+     * @param {operation_logsCreateManyArgs} args - Arguments to create many Operation_logs.
      * @example
-     * // Create many Nft_project_daily_amounts
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.createMany({
+     * // Create many Operation_logs
+     * const operation_logs = await prisma.operation_logs.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends nft_project_daily_amountCreateManyArgs>(args?: SelectSubset<T, nft_project_daily_amountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends operation_logsCreateManyArgs>(args?: SelectSubset<T, operation_logsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Nft_project_daily_amounts and returns the data saved in the database.
-     * @param {nft_project_daily_amountCreateManyAndReturnArgs} args - Arguments to create many Nft_project_daily_amounts.
+     * Create many Operation_logs and returns the data saved in the database.
+     * @param {operation_logsCreateManyAndReturnArgs} args - Arguments to create many Operation_logs.
      * @example
-     * // Create many Nft_project_daily_amounts
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.createManyAndReturn({
+     * // Create many Operation_logs
+     * const operation_logs = await prisma.operation_logs.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Nft_project_daily_amounts and only return the `id`
-     * const nft_project_daily_amountWithIdOnly = await prisma.nft_project_daily_amount.createManyAndReturn({
+     * // Create many Operation_logs and only return the `id`
+     * const operation_logsWithIdOnly = await prisma.operation_logs.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1283,28 +1506,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends nft_project_daily_amountCreateManyAndReturnArgs>(args?: SelectSubset<T, nft_project_daily_amountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends operation_logsCreateManyAndReturnArgs>(args?: SelectSubset<T, operation_logsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Nft_project_daily_amount.
-     * @param {nft_project_daily_amountDeleteArgs} args - Arguments to delete one Nft_project_daily_amount.
+     * Delete a Operation_logs.
+     * @param {operation_logsDeleteArgs} args - Arguments to delete one Operation_logs.
      * @example
-     * // Delete one Nft_project_daily_amount
-     * const Nft_project_daily_amount = await prisma.nft_project_daily_amount.delete({
+     * // Delete one Operation_logs
+     * const Operation_logs = await prisma.operation_logs.delete({
      *   where: {
-     *     // ... filter to delete one Nft_project_daily_amount
+     *     // ... filter to delete one Operation_logs
      *   }
      * })
      * 
      */
-    delete<T extends nft_project_daily_amountDeleteArgs>(args: SelectSubset<T, nft_project_daily_amountDeleteArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends operation_logsDeleteArgs>(args: SelectSubset<T, operation_logsDeleteArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Nft_project_daily_amount.
-     * @param {nft_project_daily_amountUpdateArgs} args - Arguments to update one Nft_project_daily_amount.
+     * Update one Operation_logs.
+     * @param {operation_logsUpdateArgs} args - Arguments to update one Operation_logs.
      * @example
-     * // Update one Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.update({
+     * // Update one Operation_logs
+     * const operation_logs = await prisma.operation_logs.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1314,30 +1537,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends nft_project_daily_amountUpdateArgs>(args: SelectSubset<T, nft_project_daily_amountUpdateArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends operation_logsUpdateArgs>(args: SelectSubset<T, operation_logsUpdateArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Nft_project_daily_amounts.
-     * @param {nft_project_daily_amountDeleteManyArgs} args - Arguments to filter Nft_project_daily_amounts to delete.
+     * Delete zero or more Operation_logs.
+     * @param {operation_logsDeleteManyArgs} args - Arguments to filter Operation_logs to delete.
      * @example
-     * // Delete a few Nft_project_daily_amounts
-     * const { count } = await prisma.nft_project_daily_amount.deleteMany({
+     * // Delete a few Operation_logs
+     * const { count } = await prisma.operation_logs.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends nft_project_daily_amountDeleteManyArgs>(args?: SelectSubset<T, nft_project_daily_amountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends operation_logsDeleteManyArgs>(args?: SelectSubset<T, operation_logsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Nft_project_daily_amounts.
+     * Update zero or more Operation_logs.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {operation_logsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Nft_project_daily_amounts
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.updateMany({
+     * // Update many Operation_logs
+     * const operation_logs = await prisma.operation_logs.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1347,14 +1570,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends nft_project_daily_amountUpdateManyArgs>(args: SelectSubset<T, nft_project_daily_amountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends operation_logsUpdateManyArgs>(args: SelectSubset<T, operation_logsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Nft_project_daily_amounts and returns the data updated in the database.
-     * @param {nft_project_daily_amountUpdateManyAndReturnArgs} args - Arguments to update many Nft_project_daily_amounts.
+     * Update zero or more Operation_logs and returns the data updated in the database.
+     * @param {operation_logsUpdateManyAndReturnArgs} args - Arguments to update many Operation_logs.
      * @example
-     * // Update many Nft_project_daily_amounts
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.updateManyAndReturn({
+     * // Update many Operation_logs
+     * const operation_logs = await prisma.operation_logs.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1363,8 +1586,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Nft_project_daily_amounts and only return the `id`
-     * const nft_project_daily_amountWithIdOnly = await prisma.nft_project_daily_amount.updateManyAndReturn({
+     * // Update zero or more Operation_logs and only return the `id`
+     * const operation_logsWithIdOnly = await prisma.operation_logs.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1377,56 +1600,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends nft_project_daily_amountUpdateManyAndReturnArgs>(args: SelectSubset<T, nft_project_daily_amountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends operation_logsUpdateManyAndReturnArgs>(args: SelectSubset<T, operation_logsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Nft_project_daily_amount.
-     * @param {nft_project_daily_amountUpsertArgs} args - Arguments to update or create a Nft_project_daily_amount.
+     * Create or update one Operation_logs.
+     * @param {operation_logsUpsertArgs} args - Arguments to update or create a Operation_logs.
      * @example
-     * // Update or create a Nft_project_daily_amount
-     * const nft_project_daily_amount = await prisma.nft_project_daily_amount.upsert({
+     * // Update or create a Operation_logs
+     * const operation_logs = await prisma.operation_logs.upsert({
      *   create: {
-     *     // ... data to create a Nft_project_daily_amount
+     *     // ... data to create a Operation_logs
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Nft_project_daily_amount we want to update
+     *     // ... the filter for the Operation_logs we want to update
      *   }
      * })
      */
-    upsert<T extends nft_project_daily_amountUpsertArgs>(args: SelectSubset<T, nft_project_daily_amountUpsertArgs<ExtArgs>>): Prisma__nft_project_daily_amountClient<$Result.GetResult<Prisma.$nft_project_daily_amountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends operation_logsUpsertArgs>(args: SelectSubset<T, operation_logsUpsertArgs<ExtArgs>>): Prisma__operation_logsClient<$Result.GetResult<Prisma.$operation_logsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Nft_project_daily_amounts.
+     * Count the number of Operation_logs.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountCountArgs} args - Arguments to filter Nft_project_daily_amounts to count.
+     * @param {operation_logsCountArgs} args - Arguments to filter Operation_logs to count.
      * @example
-     * // Count the number of Nft_project_daily_amounts
-     * const count = await prisma.nft_project_daily_amount.count({
+     * // Count the number of Operation_logs
+     * const count = await prisma.operation_logs.count({
      *   where: {
-     *     // ... the filter for the Nft_project_daily_amounts we want to count
+     *     // ... the filter for the Operation_logs we want to count
      *   }
      * })
     **/
-    count<T extends nft_project_daily_amountCountArgs>(
-      args?: Subset<T, nft_project_daily_amountCountArgs>,
+    count<T extends operation_logsCountArgs>(
+      args?: Subset<T, operation_logsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Nft_project_daily_amountCountAggregateOutputType>
+          : GetScalarType<T['select'], Operation_logsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Nft_project_daily_amount.
+     * Allows you to perform aggregations operations on a Operation_logs.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Nft_project_daily_amountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Operation_logsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1446,13 +1669,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Nft_project_daily_amountAggregateArgs>(args: Subset<T, Nft_project_daily_amountAggregateArgs>): Prisma.PrismaPromise<GetNft_project_daily_amountAggregateType<T>>
+    aggregate<T extends Operation_logsAggregateArgs>(args: Subset<T, Operation_logsAggregateArgs>): Prisma.PrismaPromise<GetOperation_logsAggregateType<T>>
 
     /**
-     * Group by Nft_project_daily_amount.
+     * Group by Operation_logs.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {nft_project_daily_amountGroupByArgs} args - Group by arguments.
+     * @param {operation_logsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1467,14 +1690,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends nft_project_daily_amountGroupByArgs,
+      T extends operation_logsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: nft_project_daily_amountGroupByArgs['orderBy'] }
-        : { orderBy?: nft_project_daily_amountGroupByArgs['orderBy'] },
+        ? { orderBy: operation_logsGroupByArgs['orderBy'] }
+        : { orderBy?: operation_logsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1523,20 +1746,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, nft_project_daily_amountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNft_project_daily_amountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, operation_logsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOperation_logsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the nft_project_daily_amount model
+   * Fields of the operation_logs model
    */
-  readonly fields: nft_project_daily_amountFieldRefs;
+  readonly fields: operation_logsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for nft_project_daily_amount.
+   * The delegate class that acts as a "Promise-like" for operation_logs.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__nft_project_daily_amountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__operation_logsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1564,380 +1787,3734 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the nft_project_daily_amount model
+   * Fields of the operation_logs model
    */
-  interface nft_project_daily_amountFieldRefs {
-    readonly id: FieldRef<"nft_project_daily_amount", 'String'>
-    readonly project_id: FieldRef<"nft_project_daily_amount", 'String'>
-    readonly sale_date: FieldRef<"nft_project_daily_amount", 'DateTime'>
-    readonly sale_amount: FieldRef<"nft_project_daily_amount", 'Decimal'>
-    readonly created_at: FieldRef<"nft_project_daily_amount", 'DateTime'>
-    readonly updated_at: FieldRef<"nft_project_daily_amount", 'DateTime'>
-    readonly version: FieldRef<"nft_project_daily_amount", 'BigInt'>
-    readonly deleted_at: FieldRef<"nft_project_daily_amount", 'DateTime'>
+  interface operation_logsFieldRefs {
+    readonly id: FieldRef<"operation_logs", 'String'>
+    readonly user_id: FieldRef<"operation_logs", 'String'>
+    readonly qq_number: FieldRef<"operation_logs", 'String'>
+    readonly operation: FieldRef<"operation_logs", 'String'>
+    readonly created_at: FieldRef<"operation_logs", 'DateTime'>
+    readonly updated_at: FieldRef<"operation_logs", 'DateTime'>
+    readonly deleted_at: FieldRef<"operation_logs", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * nft_project_daily_amount findUnique
+   * operation_logs findUnique
    */
-  export type nft_project_daily_amountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter, which nft_project_daily_amount to fetch.
+     * Filter, which operation_logs to fetch.
      */
-    where: nft_project_daily_amountWhereUniqueInput
+    where: operation_logsWhereUniqueInput
   }
 
   /**
-   * nft_project_daily_amount findUniqueOrThrow
+   * operation_logs findUniqueOrThrow
    */
-  export type nft_project_daily_amountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter, which nft_project_daily_amount to fetch.
+     * Filter, which operation_logs to fetch.
      */
-    where: nft_project_daily_amountWhereUniqueInput
+    where: operation_logsWhereUniqueInput
   }
 
   /**
-   * nft_project_daily_amount findFirst
+   * operation_logs findFirst
    */
-  export type nft_project_daily_amountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter, which nft_project_daily_amount to fetch.
+     * Filter, which operation_logs to fetch.
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of nft_project_daily_amounts to fetch.
+     * Determine the order of operation_logs to fetch.
      */
-    orderBy?: nft_project_daily_amountOrderByWithRelationInput | nft_project_daily_amountOrderByWithRelationInput[]
+    orderBy?: operation_logsOrderByWithRelationInput | operation_logsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for nft_project_daily_amounts.
+     * Sets the position for searching for operation_logs.
      */
-    cursor?: nft_project_daily_amountWhereUniqueInput
+    cursor?: operation_logsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` nft_project_daily_amounts from the position of the cursor.
+     * Take `±n` operation_logs from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` nft_project_daily_amounts.
+     * Skip the first `n` operation_logs.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of nft_project_daily_amounts.
+     * Filter by unique combinations of operation_logs.
      */
-    distinct?: Nft_project_daily_amountScalarFieldEnum | Nft_project_daily_amountScalarFieldEnum[]
+    distinct?: Operation_logsScalarFieldEnum | Operation_logsScalarFieldEnum[]
   }
 
   /**
-   * nft_project_daily_amount findFirstOrThrow
+   * operation_logs findFirstOrThrow
    */
-  export type nft_project_daily_amountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter, which nft_project_daily_amount to fetch.
+     * Filter, which operation_logs to fetch.
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of nft_project_daily_amounts to fetch.
+     * Determine the order of operation_logs to fetch.
      */
-    orderBy?: nft_project_daily_amountOrderByWithRelationInput | nft_project_daily_amountOrderByWithRelationInput[]
+    orderBy?: operation_logsOrderByWithRelationInput | operation_logsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for nft_project_daily_amounts.
+     * Sets the position for searching for operation_logs.
      */
-    cursor?: nft_project_daily_amountWhereUniqueInput
+    cursor?: operation_logsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` nft_project_daily_amounts from the position of the cursor.
+     * Take `±n` operation_logs from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` nft_project_daily_amounts.
+     * Skip the first `n` operation_logs.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of nft_project_daily_amounts.
+     * Filter by unique combinations of operation_logs.
      */
-    distinct?: Nft_project_daily_amountScalarFieldEnum | Nft_project_daily_amountScalarFieldEnum[]
+    distinct?: Operation_logsScalarFieldEnum | Operation_logsScalarFieldEnum[]
   }
 
   /**
-   * nft_project_daily_amount findMany
+   * operation_logs findMany
    */
-  export type nft_project_daily_amountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter, which nft_project_daily_amounts to fetch.
+     * Filter, which operation_logs to fetch.
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of nft_project_daily_amounts to fetch.
+     * Determine the order of operation_logs to fetch.
      */
-    orderBy?: nft_project_daily_amountOrderByWithRelationInput | nft_project_daily_amountOrderByWithRelationInput[]
+    orderBy?: operation_logsOrderByWithRelationInput | operation_logsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing nft_project_daily_amounts.
+     * Sets the position for listing operation_logs.
      */
-    cursor?: nft_project_daily_amountWhereUniqueInput
+    cursor?: operation_logsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` nft_project_daily_amounts from the position of the cursor.
+     * Take `±n` operation_logs from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` nft_project_daily_amounts.
+     * Skip the first `n` operation_logs.
      */
     skip?: number
-    distinct?: Nft_project_daily_amountScalarFieldEnum | Nft_project_daily_amountScalarFieldEnum[]
+    distinct?: Operation_logsScalarFieldEnum | Operation_logsScalarFieldEnum[]
   }
 
   /**
-   * nft_project_daily_amount create
+   * operation_logs create
    */
-  export type nft_project_daily_amountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * The data needed to create a nft_project_daily_amount.
+     * The data needed to create a operation_logs.
      */
-    data: XOR<nft_project_daily_amountCreateInput, nft_project_daily_amountUncheckedCreateInput>
+    data: XOR<operation_logsCreateInput, operation_logsUncheckedCreateInput>
   }
 
   /**
-   * nft_project_daily_amount createMany
+   * operation_logs createMany
    */
-  export type nft_project_daily_amountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many nft_project_daily_amounts.
+     * The data used to create many operation_logs.
      */
-    data: nft_project_daily_amountCreateManyInput | nft_project_daily_amountCreateManyInput[]
+    data: operation_logsCreateManyInput | operation_logsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * nft_project_daily_amount createManyAndReturn
+   * operation_logs createManyAndReturn
    */
-  export type nft_project_daily_amountCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelectCreateManyAndReturn<ExtArgs> | null
+    select?: operation_logsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * The data used to create many nft_project_daily_amounts.
+     * The data used to create many operation_logs.
      */
-    data: nft_project_daily_amountCreateManyInput | nft_project_daily_amountCreateManyInput[]
+    data: operation_logsCreateManyInput | operation_logsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * nft_project_daily_amount update
+   * operation_logs update
    */
-  export type nft_project_daily_amountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * The data needed to update a nft_project_daily_amount.
+     * The data needed to update a operation_logs.
      */
-    data: XOR<nft_project_daily_amountUpdateInput, nft_project_daily_amountUncheckedUpdateInput>
+    data: XOR<operation_logsUpdateInput, operation_logsUncheckedUpdateInput>
     /**
-     * Choose, which nft_project_daily_amount to update.
+     * Choose, which operation_logs to update.
      */
-    where: nft_project_daily_amountWhereUniqueInput
+    where: operation_logsWhereUniqueInput
   }
 
   /**
-   * nft_project_daily_amount updateMany
+   * operation_logs updateMany
    */
-  export type nft_project_daily_amountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update nft_project_daily_amounts.
+     * The data used to update operation_logs.
      */
-    data: XOR<nft_project_daily_amountUpdateManyMutationInput, nft_project_daily_amountUncheckedUpdateManyInput>
+    data: XOR<operation_logsUpdateManyMutationInput, operation_logsUncheckedUpdateManyInput>
     /**
-     * Filter which nft_project_daily_amounts to update
+     * Filter which operation_logs to update
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
-     * Limit how many nft_project_daily_amounts to update.
+     * Limit how many operation_logs to update.
      */
     limit?: number
   }
 
   /**
-   * nft_project_daily_amount updateManyAndReturn
+   * operation_logs updateManyAndReturn
    */
-  export type nft_project_daily_amountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: operation_logsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * The data used to update nft_project_daily_amounts.
+     * The data used to update operation_logs.
      */
-    data: XOR<nft_project_daily_amountUpdateManyMutationInput, nft_project_daily_amountUncheckedUpdateManyInput>
+    data: XOR<operation_logsUpdateManyMutationInput, operation_logsUncheckedUpdateManyInput>
     /**
-     * Filter which nft_project_daily_amounts to update
+     * Filter which operation_logs to update
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
-     * Limit how many nft_project_daily_amounts to update.
+     * Limit how many operation_logs to update.
      */
     limit?: number
   }
 
   /**
-   * nft_project_daily_amount upsert
+   * operation_logs upsert
    */
-  export type nft_project_daily_amountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * The filter to search for the nft_project_daily_amount to update in case it exists.
+     * The filter to search for the operation_logs to update in case it exists.
      */
-    where: nft_project_daily_amountWhereUniqueInput
+    where: operation_logsWhereUniqueInput
     /**
-     * In case the nft_project_daily_amount found by the `where` argument doesn't exist, create a new nft_project_daily_amount with this data.
+     * In case the operation_logs found by the `where` argument doesn't exist, create a new operation_logs with this data.
      */
-    create: XOR<nft_project_daily_amountCreateInput, nft_project_daily_amountUncheckedCreateInput>
+    create: XOR<operation_logsCreateInput, operation_logsUncheckedCreateInput>
     /**
-     * In case the nft_project_daily_amount was found with the provided `where` argument, update it with this data.
+     * In case the operation_logs was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<nft_project_daily_amountUpdateInput, nft_project_daily_amountUncheckedUpdateInput>
+    update: XOR<operation_logsUpdateInput, operation_logsUncheckedUpdateInput>
   }
 
   /**
-   * nft_project_daily_amount delete
+   * operation_logs delete
    */
-  export type nft_project_daily_amountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
     /**
-     * Filter which nft_project_daily_amount to delete.
+     * Filter which operation_logs to delete.
      */
-    where: nft_project_daily_amountWhereUniqueInput
+    where: operation_logsWhereUniqueInput
   }
 
   /**
-   * nft_project_daily_amount deleteMany
+   * operation_logs deleteMany
    */
-  export type nft_project_daily_amountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which nft_project_daily_amounts to delete
+     * Filter which operation_logs to delete
      */
-    where?: nft_project_daily_amountWhereInput
+    where?: operation_logsWhereInput
     /**
-     * Limit how many nft_project_daily_amounts to delete.
+     * Limit how many operation_logs to delete.
      */
     limit?: number
   }
 
   /**
-   * nft_project_daily_amount without action
+   * operation_logs without action
    */
-  export type nft_project_daily_amountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type operation_logsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the nft_project_daily_amount
+     * Select specific fields to fetch from the operation_logs
      */
-    select?: nft_project_daily_amountSelect<ExtArgs> | null
+    select?: operation_logsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the nft_project_daily_amount
+     * Omit specific fields from the operation_logs
      */
-    omit?: nft_project_daily_amountOmit<ExtArgs> | null
+    omit?: operation_logsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model payment_orders
+   */
+
+  export type AggregatePayment_orders = {
+    _count: Payment_ordersCountAggregateOutputType | null
+    _avg: Payment_ordersAvgAggregateOutputType | null
+    _sum: Payment_ordersSumAggregateOutputType | null
+    _min: Payment_ordersMinAggregateOutputType | null
+    _max: Payment_ordersMaxAggregateOutputType | null
+  }
+
+  export type Payment_ordersAvgAggregateOutputType = {
+    channel: number | null
+    amount: Decimal | null
+    status: number | null
+  }
+
+  export type Payment_ordersSumAggregateOutputType = {
+    channel: number | null
+    amount: Decimal | null
+    status: number | null
+  }
+
+  export type Payment_ordersMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    qq_number: string | null
+    out_trade_no: string | null
+    channel: number | null
+    amount: Decimal | null
+    status: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type Payment_ordersMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    qq_number: string | null
+    out_trade_no: string | null
+    channel: number | null
+    amount: Decimal | null
+    status: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type Payment_ordersCountAggregateOutputType = {
+    id: number
+    user_id: number
+    qq_number: number
+    out_trade_no: number
+    channel: number
+    amount: number
+    status: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type Payment_ordersAvgAggregateInputType = {
+    channel?: true
+    amount?: true
+    status?: true
+  }
+
+  export type Payment_ordersSumAggregateInputType = {
+    channel?: true
+    amount?: true
+    status?: true
+  }
+
+  export type Payment_ordersMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    qq_number?: true
+    out_trade_no?: true
+    channel?: true
+    amount?: true
+    status?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type Payment_ordersMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    qq_number?: true
+    out_trade_no?: true
+    channel?: true
+    amount?: true
+    status?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type Payment_ordersCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    qq_number?: true
+    out_trade_no?: true
+    channel?: true
+    amount?: true
+    status?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type Payment_ordersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which payment_orders to aggregate.
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_orders to fetch.
+     */
+    orderBy?: payment_ordersOrderByWithRelationInput | payment_ordersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: payment_ordersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_orders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_orders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned payment_orders
+    **/
+    _count?: true | Payment_ordersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Payment_ordersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Payment_ordersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Payment_ordersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Payment_ordersMaxAggregateInputType
+  }
+
+  export type GetPayment_ordersAggregateType<T extends Payment_ordersAggregateArgs> = {
+        [P in keyof T & keyof AggregatePayment_orders]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePayment_orders[P]>
+      : GetScalarType<T[P], AggregatePayment_orders[P]>
+  }
+
+
+
+
+  export type payment_ordersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: payment_ordersWhereInput
+    orderBy?: payment_ordersOrderByWithAggregationInput | payment_ordersOrderByWithAggregationInput[]
+    by: Payment_ordersScalarFieldEnum[] | Payment_ordersScalarFieldEnum
+    having?: payment_ordersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Payment_ordersCountAggregateInputType | true
+    _avg?: Payment_ordersAvgAggregateInputType
+    _sum?: Payment_ordersSumAggregateInputType
+    _min?: Payment_ordersMinAggregateInputType
+    _max?: Payment_ordersMaxAggregateInputType
+  }
+
+  export type Payment_ordersGroupByOutputType = {
+    id: string
+    user_id: string
+    qq_number: string
+    out_trade_no: string
+    channel: number
+    amount: Decimal
+    status: number
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: Payment_ordersCountAggregateOutputType | null
+    _avg: Payment_ordersAvgAggregateOutputType | null
+    _sum: Payment_ordersSumAggregateOutputType | null
+    _min: Payment_ordersMinAggregateOutputType | null
+    _max: Payment_ordersMaxAggregateOutputType | null
+  }
+
+  type GetPayment_ordersGroupByPayload<T extends payment_ordersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Payment_ordersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Payment_ordersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Payment_ordersGroupByOutputType[P]>
+            : GetScalarType<T[P], Payment_ordersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type payment_ordersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    out_trade_no?: boolean
+    channel?: boolean
+    amount?: boolean
+    status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["payment_orders"]>
+
+  export type payment_ordersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    out_trade_no?: boolean
+    channel?: boolean
+    amount?: boolean
+    status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["payment_orders"]>
+
+  export type payment_ordersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    out_trade_no?: boolean
+    channel?: boolean
+    amount?: boolean
+    status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["payment_orders"]>
+
+  export type payment_ordersSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    qq_number?: boolean
+    out_trade_no?: boolean
+    channel?: boolean
+    amount?: boolean
+    status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type payment_ordersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "qq_number" | "out_trade_no" | "channel" | "amount" | "status" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["payment_orders"]>
+
+  export type $payment_ordersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "payment_orders"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      qq_number: string
+      out_trade_no: string
+      channel: number
+      amount: Prisma.Decimal
+      status: number
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["payment_orders"]>
+    composites: {}
+  }
+
+  type payment_ordersGetPayload<S extends boolean | null | undefined | payment_ordersDefaultArgs> = $Result.GetResult<Prisma.$payment_ordersPayload, S>
+
+  type payment_ordersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<payment_ordersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Payment_ordersCountAggregateInputType | true
+    }
+
+  export interface payment_ordersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['payment_orders'], meta: { name: 'payment_orders' } }
+    /**
+     * Find zero or one Payment_orders that matches the filter.
+     * @param {payment_ordersFindUniqueArgs} args - Arguments to find a Payment_orders
+     * @example
+     * // Get one Payment_orders
+     * const payment_orders = await prisma.payment_orders.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends payment_ordersFindUniqueArgs>(args: SelectSubset<T, payment_ordersFindUniqueArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Payment_orders that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {payment_ordersFindUniqueOrThrowArgs} args - Arguments to find a Payment_orders
+     * @example
+     * // Get one Payment_orders
+     * const payment_orders = await prisma.payment_orders.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends payment_ordersFindUniqueOrThrowArgs>(args: SelectSubset<T, payment_ordersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment_orders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersFindFirstArgs} args - Arguments to find a Payment_orders
+     * @example
+     * // Get one Payment_orders
+     * const payment_orders = await prisma.payment_orders.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends payment_ordersFindFirstArgs>(args?: SelectSubset<T, payment_ordersFindFirstArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment_orders that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersFindFirstOrThrowArgs} args - Arguments to find a Payment_orders
+     * @example
+     * // Get one Payment_orders
+     * const payment_orders = await prisma.payment_orders.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends payment_ordersFindFirstOrThrowArgs>(args?: SelectSubset<T, payment_ordersFindFirstOrThrowArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Payment_orders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Payment_orders
+     * const payment_orders = await prisma.payment_orders.findMany()
+     * 
+     * // Get first 10 Payment_orders
+     * const payment_orders = await prisma.payment_orders.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const payment_ordersWithIdOnly = await prisma.payment_orders.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends payment_ordersFindManyArgs>(args?: SelectSubset<T, payment_ordersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Payment_orders.
+     * @param {payment_ordersCreateArgs} args - Arguments to create a Payment_orders.
+     * @example
+     * // Create one Payment_orders
+     * const Payment_orders = await prisma.payment_orders.create({
+     *   data: {
+     *     // ... data to create a Payment_orders
+     *   }
+     * })
+     * 
+     */
+    create<T extends payment_ordersCreateArgs>(args: SelectSubset<T, payment_ordersCreateArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Payment_orders.
+     * @param {payment_ordersCreateManyArgs} args - Arguments to create many Payment_orders.
+     * @example
+     * // Create many Payment_orders
+     * const payment_orders = await prisma.payment_orders.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends payment_ordersCreateManyArgs>(args?: SelectSubset<T, payment_ordersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Payment_orders and returns the data saved in the database.
+     * @param {payment_ordersCreateManyAndReturnArgs} args - Arguments to create many Payment_orders.
+     * @example
+     * // Create many Payment_orders
+     * const payment_orders = await prisma.payment_orders.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Payment_orders and only return the `id`
+     * const payment_ordersWithIdOnly = await prisma.payment_orders.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends payment_ordersCreateManyAndReturnArgs>(args?: SelectSubset<T, payment_ordersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Payment_orders.
+     * @param {payment_ordersDeleteArgs} args - Arguments to delete one Payment_orders.
+     * @example
+     * // Delete one Payment_orders
+     * const Payment_orders = await prisma.payment_orders.delete({
+     *   where: {
+     *     // ... filter to delete one Payment_orders
+     *   }
+     * })
+     * 
+     */
+    delete<T extends payment_ordersDeleteArgs>(args: SelectSubset<T, payment_ordersDeleteArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Payment_orders.
+     * @param {payment_ordersUpdateArgs} args - Arguments to update one Payment_orders.
+     * @example
+     * // Update one Payment_orders
+     * const payment_orders = await prisma.payment_orders.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends payment_ordersUpdateArgs>(args: SelectSubset<T, payment_ordersUpdateArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Payment_orders.
+     * @param {payment_ordersDeleteManyArgs} args - Arguments to filter Payment_orders to delete.
+     * @example
+     * // Delete a few Payment_orders
+     * const { count } = await prisma.payment_orders.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends payment_ordersDeleteManyArgs>(args?: SelectSubset<T, payment_ordersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payment_orders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Payment_orders
+     * const payment_orders = await prisma.payment_orders.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends payment_ordersUpdateManyArgs>(args: SelectSubset<T, payment_ordersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payment_orders and returns the data updated in the database.
+     * @param {payment_ordersUpdateManyAndReturnArgs} args - Arguments to update many Payment_orders.
+     * @example
+     * // Update many Payment_orders
+     * const payment_orders = await prisma.payment_orders.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Payment_orders and only return the `id`
+     * const payment_ordersWithIdOnly = await prisma.payment_orders.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends payment_ordersUpdateManyAndReturnArgs>(args: SelectSubset<T, payment_ordersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Payment_orders.
+     * @param {payment_ordersUpsertArgs} args - Arguments to update or create a Payment_orders.
+     * @example
+     * // Update or create a Payment_orders
+     * const payment_orders = await prisma.payment_orders.upsert({
+     *   create: {
+     *     // ... data to create a Payment_orders
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Payment_orders we want to update
+     *   }
+     * })
+     */
+    upsert<T extends payment_ordersUpsertArgs>(args: SelectSubset<T, payment_ordersUpsertArgs<ExtArgs>>): Prisma__payment_ordersClient<$Result.GetResult<Prisma.$payment_ordersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Payment_orders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersCountArgs} args - Arguments to filter Payment_orders to count.
+     * @example
+     * // Count the number of Payment_orders
+     * const count = await prisma.payment_orders.count({
+     *   where: {
+     *     // ... the filter for the Payment_orders we want to count
+     *   }
+     * })
+    **/
+    count<T extends payment_ordersCountArgs>(
+      args?: Subset<T, payment_ordersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Payment_ordersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Payment_orders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Payment_ordersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Payment_ordersAggregateArgs>(args: Subset<T, Payment_ordersAggregateArgs>): Prisma.PrismaPromise<GetPayment_ordersAggregateType<T>>
+
+    /**
+     * Group by Payment_orders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {payment_ordersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends payment_ordersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: payment_ordersGroupByArgs['orderBy'] }
+        : { orderBy?: payment_ordersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, payment_ordersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPayment_ordersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the payment_orders model
+   */
+  readonly fields: payment_ordersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for payment_orders.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__payment_ordersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the payment_orders model
+   */
+  interface payment_ordersFieldRefs {
+    readonly id: FieldRef<"payment_orders", 'String'>
+    readonly user_id: FieldRef<"payment_orders", 'String'>
+    readonly qq_number: FieldRef<"payment_orders", 'String'>
+    readonly out_trade_no: FieldRef<"payment_orders", 'String'>
+    readonly channel: FieldRef<"payment_orders", 'Int'>
+    readonly amount: FieldRef<"payment_orders", 'Decimal'>
+    readonly status: FieldRef<"payment_orders", 'Int'>
+    readonly created_at: FieldRef<"payment_orders", 'DateTime'>
+    readonly updated_at: FieldRef<"payment_orders", 'DateTime'>
+    readonly deleted_at: FieldRef<"payment_orders", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * payment_orders findUnique
+   */
+  export type payment_ordersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_orders to fetch.
+     */
+    where: payment_ordersWhereUniqueInput
+  }
+
+  /**
+   * payment_orders findUniqueOrThrow
+   */
+  export type payment_ordersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_orders to fetch.
+     */
+    where: payment_ordersWhereUniqueInput
+  }
+
+  /**
+   * payment_orders findFirst
+   */
+  export type payment_ordersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_orders to fetch.
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_orders to fetch.
+     */
+    orderBy?: payment_ordersOrderByWithRelationInput | payment_ordersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for payment_orders.
+     */
+    cursor?: payment_ordersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_orders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_orders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of payment_orders.
+     */
+    distinct?: Payment_ordersScalarFieldEnum | Payment_ordersScalarFieldEnum[]
+  }
+
+  /**
+   * payment_orders findFirstOrThrow
+   */
+  export type payment_ordersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_orders to fetch.
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_orders to fetch.
+     */
+    orderBy?: payment_ordersOrderByWithRelationInput | payment_ordersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for payment_orders.
+     */
+    cursor?: payment_ordersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_orders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_orders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of payment_orders.
+     */
+    distinct?: Payment_ordersScalarFieldEnum | Payment_ordersScalarFieldEnum[]
+  }
+
+  /**
+   * payment_orders findMany
+   */
+  export type payment_ordersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter, which payment_orders to fetch.
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of payment_orders to fetch.
+     */
+    orderBy?: payment_ordersOrderByWithRelationInput | payment_ordersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing payment_orders.
+     */
+    cursor?: payment_ordersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` payment_orders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` payment_orders.
+     */
+    skip?: number
+    distinct?: Payment_ordersScalarFieldEnum | Payment_ordersScalarFieldEnum[]
+  }
+
+  /**
+   * payment_orders create
+   */
+  export type payment_ordersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a payment_orders.
+     */
+    data: XOR<payment_ordersCreateInput, payment_ordersUncheckedCreateInput>
+  }
+
+  /**
+   * payment_orders createMany
+   */
+  export type payment_ordersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many payment_orders.
+     */
+    data: payment_ordersCreateManyInput | payment_ordersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * payment_orders createManyAndReturn
+   */
+  export type payment_ordersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * The data used to create many payment_orders.
+     */
+    data: payment_ordersCreateManyInput | payment_ordersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * payment_orders update
+   */
+  export type payment_ordersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a payment_orders.
+     */
+    data: XOR<payment_ordersUpdateInput, payment_ordersUncheckedUpdateInput>
+    /**
+     * Choose, which payment_orders to update.
+     */
+    where: payment_ordersWhereUniqueInput
+  }
+
+  /**
+   * payment_orders updateMany
+   */
+  export type payment_ordersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update payment_orders.
+     */
+    data: XOR<payment_ordersUpdateManyMutationInput, payment_ordersUncheckedUpdateManyInput>
+    /**
+     * Filter which payment_orders to update
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * Limit how many payment_orders to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_orders updateManyAndReturn
+   */
+  export type payment_ordersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * The data used to update payment_orders.
+     */
+    data: XOR<payment_ordersUpdateManyMutationInput, payment_ordersUncheckedUpdateManyInput>
+    /**
+     * Filter which payment_orders to update
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * Limit how many payment_orders to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_orders upsert
+   */
+  export type payment_ordersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the payment_orders to update in case it exists.
+     */
+    where: payment_ordersWhereUniqueInput
+    /**
+     * In case the payment_orders found by the `where` argument doesn't exist, create a new payment_orders with this data.
+     */
+    create: XOR<payment_ordersCreateInput, payment_ordersUncheckedCreateInput>
+    /**
+     * In case the payment_orders was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<payment_ordersUpdateInput, payment_ordersUncheckedUpdateInput>
+  }
+
+  /**
+   * payment_orders delete
+   */
+  export type payment_ordersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+    /**
+     * Filter which payment_orders to delete.
+     */
+    where: payment_ordersWhereUniqueInput
+  }
+
+  /**
+   * payment_orders deleteMany
+   */
+  export type payment_ordersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which payment_orders to delete
+     */
+    where?: payment_ordersWhereInput
+    /**
+     * Limit how many payment_orders to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * payment_orders without action
+   */
+  export type payment_ordersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the payment_orders
+     */
+    select?: payment_ordersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the payment_orders
+     */
+    omit?: payment_ordersOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_play_logs
+   */
+
+  export type AggregateUser_play_logs = {
+    _count: User_play_logsCountAggregateOutputType | null
+    _avg: User_play_logsAvgAggregateOutputType | null
+    _sum: User_play_logsSumAggregateOutputType | null
+    _min: User_play_logsMinAggregateOutputType | null
+    _max: User_play_logsMaxAggregateOutputType | null
+  }
+
+  export type User_play_logsAvgAggregateOutputType = {
+    status: number | null
+  }
+
+  export type User_play_logsSumAggregateOutputType = {
+    status: number | null
+  }
+
+  export type User_play_logsMinAggregateOutputType = {
+    id: string | null
+    qq_number: string | null
+    status: number | null
+    start_time: Date | null
+    end_time: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type User_play_logsMaxAggregateOutputType = {
+    id: string | null
+    qq_number: string | null
+    status: number | null
+    start_time: Date | null
+    end_time: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type User_play_logsCountAggregateOutputType = {
+    id: number
+    qq_number: number
+    status: number
+    start_time: number
+    end_time: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type User_play_logsAvgAggregateInputType = {
+    status?: true
+  }
+
+  export type User_play_logsSumAggregateInputType = {
+    status?: true
+  }
+
+  export type User_play_logsMinAggregateInputType = {
+    id?: true
+    qq_number?: true
+    status?: true
+    start_time?: true
+    end_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type User_play_logsMaxAggregateInputType = {
+    id?: true
+    qq_number?: true
+    status?: true
+    start_time?: true
+    end_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type User_play_logsCountAggregateInputType = {
+    id?: true
+    qq_number?: true
+    status?: true
+    start_time?: true
+    end_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type User_play_logsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_play_logs to aggregate.
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_play_logs to fetch.
+     */
+    orderBy?: user_play_logsOrderByWithRelationInput | user_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_play_logs
+    **/
+    _count?: true | User_play_logsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_play_logsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_play_logsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_play_logsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_play_logsMaxAggregateInputType
+  }
+
+  export type GetUser_play_logsAggregateType<T extends User_play_logsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_play_logs]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_play_logs[P]>
+      : GetScalarType<T[P], AggregateUser_play_logs[P]>
+  }
+
+
+
+
+  export type user_play_logsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_play_logsWhereInput
+    orderBy?: user_play_logsOrderByWithAggregationInput | user_play_logsOrderByWithAggregationInput[]
+    by: User_play_logsScalarFieldEnum[] | User_play_logsScalarFieldEnum
+    having?: user_play_logsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_play_logsCountAggregateInputType | true
+    _avg?: User_play_logsAvgAggregateInputType
+    _sum?: User_play_logsSumAggregateInputType
+    _min?: User_play_logsMinAggregateInputType
+    _max?: User_play_logsMaxAggregateInputType
+  }
+
+  export type User_play_logsGroupByOutputType = {
+    id: string
+    qq_number: string
+    status: number
+    start_time: Date
+    end_time: Date | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: User_play_logsCountAggregateOutputType | null
+    _avg: User_play_logsAvgAggregateOutputType | null
+    _sum: User_play_logsSumAggregateOutputType | null
+    _min: User_play_logsMinAggregateOutputType | null
+    _max: User_play_logsMaxAggregateOutputType | null
+  }
+
+  type GetUser_play_logsGroupByPayload<T extends user_play_logsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_play_logsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_play_logsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_play_logsGroupByOutputType[P]>
+            : GetScalarType<T[P], User_play_logsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_play_logsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    status?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["user_play_logs"]>
+
+  export type user_play_logsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    status?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["user_play_logs"]>
+
+  export type user_play_logsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    status?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["user_play_logs"]>
+
+  export type user_play_logsSelectScalar = {
+    id?: boolean
+    qq_number?: boolean
+    status?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type user_play_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qq_number" | "status" | "start_time" | "end_time" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["user_play_logs"]>
+
+  export type $user_play_logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_play_logs"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      qq_number: string
+      status: number
+      start_time: Date
+      end_time: Date | null
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["user_play_logs"]>
+    composites: {}
+  }
+
+  type user_play_logsGetPayload<S extends boolean | null | undefined | user_play_logsDefaultArgs> = $Result.GetResult<Prisma.$user_play_logsPayload, S>
+
+  type user_play_logsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_play_logsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: User_play_logsCountAggregateInputType | true
+    }
+
+  export interface user_play_logsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_play_logs'], meta: { name: 'user_play_logs' } }
+    /**
+     * Find zero or one User_play_logs that matches the filter.
+     * @param {user_play_logsFindUniqueArgs} args - Arguments to find a User_play_logs
+     * @example
+     * // Get one User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_play_logsFindUniqueArgs>(args: SelectSubset<T, user_play_logsFindUniqueArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_play_logs that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_play_logsFindUniqueOrThrowArgs} args - Arguments to find a User_play_logs
+     * @example
+     * // Get one User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_play_logsFindUniqueOrThrowArgs>(args: SelectSubset<T, user_play_logsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_play_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsFindFirstArgs} args - Arguments to find a User_play_logs
+     * @example
+     * // Get one User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_play_logsFindFirstArgs>(args?: SelectSubset<T, user_play_logsFindFirstArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_play_logs that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsFindFirstOrThrowArgs} args - Arguments to find a User_play_logs
+     * @example
+     * // Get one User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_play_logsFindFirstOrThrowArgs>(args?: SelectSubset<T, user_play_logsFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_play_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findMany()
+     * 
+     * // Get first 10 User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_play_logsWithIdOnly = await prisma.user_play_logs.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_play_logsFindManyArgs>(args?: SelectSubset<T, user_play_logsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_play_logs.
+     * @param {user_play_logsCreateArgs} args - Arguments to create a User_play_logs.
+     * @example
+     * // Create one User_play_logs
+     * const User_play_logs = await prisma.user_play_logs.create({
+     *   data: {
+     *     // ... data to create a User_play_logs
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_play_logsCreateArgs>(args: SelectSubset<T, user_play_logsCreateArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_play_logs.
+     * @param {user_play_logsCreateManyArgs} args - Arguments to create many User_play_logs.
+     * @example
+     * // Create many User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_play_logsCreateManyArgs>(args?: SelectSubset<T, user_play_logsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_play_logs and returns the data saved in the database.
+     * @param {user_play_logsCreateManyAndReturnArgs} args - Arguments to create many User_play_logs.
+     * @example
+     * // Create many User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_play_logs and only return the `id`
+     * const user_play_logsWithIdOnly = await prisma.user_play_logs.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends user_play_logsCreateManyAndReturnArgs>(args?: SelectSubset<T, user_play_logsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User_play_logs.
+     * @param {user_play_logsDeleteArgs} args - Arguments to delete one User_play_logs.
+     * @example
+     * // Delete one User_play_logs
+     * const User_play_logs = await prisma.user_play_logs.delete({
+     *   where: {
+     *     // ... filter to delete one User_play_logs
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_play_logsDeleteArgs>(args: SelectSubset<T, user_play_logsDeleteArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_play_logs.
+     * @param {user_play_logsUpdateArgs} args - Arguments to update one User_play_logs.
+     * @example
+     * // Update one User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_play_logsUpdateArgs>(args: SelectSubset<T, user_play_logsUpdateArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_play_logs.
+     * @param {user_play_logsDeleteManyArgs} args - Arguments to filter User_play_logs to delete.
+     * @example
+     * // Delete a few User_play_logs
+     * const { count } = await prisma.user_play_logs.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_play_logsDeleteManyArgs>(args?: SelectSubset<T, user_play_logsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_play_logsUpdateManyArgs>(args: SelectSubset<T, user_play_logsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_play_logs and returns the data updated in the database.
+     * @param {user_play_logsUpdateManyAndReturnArgs} args - Arguments to update many User_play_logs.
+     * @example
+     * // Update many User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more User_play_logs and only return the `id`
+     * const user_play_logsWithIdOnly = await prisma.user_play_logs.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends user_play_logsUpdateManyAndReturnArgs>(args: SelectSubset<T, user_play_logsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User_play_logs.
+     * @param {user_play_logsUpsertArgs} args - Arguments to update or create a User_play_logs.
+     * @example
+     * // Update or create a User_play_logs
+     * const user_play_logs = await prisma.user_play_logs.upsert({
+     *   create: {
+     *     // ... data to create a User_play_logs
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_play_logs we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_play_logsUpsertArgs>(args: SelectSubset<T, user_play_logsUpsertArgs<ExtArgs>>): Prisma__user_play_logsClient<$Result.GetResult<Prisma.$user_play_logsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsCountArgs} args - Arguments to filter User_play_logs to count.
+     * @example
+     * // Count the number of User_play_logs
+     * const count = await prisma.user_play_logs.count({
+     *   where: {
+     *     // ... the filter for the User_play_logs we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_play_logsCountArgs>(
+      args?: Subset<T, user_play_logsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_play_logsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_play_logsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_play_logsAggregateArgs>(args: Subset<T, User_play_logsAggregateArgs>): Prisma.PrismaPromise<GetUser_play_logsAggregateType<T>>
+
+    /**
+     * Group by User_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_play_logsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_play_logsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_play_logsGroupByArgs['orderBy'] }
+        : { orderBy?: user_play_logsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_play_logsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_play_logsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_play_logs model
+   */
+  readonly fields: user_play_logsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_play_logs.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_play_logsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_play_logs model
+   */
+  interface user_play_logsFieldRefs {
+    readonly id: FieldRef<"user_play_logs", 'String'>
+    readonly qq_number: FieldRef<"user_play_logs", 'String'>
+    readonly status: FieldRef<"user_play_logs", 'Int'>
+    readonly start_time: FieldRef<"user_play_logs", 'DateTime'>
+    readonly end_time: FieldRef<"user_play_logs", 'DateTime'>
+    readonly created_at: FieldRef<"user_play_logs", 'DateTime'>
+    readonly updated_at: FieldRef<"user_play_logs", 'DateTime'>
+    readonly deleted_at: FieldRef<"user_play_logs", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_play_logs findUnique
+   */
+  export type user_play_logsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which user_play_logs to fetch.
+     */
+    where: user_play_logsWhereUniqueInput
+  }
+
+  /**
+   * user_play_logs findUniqueOrThrow
+   */
+  export type user_play_logsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which user_play_logs to fetch.
+     */
+    where: user_play_logsWhereUniqueInput
+  }
+
+  /**
+   * user_play_logs findFirst
+   */
+  export type user_play_logsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which user_play_logs to fetch.
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_play_logs to fetch.
+     */
+    orderBy?: user_play_logsOrderByWithRelationInput | user_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_play_logs.
+     */
+    cursor?: user_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_play_logs.
+     */
+    distinct?: User_play_logsScalarFieldEnum | User_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * user_play_logs findFirstOrThrow
+   */
+  export type user_play_logsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which user_play_logs to fetch.
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_play_logs to fetch.
+     */
+    orderBy?: user_play_logsOrderByWithRelationInput | user_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_play_logs.
+     */
+    cursor?: user_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_play_logs.
+     */
+    distinct?: User_play_logsScalarFieldEnum | User_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * user_play_logs findMany
+   */
+  export type user_play_logsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which user_play_logs to fetch.
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_play_logs to fetch.
+     */
+    orderBy?: user_play_logsOrderByWithRelationInput | user_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_play_logs.
+     */
+    cursor?: user_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_play_logs.
+     */
+    skip?: number
+    distinct?: User_play_logsScalarFieldEnum | User_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * user_play_logs create
+   */
+  export type user_play_logsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a user_play_logs.
+     */
+    data: XOR<user_play_logsCreateInput, user_play_logsUncheckedCreateInput>
+  }
+
+  /**
+   * user_play_logs createMany
+   */
+  export type user_play_logsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_play_logs.
+     */
+    data: user_play_logsCreateManyInput | user_play_logsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_play_logs createManyAndReturn
+   */
+  export type user_play_logsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * The data used to create many user_play_logs.
+     */
+    data: user_play_logsCreateManyInput | user_play_logsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_play_logs update
+   */
+  export type user_play_logsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a user_play_logs.
+     */
+    data: XOR<user_play_logsUpdateInput, user_play_logsUncheckedUpdateInput>
+    /**
+     * Choose, which user_play_logs to update.
+     */
+    where: user_play_logsWhereUniqueInput
+  }
+
+  /**
+   * user_play_logs updateMany
+   */
+  export type user_play_logsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_play_logs.
+     */
+    data: XOR<user_play_logsUpdateManyMutationInput, user_play_logsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_play_logs to update
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * Limit how many user_play_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_play_logs updateManyAndReturn
+   */
+  export type user_play_logsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * The data used to update user_play_logs.
+     */
+    data: XOR<user_play_logsUpdateManyMutationInput, user_play_logsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_play_logs to update
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * Limit how many user_play_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_play_logs upsert
+   */
+  export type user_play_logsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the user_play_logs to update in case it exists.
+     */
+    where: user_play_logsWhereUniqueInput
+    /**
+     * In case the user_play_logs found by the `where` argument doesn't exist, create a new user_play_logs with this data.
+     */
+    create: XOR<user_play_logsCreateInput, user_play_logsUncheckedCreateInput>
+    /**
+     * In case the user_play_logs was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_play_logsUpdateInput, user_play_logsUncheckedUpdateInput>
+  }
+
+  /**
+   * user_play_logs delete
+   */
+  export type user_play_logsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter which user_play_logs to delete.
+     */
+    where: user_play_logsWhereUniqueInput
+  }
+
+  /**
+   * user_play_logs deleteMany
+   */
+  export type user_play_logsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_play_logs to delete
+     */
+    where?: user_play_logsWhereInput
+    /**
+     * Limit how many user_play_logs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_play_logs without action
+   */
+  export type user_play_logsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_play_logs
+     */
+    select?: user_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_play_logs
+     */
+    omit?: user_play_logsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model users
+   */
+
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  export type UsersAvgAggregateOutputType = {
+    status: number | null
+    discount: Decimal | null
+    total_time: number | null
+    total_amount: Decimal | null
+    play_count: number | null
+  }
+
+  export type UsersSumAggregateOutputType = {
+    status: number | null
+    discount: Decimal | null
+    total_time: bigint | null
+    total_amount: Decimal | null
+    play_count: bigint | null
+  }
+
+  export type UsersMinAggregateOutputType = {
+    id: string | null
+    qq_number: string | null
+    nick_name: string | null
+    role: string | null
+    status_expire_time: Date | null
+    status: number | null
+    source: string | null
+    invited_by: string | null
+    discount: Decimal | null
+    total_time: bigint | null
+    total_amount: Decimal | null
+    play_count: bigint | null
+    last_come_time: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type UsersMaxAggregateOutputType = {
+    id: string | null
+    qq_number: string | null
+    nick_name: string | null
+    role: string | null
+    status_expire_time: Date | null
+    status: number | null
+    source: string | null
+    invited_by: string | null
+    discount: Decimal | null
+    total_time: bigint | null
+    total_amount: Decimal | null
+    play_count: bigint | null
+    last_come_time: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type UsersCountAggregateOutputType = {
+    id: number
+    qq_number: number
+    nick_name: number
+    role: number
+    status_expire_time: number
+    status: number
+    source: number
+    invited_by: number
+    discount: number
+    total_time: number
+    total_amount: number
+    play_count: number
+    last_come_time: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type UsersAvgAggregateInputType = {
+    status?: true
+    discount?: true
+    total_time?: true
+    total_amount?: true
+    play_count?: true
+  }
+
+  export type UsersSumAggregateInputType = {
+    status?: true
+    discount?: true
+    total_time?: true
+    total_amount?: true
+    play_count?: true
+  }
+
+  export type UsersMinAggregateInputType = {
+    id?: true
+    qq_number?: true
+    nick_name?: true
+    role?: true
+    status_expire_time?: true
+    status?: true
+    source?: true
+    invited_by?: true
+    discount?: true
+    total_time?: true
+    total_amount?: true
+    play_count?: true
+    last_come_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type UsersMaxAggregateInputType = {
+    id?: true
+    qq_number?: true
+    nick_name?: true
+    role?: true
+    status_expire_time?: true
+    status?: true
+    source?: true
+    invited_by?: true
+    discount?: true
+    total_time?: true
+    total_amount?: true
+    play_count?: true
+    last_come_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type UsersCountAggregateInputType = {
+    id?: true
+    qq_number?: true
+    nick_name?: true
+    role?: true
+    status_expire_time?: true
+    status?: true
+    source?: true
+    invited_by?: true
+    discount?: true
+    total_time?: true
+    total_amount?: true
+    play_count?: true
+    last_come_time?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to aggregate.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned users
+    **/
+    _count?: true | UsersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UsersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UsersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UsersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
+  }
+
+
+
+
+  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: usersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UsersCountAggregateInputType | true
+    _avg?: UsersAvgAggregateInputType
+    _sum?: UsersSumAggregateInputType
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type UsersGroupByOutputType = {
+    id: string
+    qq_number: string
+    nick_name: string
+    role: string
+    status_expire_time: Date
+    status: number
+    source: string
+    invited_by: string
+    discount: Decimal
+    total_time: bigint
+    total_amount: Decimal
+    play_count: bigint
+    last_come_time: Date | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    nick_name?: boolean
+    role?: boolean
+    status_expire_time?: boolean
+    status?: boolean
+    source?: boolean
+    invited_by?: boolean
+    discount?: boolean
+    total_time?: boolean
+    total_amount?: boolean
+    play_count?: boolean
+    last_come_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    nick_name?: boolean
+    role?: boolean
+    status_expire_time?: boolean
+    status?: boolean
+    source?: boolean
+    invited_by?: boolean
+    discount?: boolean
+    total_time?: boolean
+    total_amount?: boolean
+    play_count?: boolean
+    last_come_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    qq_number?: boolean
+    nick_name?: boolean
+    role?: boolean
+    status_expire_time?: boolean
+    status?: boolean
+    source?: boolean
+    invited_by?: boolean
+    discount?: boolean
+    total_time?: boolean
+    total_amount?: boolean
+    play_count?: boolean
+    last_come_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type usersSelectScalar = {
+    id?: boolean
+    qq_number?: boolean
+    nick_name?: boolean
+    role?: boolean
+    status_expire_time?: boolean
+    status?: boolean
+    source?: boolean
+    invited_by?: boolean
+    discount?: boolean
+    total_time?: boolean
+    total_amount?: boolean
+    play_count?: boolean
+    last_come_time?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qq_number" | "nick_name" | "role" | "status_expire_time" | "status" | "source" | "invited_by" | "discount" | "total_time" | "total_amount" | "play_count" | "last_come_time" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["users"]>
+
+  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      qq_number: string
+      nick_name: string
+      role: string
+      status_expire_time: Date
+      status: number
+      source: string
+      invited_by: string
+      discount: Prisma.Decimal
+      total_time: bigint
+      total_amount: Prisma.Decimal
+      play_count: bigint
+      last_come_time: Date | null
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["users"]>
+    composites: {}
+  }
+
+  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
+
+  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UsersCountAggregateInputType | true
+    }
+
+  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
+    /**
+     * Find zero or one Users that matches the filter.
+     * @param {usersFindUniqueArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Users that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.users.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.users.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Users.
+     * @param {usersCreateArgs} args - Arguments to create a Users.
+     * @example
+     * // Create one Users
+     * const Users = await prisma.users.create({
+     *   data: {
+     *     // ... data to create a Users
+     *   }
+     * })
+     * 
+     */
+    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users.
+     * @param {usersCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Users and returns the data saved in the database.
+     * @param {usersCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const users = await prisma.users.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `id`
+     * const usersWithIdOnly = await prisma.users.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Users.
+     * @param {usersDeleteArgs} args - Arguments to delete one Users.
+     * @example
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
+     *   where: {
+     *     // ... filter to delete one Users
+     *   }
+     * })
+     * 
+     */
+    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Users.
+     * @param {usersUpdateArgs} args - Arguments to update one Users.
+     * @example
+     * // Update one Users
+     * const users = await prisma.users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {usersUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `id`
+     * const usersWithIdOnly = await prisma.users.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Users.
+     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
+     * @example
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
+     *   create: {
+     *     // ... data to create a Users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Users we want to update
+     *   }
+     * })
+     */
+    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.users.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends usersCountArgs>(
+      args?: Subset<T, usersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
+
+    /**
+     * Group by Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {usersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends usersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: usersGroupByArgs['orderBy'] }
+        : { orderBy?: usersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the users model
+   */
+  readonly fields: usersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for users.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  interface usersFieldRefs {
+    readonly id: FieldRef<"users", 'String'>
+    readonly qq_number: FieldRef<"users", 'String'>
+    readonly nick_name: FieldRef<"users", 'String'>
+    readonly role: FieldRef<"users", 'String'>
+    readonly status_expire_time: FieldRef<"users", 'DateTime'>
+    readonly status: FieldRef<"users", 'Int'>
+    readonly source: FieldRef<"users", 'String'>
+    readonly invited_by: FieldRef<"users", 'String'>
+    readonly discount: FieldRef<"users", 'Decimal'>
+    readonly total_time: FieldRef<"users", 'BigInt'>
+    readonly total_amount: FieldRef<"users", 'Decimal'>
+    readonly play_count: FieldRef<"users", 'BigInt'>
+    readonly last_come_time: FieldRef<"users", 'DateTime'>
+    readonly created_at: FieldRef<"users", 'DateTime'>
+    readonly updated_at: FieldRef<"users", 'DateTime'>
+    readonly deleted_at: FieldRef<"users", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * users findUnique
+   */
+  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findUniqueOrThrow
+   */
+  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users findFirst
+   */
+  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findFirstOrThrow
+   */
+  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users findMany
+   */
+  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter, which users to fetch.
+     */
+    where?: usersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of users to fetch.
+     */
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing users.
+     */
+    cursor?: usersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` users.
+     */
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
+   * users create
+   */
+  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a users.
+     */
+    data: XOR<usersCreateInput, usersUncheckedCreateInput>
+  }
+
+  /**
+   * users createMany
+   */
+  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users createManyAndReturn
+   */
+  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to create many users.
+     */
+    data: usersCreateManyInput | usersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * users update
+   */
+  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a users.
+     */
+    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+    /**
+     * Choose, which users to update.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users updateMany
+   */
+  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users updateManyAndReturn
+   */
+  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The data used to update users.
+     */
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
+    /**
+     * Filter which users to update
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * users upsert
+   */
+  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the users to update in case it exists.
+     */
+    where: usersWhereUniqueInput
+    /**
+     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
+     */
+    create: XOR<usersCreateInput, usersUncheckedCreateInput>
+    /**
+     * In case the users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
+  }
+
+  /**
+   * users delete
+   */
+  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Filter which users to delete.
+     */
+    where: usersWhereUniqueInput
+  }
+
+  /**
+   * users deleteMany
+   */
+  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which users to delete
+     */
+    where?: usersWhereInput
+    /**
+     * Limit how many users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * users without action
+   */
+  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
   }
 
 
@@ -1955,18 +5532,69 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Nft_project_daily_amountScalarFieldEnum: {
+  export const Operation_logsScalarFieldEnum: {
     id: 'id',
-    project_id: 'project_id',
-    sale_date: 'sale_date',
-    sale_amount: 'sale_amount',
+    user_id: 'user_id',
+    qq_number: 'qq_number',
+    operation: 'operation',
     created_at: 'created_at',
     updated_at: 'updated_at',
-    version: 'version',
     deleted_at: 'deleted_at'
   };
 
-  export type Nft_project_daily_amountScalarFieldEnum = (typeof Nft_project_daily_amountScalarFieldEnum)[keyof typeof Nft_project_daily_amountScalarFieldEnum]
+  export type Operation_logsScalarFieldEnum = (typeof Operation_logsScalarFieldEnum)[keyof typeof Operation_logsScalarFieldEnum]
+
+
+  export const Payment_ordersScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    qq_number: 'qq_number',
+    out_trade_no: 'out_trade_no',
+    channel: 'channel',
+    amount: 'amount',
+    status: 'status',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type Payment_ordersScalarFieldEnum = (typeof Payment_ordersScalarFieldEnum)[keyof typeof Payment_ordersScalarFieldEnum]
+
+
+  export const User_play_logsScalarFieldEnum: {
+    id: 'id',
+    qq_number: 'qq_number',
+    status: 'status',
+    start_time: 'start_time',
+    end_time: 'end_time',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type User_play_logsScalarFieldEnum = (typeof User_play_logsScalarFieldEnum)[keyof typeof User_play_logsScalarFieldEnum]
+
+
+  export const UsersScalarFieldEnum: {
+    id: 'id',
+    qq_number: 'qq_number',
+    nick_name: 'nick_name',
+    role: 'role',
+    status_expire_time: 'status_expire_time',
+    status: 'status',
+    source: 'source',
+    invited_by: 'invited_by',
+    discount: 'discount',
+    total_time: 'total_time',
+    total_amount: 'total_amount',
+    play_count: 'play_count',
+    last_come_time: 'last_come_time',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2027,6 +5655,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Decimal'
    */
   export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -2055,20 +5697,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2085,149 +5713,693 @@ export namespace Prisma {
    */
 
 
-  export type nft_project_daily_amountWhereInput = {
-    AND?: nft_project_daily_amountWhereInput | nft_project_daily_amountWhereInput[]
-    OR?: nft_project_daily_amountWhereInput[]
-    NOT?: nft_project_daily_amountWhereInput | nft_project_daily_amountWhereInput[]
-    id?: UuidFilter<"nft_project_daily_amount"> | string
-    project_id?: UuidFilter<"nft_project_daily_amount"> | string
-    sale_date?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    sale_amount?: DecimalFilter<"nft_project_daily_amount"> | Decimal | DecimalJsLike | number | string
-    created_at?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    updated_at?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    version?: BigIntFilter<"nft_project_daily_amount"> | bigint | number
-    deleted_at?: DateTimeNullableFilter<"nft_project_daily_amount"> | Date | string | null
+  export type operation_logsWhereInput = {
+    AND?: operation_logsWhereInput | operation_logsWhereInput[]
+    OR?: operation_logsWhereInput[]
+    NOT?: operation_logsWhereInput | operation_logsWhereInput[]
+    id?: UuidFilter<"operation_logs"> | string
+    user_id?: UuidFilter<"operation_logs"> | string
+    qq_number?: StringFilter<"operation_logs"> | string
+    operation?: StringFilter<"operation_logs"> | string
+    created_at?: DateTimeFilter<"operation_logs"> | Date | string
+    updated_at?: DateTimeFilter<"operation_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"operation_logs"> | Date | string | null
   }
 
-  export type nft_project_daily_amountOrderByWithRelationInput = {
+  export type operation_logsOrderByWithRelationInput = {
     id?: SortOrder
-    project_id?: SortOrder
-    sale_date?: SortOrder
-    sale_amount?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    operation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    version?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
   }
 
-  export type nft_project_daily_amountWhereUniqueInput = Prisma.AtLeast<{
+  export type operation_logsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: nft_project_daily_amountWhereInput | nft_project_daily_amountWhereInput[]
-    OR?: nft_project_daily_amountWhereInput[]
-    NOT?: nft_project_daily_amountWhereInput | nft_project_daily_amountWhereInput[]
-    project_id?: UuidFilter<"nft_project_daily_amount"> | string
-    sale_date?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    sale_amount?: DecimalFilter<"nft_project_daily_amount"> | Decimal | DecimalJsLike | number | string
-    created_at?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    updated_at?: DateTimeFilter<"nft_project_daily_amount"> | Date | string
-    version?: BigIntFilter<"nft_project_daily_amount"> | bigint | number
-    deleted_at?: DateTimeNullableFilter<"nft_project_daily_amount"> | Date | string | null
+    AND?: operation_logsWhereInput | operation_logsWhereInput[]
+    OR?: operation_logsWhereInput[]
+    NOT?: operation_logsWhereInput | operation_logsWhereInput[]
+    user_id?: UuidFilter<"operation_logs"> | string
+    qq_number?: StringFilter<"operation_logs"> | string
+    operation?: StringFilter<"operation_logs"> | string
+    created_at?: DateTimeFilter<"operation_logs"> | Date | string
+    updated_at?: DateTimeFilter<"operation_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"operation_logs"> | Date | string | null
   }, "id">
 
-  export type nft_project_daily_amountOrderByWithAggregationInput = {
+  export type operation_logsOrderByWithAggregationInput = {
     id?: SortOrder
-    project_id?: SortOrder
-    sale_date?: SortOrder
-    sale_amount?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    operation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    version?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
-    _count?: nft_project_daily_amountCountOrderByAggregateInput
-    _avg?: nft_project_daily_amountAvgOrderByAggregateInput
-    _max?: nft_project_daily_amountMaxOrderByAggregateInput
-    _min?: nft_project_daily_amountMinOrderByAggregateInput
-    _sum?: nft_project_daily_amountSumOrderByAggregateInput
+    _count?: operation_logsCountOrderByAggregateInput
+    _max?: operation_logsMaxOrderByAggregateInput
+    _min?: operation_logsMinOrderByAggregateInput
   }
 
-  export type nft_project_daily_amountScalarWhereWithAggregatesInput = {
-    AND?: nft_project_daily_amountScalarWhereWithAggregatesInput | nft_project_daily_amountScalarWhereWithAggregatesInput[]
-    OR?: nft_project_daily_amountScalarWhereWithAggregatesInput[]
-    NOT?: nft_project_daily_amountScalarWhereWithAggregatesInput | nft_project_daily_amountScalarWhereWithAggregatesInput[]
-    id?: UuidWithAggregatesFilter<"nft_project_daily_amount"> | string
-    project_id?: UuidWithAggregatesFilter<"nft_project_daily_amount"> | string
-    sale_date?: DateTimeWithAggregatesFilter<"nft_project_daily_amount"> | Date | string
-    sale_amount?: DecimalWithAggregatesFilter<"nft_project_daily_amount"> | Decimal | DecimalJsLike | number | string
-    created_at?: DateTimeWithAggregatesFilter<"nft_project_daily_amount"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"nft_project_daily_amount"> | Date | string
-    version?: BigIntWithAggregatesFilter<"nft_project_daily_amount"> | bigint | number
-    deleted_at?: DateTimeNullableWithAggregatesFilter<"nft_project_daily_amount"> | Date | string | null
+  export type operation_logsScalarWhereWithAggregatesInput = {
+    AND?: operation_logsScalarWhereWithAggregatesInput | operation_logsScalarWhereWithAggregatesInput[]
+    OR?: operation_logsScalarWhereWithAggregatesInput[]
+    NOT?: operation_logsScalarWhereWithAggregatesInput | operation_logsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"operation_logs"> | string
+    user_id?: UuidWithAggregatesFilter<"operation_logs"> | string
+    qq_number?: StringWithAggregatesFilter<"operation_logs"> | string
+    operation?: StringWithAggregatesFilter<"operation_logs"> | string
+    created_at?: DateTimeWithAggregatesFilter<"operation_logs"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"operation_logs"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"operation_logs"> | Date | string | null
   }
 
-  export type nft_project_daily_amountCreateInput = {
+  export type payment_ordersWhereInput = {
+    AND?: payment_ordersWhereInput | payment_ordersWhereInput[]
+    OR?: payment_ordersWhereInput[]
+    NOT?: payment_ordersWhereInput | payment_ordersWhereInput[]
+    id?: UuidFilter<"payment_orders"> | string
+    user_id?: UuidFilter<"payment_orders"> | string
+    qq_number?: StringFilter<"payment_orders"> | string
+    out_trade_no?: StringFilter<"payment_orders"> | string
+    channel?: IntFilter<"payment_orders"> | number
+    amount?: DecimalFilter<"payment_orders"> | Decimal | DecimalJsLike | number | string
+    status?: IntFilter<"payment_orders"> | number
+    created_at?: DateTimeFilter<"payment_orders"> | Date | string
+    updated_at?: DateTimeFilter<"payment_orders"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"payment_orders"> | Date | string | null
+  }
+
+  export type payment_ordersOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    out_trade_no?: SortOrder
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+  }
+
+  export type payment_ordersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    project_id: string
-    sale_date: Date | string
-    sale_amount?: Decimal | DecimalJsLike | number | string
+    out_trade_no?: string
+    AND?: payment_ordersWhereInput | payment_ordersWhereInput[]
+    OR?: payment_ordersWhereInput[]
+    NOT?: payment_ordersWhereInput | payment_ordersWhereInput[]
+    user_id?: UuidFilter<"payment_orders"> | string
+    qq_number?: StringFilter<"payment_orders"> | string
+    channel?: IntFilter<"payment_orders"> | number
+    amount?: DecimalFilter<"payment_orders"> | Decimal | DecimalJsLike | number | string
+    status?: IntFilter<"payment_orders"> | number
+    created_at?: DateTimeFilter<"payment_orders"> | Date | string
+    updated_at?: DateTimeFilter<"payment_orders"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"payment_orders"> | Date | string | null
+  }, "id" | "out_trade_no">
+
+  export type payment_ordersOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    out_trade_no?: SortOrder
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: payment_ordersCountOrderByAggregateInput
+    _avg?: payment_ordersAvgOrderByAggregateInput
+    _max?: payment_ordersMaxOrderByAggregateInput
+    _min?: payment_ordersMinOrderByAggregateInput
+    _sum?: payment_ordersSumOrderByAggregateInput
+  }
+
+  export type payment_ordersScalarWhereWithAggregatesInput = {
+    AND?: payment_ordersScalarWhereWithAggregatesInput | payment_ordersScalarWhereWithAggregatesInput[]
+    OR?: payment_ordersScalarWhereWithAggregatesInput[]
+    NOT?: payment_ordersScalarWhereWithAggregatesInput | payment_ordersScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"payment_orders"> | string
+    user_id?: UuidWithAggregatesFilter<"payment_orders"> | string
+    qq_number?: StringWithAggregatesFilter<"payment_orders"> | string
+    out_trade_no?: StringWithAggregatesFilter<"payment_orders"> | string
+    channel?: IntWithAggregatesFilter<"payment_orders"> | number
+    amount?: DecimalWithAggregatesFilter<"payment_orders"> | Decimal | DecimalJsLike | number | string
+    status?: IntWithAggregatesFilter<"payment_orders"> | number
+    created_at?: DateTimeWithAggregatesFilter<"payment_orders"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"payment_orders"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"payment_orders"> | Date | string | null
+  }
+
+  export type user_play_logsWhereInput = {
+    AND?: user_play_logsWhereInput | user_play_logsWhereInput[]
+    OR?: user_play_logsWhereInput[]
+    NOT?: user_play_logsWhereInput | user_play_logsWhereInput[]
+    id?: UuidFilter<"user_play_logs"> | string
+    qq_number?: StringFilter<"user_play_logs"> | string
+    status?: IntFilter<"user_play_logs"> | number
+    start_time?: DateTimeFilter<"user_play_logs"> | Date | string
+    end_time?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    created_at?: DateTimeFilter<"user_play_logs"> | Date | string
+    updated_at?: DateTimeFilter<"user_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+  }
+
+  export type user_play_logsOrderByWithRelationInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    status?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+  }
+
+  export type user_play_logsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: user_play_logsWhereInput | user_play_logsWhereInput[]
+    OR?: user_play_logsWhereInput[]
+    NOT?: user_play_logsWhereInput | user_play_logsWhereInput[]
+    qq_number?: StringFilter<"user_play_logs"> | string
+    status?: IntFilter<"user_play_logs"> | number
+    start_time?: DateTimeFilter<"user_play_logs"> | Date | string
+    end_time?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    created_at?: DateTimeFilter<"user_play_logs"> | Date | string
+    updated_at?: DateTimeFilter<"user_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+  }, "id">
+
+  export type user_play_logsOrderByWithAggregationInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    status?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: user_play_logsCountOrderByAggregateInput
+    _avg?: user_play_logsAvgOrderByAggregateInput
+    _max?: user_play_logsMaxOrderByAggregateInput
+    _min?: user_play_logsMinOrderByAggregateInput
+    _sum?: user_play_logsSumOrderByAggregateInput
+  }
+
+  export type user_play_logsScalarWhereWithAggregatesInput = {
+    AND?: user_play_logsScalarWhereWithAggregatesInput | user_play_logsScalarWhereWithAggregatesInput[]
+    OR?: user_play_logsScalarWhereWithAggregatesInput[]
+    NOT?: user_play_logsScalarWhereWithAggregatesInput | user_play_logsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"user_play_logs"> | string
+    qq_number?: StringWithAggregatesFilter<"user_play_logs"> | string
+    status?: IntWithAggregatesFilter<"user_play_logs"> | number
+    start_time?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
+    end_time?: DateTimeNullableWithAggregatesFilter<"user_play_logs"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"user_play_logs"> | Date | string | null
+  }
+
+  export type usersWhereInput = {
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    id?: UuidFilter<"users"> | string
+    qq_number?: StringFilter<"users"> | string
+    nick_name?: StringFilter<"users"> | string
+    role?: StringFilter<"users"> | string
+    status_expire_time?: DateTimeFilter<"users"> | Date | string
+    status?: IntFilter<"users"> | number
+    source?: StringFilter<"users"> | string
+    invited_by?: StringFilter<"users"> | string
+    discount?: DecimalFilter<"users"> | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFilter<"users"> | bigint | number
+    total_amount?: DecimalFilter<"users"> | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFilter<"users"> | bigint | number
+    last_come_time?: DateTimeNullableFilter<"users"> | Date | string | null
+    created_at?: DateTimeFilter<"users"> | Date | string
+    updated_at?: DateTimeFilter<"users"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"users"> | Date | string | null
+  }
+
+  export type usersOrderByWithRelationInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    nick_name?: SortOrder
+    role?: SortOrder
+    status_expire_time?: SortOrder
+    status?: SortOrder
+    source?: SortOrder
+    invited_by?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+    last_come_time?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+  }
+
+  export type usersWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    qq_number?: string
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    nick_name?: StringFilter<"users"> | string
+    role?: StringFilter<"users"> | string
+    status_expire_time?: DateTimeFilter<"users"> | Date | string
+    status?: IntFilter<"users"> | number
+    source?: StringFilter<"users"> | string
+    invited_by?: StringFilter<"users"> | string
+    discount?: DecimalFilter<"users"> | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFilter<"users"> | bigint | number
+    total_amount?: DecimalFilter<"users"> | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFilter<"users"> | bigint | number
+    last_come_time?: DateTimeNullableFilter<"users"> | Date | string | null
+    created_at?: DateTimeFilter<"users"> | Date | string
+    updated_at?: DateTimeFilter<"users"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"users"> | Date | string | null
+  }, "id" | "qq_number">
+
+  export type usersOrderByWithAggregationInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    nick_name?: SortOrder
+    role?: SortOrder
+    status_expire_time?: SortOrder
+    status?: SortOrder
+    source?: SortOrder
+    invited_by?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+    last_come_time?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: usersCountOrderByAggregateInput
+    _avg?: usersAvgOrderByAggregateInput
+    _max?: usersMaxOrderByAggregateInput
+    _min?: usersMinOrderByAggregateInput
+    _sum?: usersSumOrderByAggregateInput
+  }
+
+  export type usersScalarWhereWithAggregatesInput = {
+    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    OR?: usersScalarWhereWithAggregatesInput[]
+    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"users"> | string
+    qq_number?: StringWithAggregatesFilter<"users"> | string
+    nick_name?: StringWithAggregatesFilter<"users"> | string
+    role?: StringWithAggregatesFilter<"users"> | string
+    status_expire_time?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    status?: IntWithAggregatesFilter<"users"> | number
+    source?: StringWithAggregatesFilter<"users"> | string
+    invited_by?: StringWithAggregatesFilter<"users"> | string
+    discount?: DecimalWithAggregatesFilter<"users"> | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntWithAggregatesFilter<"users"> | bigint | number
+    total_amount?: DecimalWithAggregatesFilter<"users"> | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntWithAggregatesFilter<"users"> | bigint | number
+    last_come_time?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+  }
+
+  export type operation_logsCreateInput = {
+    id?: string
+    user_id: string
+    qq_number: string
+    operation: string
     created_at?: Date | string
     updated_at?: Date | string
-    version?: bigint | number
     deleted_at?: Date | string | null
   }
 
-  export type nft_project_daily_amountUncheckedCreateInput = {
+  export type operation_logsUncheckedCreateInput = {
     id?: string
-    project_id: string
-    sale_date: Date | string
-    sale_amount?: Decimal | DecimalJsLike | number | string
+    user_id: string
+    qq_number: string
+    operation: string
     created_at?: Date | string
     updated_at?: Date | string
-    version?: bigint | number
     deleted_at?: Date | string | null
   }
 
-  export type nft_project_daily_amountUpdateInput = {
+  export type operation_logsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    project_id?: StringFieldUpdateOperationsInput | string
-    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    sale_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    operation?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    version?: BigIntFieldUpdateOperationsInput | bigint | number
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type nft_project_daily_amountUncheckedUpdateInput = {
+  export type operation_logsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    project_id?: StringFieldUpdateOperationsInput | string
-    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    sale_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    operation?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    version?: BigIntFieldUpdateOperationsInput | bigint | number
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type nft_project_daily_amountCreateManyInput = {
+  export type operation_logsCreateManyInput = {
     id?: string
-    project_id: string
-    sale_date: Date | string
-    sale_amount?: Decimal | DecimalJsLike | number | string
+    user_id: string
+    qq_number: string
+    operation: string
     created_at?: Date | string
     updated_at?: Date | string
-    version?: bigint | number
     deleted_at?: Date | string | null
   }
 
-  export type nft_project_daily_amountUpdateManyMutationInput = {
+  export type operation_logsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    project_id?: StringFieldUpdateOperationsInput | string
-    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    sale_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    operation?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    version?: BigIntFieldUpdateOperationsInput | bigint | number
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type nft_project_daily_amountUncheckedUpdateManyInput = {
+  export type operation_logsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    project_id?: StringFieldUpdateOperationsInput | string
-    sale_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    sale_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    operation?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    version?: BigIntFieldUpdateOperationsInput | bigint | number
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type payment_ordersCreateInput = {
+    id?: string
+    user_id: string
+    qq_number: string
+    out_trade_no: string
+    channel: number
+    amount: Decimal | DecimalJsLike | number | string
+    status?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type payment_ordersUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    qq_number: string
+    out_trade_no: string
+    channel: number
+    amount: Decimal | DecimalJsLike | number | string
+    status?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type payment_ordersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    out_trade_no?: StringFieldUpdateOperationsInput | string
+    channel?: IntFieldUpdateOperationsInput | number
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type payment_ordersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    out_trade_no?: StringFieldUpdateOperationsInput | string
+    channel?: IntFieldUpdateOperationsInput | number
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type payment_ordersCreateManyInput = {
+    id?: string
+    user_id: string
+    qq_number: string
+    out_trade_no: string
+    channel: number
+    amount: Decimal | DecimalJsLike | number | string
+    status?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type payment_ordersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    out_trade_no?: StringFieldUpdateOperationsInput | string
+    channel?: IntFieldUpdateOperationsInput | number
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type payment_ordersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    out_trade_no?: StringFieldUpdateOperationsInput | string
+    channel?: IntFieldUpdateOperationsInput | number
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type user_play_logsCreateInput = {
+    id?: string
+    qq_number: string
+    status?: number
+    start_time?: Date | string
+    end_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type user_play_logsUncheckedCreateInput = {
+    id?: string
+    qq_number: string
+    status?: number
+    start_time?: Date | string
+    end_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type user_play_logsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type user_play_logsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type user_play_logsCreateManyInput = {
+    id?: string
+    qq_number: string
+    status?: number
+    start_time?: Date | string
+    end_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type user_play_logsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type user_play_logsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type usersCreateInput = {
+    id?: string
+    qq_number: string
+    nick_name: string
+    role?: string
+    status_expire_time?: Date | string
+    status?: number
+    source?: string
+    invited_by?: string
+    discount?: Decimal | DecimalJsLike | number | string
+    total_time: bigint | number
+    total_amount?: Decimal | DecimalJsLike | number | string
+    play_count?: bigint | number
+    last_come_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type usersUncheckedCreateInput = {
+    id?: string
+    qq_number: string
+    nick_name: string
+    role?: string
+    status_expire_time?: Date | string
+    status?: number
+    source?: string
+    invited_by?: string
+    discount?: Decimal | DecimalJsLike | number | string
+    total_time: bigint | number
+    total_amount?: Decimal | DecimalJsLike | number | string
+    play_count?: bigint | number
+    last_come_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type usersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    nick_name?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status_expire_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    invited_by?: StringFieldUpdateOperationsInput | string
+    discount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFieldUpdateOperationsInput | bigint | number
+    total_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFieldUpdateOperationsInput | bigint | number
+    last_come_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type usersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    nick_name?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status_expire_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    invited_by?: StringFieldUpdateOperationsInput | string
+    discount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFieldUpdateOperationsInput | bigint | number
+    total_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFieldUpdateOperationsInput | bigint | number
+    last_come_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type usersCreateManyInput = {
+    id?: string
+    qq_number: string
+    nick_name: string
+    role?: string
+    status_expire_time?: Date | string
+    status?: number
+    source?: string
+    invited_by?: string
+    discount?: Decimal | DecimalJsLike | number | string
+    total_time: bigint | number
+    total_amount?: Decimal | DecimalJsLike | number | string
+    play_count?: bigint | number
+    last_come_time?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type usersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    nick_name?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status_expire_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    invited_by?: StringFieldUpdateOperationsInput | string
+    discount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFieldUpdateOperationsInput | bigint | number
+    total_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFieldUpdateOperationsInput | bigint | number
+    last_come_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type usersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    nick_name?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    status_expire_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: IntFieldUpdateOperationsInput | number
+    source?: StringFieldUpdateOperationsInput | string
+    invited_by?: StringFieldUpdateOperationsInput | string
+    discount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    total_time?: BigIntFieldUpdateOperationsInput | bigint | number
+    total_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    play_count?: BigIntFieldUpdateOperationsInput | bigint | number
+    last_come_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -2243,6 +6415,21 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2252,28 +6439,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -2292,47 +6457,34 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type nft_project_daily_amountCountOrderByAggregateInput = {
+  export type operation_logsCountOrderByAggregateInput = {
     id?: SortOrder
-    project_id?: SortOrder
-    sale_date?: SortOrder
-    sale_amount?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    operation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    version?: SortOrder
     deleted_at?: SortOrder
   }
 
-  export type nft_project_daily_amountAvgOrderByAggregateInput = {
-    sale_amount?: SortOrder
-    version?: SortOrder
-  }
-
-  export type nft_project_daily_amountMaxOrderByAggregateInput = {
+  export type operation_logsMaxOrderByAggregateInput = {
     id?: SortOrder
-    project_id?: SortOrder
-    sale_date?: SortOrder
-    sale_amount?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    operation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    version?: SortOrder
     deleted_at?: SortOrder
   }
 
-  export type nft_project_daily_amountMinOrderByAggregateInput = {
+  export type operation_logsMinOrderByAggregateInput = {
     id?: SortOrder
-    project_id?: SortOrder
-    sale_date?: SortOrder
-    sale_amount?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    operation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    version?: SortOrder
     deleted_at?: SortOrder
-  }
-
-  export type nft_project_daily_amountSumOrderByAggregateInput = {
-    sale_amount?: SortOrder
-    version?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -2345,6 +6497,24 @@ export namespace Prisma {
     gte?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
@@ -2364,6 +6534,109 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type payment_ordersCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    out_trade_no?: SortOrder
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type payment_ordersAvgOrderByAggregateInput = {
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+  }
+
+  export type payment_ordersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    out_trade_no?: SortOrder
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type payment_ordersMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    qq_number?: SortOrder
+    out_trade_no?: SortOrder
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type payment_ordersSumOrderByAggregateInput = {
+    channel?: SortOrder
+    amount?: SortOrder
+    status?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -2378,6 +6651,131 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type user_play_logsCountOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    status?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type user_play_logsAvgOrderByAggregateInput = {
+    status?: SortOrder
+  }
+
+  export type user_play_logsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    status?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type user_play_logsMinOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    status?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type user_play_logsSumOrderByAggregateInput = {
+    status?: SortOrder
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type usersCountOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    nick_name?: SortOrder
+    role?: SortOrder
+    status_expire_time?: SortOrder
+    status?: SortOrder
+    source?: SortOrder
+    invited_by?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+    last_come_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type usersAvgOrderByAggregateInput = {
+    status?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+  }
+
+  export type usersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    nick_name?: SortOrder
+    role?: SortOrder
+    status_expire_time?: SortOrder
+    status?: SortOrder
+    source?: SortOrder
+    invited_by?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+    last_come_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type usersMinOrderByAggregateInput = {
+    id?: SortOrder
+    qq_number?: SortOrder
+    nick_name?: SortOrder
+    role?: SortOrder
+    status_expire_time?: SortOrder
+    status?: SortOrder
+    source?: SortOrder
+    invited_by?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
+    last_come_time?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type usersSumOrderByAggregateInput = {
+    status?: SortOrder
+    discount?: SortOrder
+    total_time?: SortOrder
+    total_amount?: SortOrder
+    play_count?: SortOrder
   }
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2396,26 +6794,24 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type DecimalFieldUpdateOperationsInput = {
@@ -2434,10 +6830,6 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type NestedUuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2449,6 +6841,20 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2458,28 +6864,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -2518,7 +6902,7 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2529,7 +6913,10 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -2544,49 +6931,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -2612,6 +6956,87 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
 

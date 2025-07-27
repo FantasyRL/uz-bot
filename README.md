@@ -2,11 +2,12 @@
 backend of qqBot, use typeScript
 
 # 快速上手
-- 确保已有node npm nvm环境
+- 确保已有node npm nvm pnpm环境
 - biz/config/config.yaml已配置
 ```bash
 npm ci # 下载node_modules依赖
-docker compose up -d # 启动外部中间件依赖
+pnpm add node-napcat-ts
+docker compose up -d # 启动外部中间件依赖(进入napcatwebui登录)
 make dev # 需要能够运行makefile
 ```
 
@@ -52,3 +53,12 @@ make dev # 需要能够运行makefile
 └── tsconfig.json                 # TypeScript 编译配置（rootDir=biz, outDir=dist）
 
 ```
+
+
+
+# 数据迁移
+```bash
+# 保证已有yzcal.csv
+cd migrate && npx ts-node migrate.ts
+```
+

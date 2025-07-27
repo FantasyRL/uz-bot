@@ -37,7 +37,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only biz/cmd/server.ts",
-    "build": "npm run build:ts && npm run build:assets",
+    "build": "npm run build:ts && npm run build:assets && cp -R biz/generated dist/generated",
     "build:ts": "tsc -p tsconfig.json",
     "build:assets": "cpx \"biz/config/*.yaml\" dist/config",
     "start": "node -r tsconfig-paths/register dist/cmd/server.js"

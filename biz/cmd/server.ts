@@ -1,10 +1,10 @@
 import 'module-alias/register';
 import express from 'express';
 import pino from 'pino';
-import { initDB } from '@/db';
 import { bindRouters } from '@/api';
 import Config from "@/config";
 import {NapcatInstance} from '@/internal/napcat/client';
+import {initPrisma} from "@/internal/infra/db/prisma_cli";
 
 export const logger = pino();
 const app = express();
@@ -21,8 +21,9 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 
 (async () => {
     try {
-        // 初始化数据库连接
-        await initDB();
+        // 初始化数据库
+        await initPrisma();
+
         // 连接 Napcat
         const instance = NapcatInstance.getInstance();
         await instance.go();

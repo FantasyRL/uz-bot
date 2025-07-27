@@ -120,14 +120,56 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Nft_project_daily_amountScalarFieldEnum = {
+exports.Prisma.Operation_logsScalarFieldEnum = {
   id: 'id',
-  project_id: 'project_id',
-  sale_date: 'sale_date',
-  sale_amount: 'sale_amount',
+  user_id: 'user_id',
+  qq_number: 'qq_number',
+  operation: 'operation',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  version: 'version',
+  deleted_at: 'deleted_at'
+};
+
+exports.Prisma.Payment_ordersScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  qq_number: 'qq_number',
+  out_trade_no: 'out_trade_no',
+  channel: 'channel',
+  amount: 'amount',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
+};
+
+exports.Prisma.User_play_logsScalarFieldEnum = {
+  id: 'id',
+  qq_number: 'qq_number',
+  status: 'status',
+  start_time: 'start_time',
+  end_time: 'end_time',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
+};
+
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  qq_number: 'qq_number',
+  nick_name: 'nick_name',
+  role: 'role',
+  status_expire_time: 'status_expire_time',
+  status: 'status',
+  source: 'source',
+  invited_by: 'invited_by',
+  discount: 'discount',
+  total_time: 'total_time',
+  total_amount: 'total_amount',
+  play_count: 'play_count',
+  last_come_time: 'last_come_time',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
   deleted_at: 'deleted_at'
 };
 
@@ -148,7 +190,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  nft_project_daily_amount: 'nft_project_daily_amount'
+  operation_logs: 'operation_logs',
+  payment_orders: 'payment_orders',
+  user_play_logs: 'user_play_logs',
+  users: 'users'
 };
 
 /**

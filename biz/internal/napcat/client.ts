@@ -41,7 +41,7 @@ export class NapcatInstance {
 
     public async go() {
         this.napcat.on('message', async (stream) => {
-            if(stream.message_type==="group"&& stream.sender.user_id===1845983502){
+            if(stream.message_type==="group"){
                 // 去重
                 if (this.lastProcessedMessage?.messageId === stream.message_id) {
                     return;

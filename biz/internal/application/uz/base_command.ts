@@ -5,6 +5,7 @@ import {logger} from "@/cmd/server";
 export interface CommandContext {
     stream: GroupMessage;
     args: string[];
+    canBreak: boolean;
 }
 
 export abstract class BaseCommand {

@@ -5,8 +5,9 @@ create table user_play_logs
     qq_number      text                                                     not null,
     status         smallint                    default 0                    not null,
     start_time     timestamp(6) with time zone default CURRENT_TIMESTAMP    not null,
-    end_time       timestamp(6) with time zone default NULL::timestamp with time zone,
-    break_duration interval                    default '00:00:00'::interval not null,
+    end_time       timestamp(6) with time zone ,
+    break_at     timestamp(6) with time zone ,
+    break_duration int                    default 0 not null,
     created_at     timestamp(6) with time zone default CURRENT_TIMESTAMP    not null,
     updated_at     timestamp(6) with time zone default CURRENT_TIMESTAMP    not null,
     deleted_at     timestamp(6) with time zone
@@ -24,7 +25,9 @@ comment on column user_play_logs.start_time is '开始时间';
 
 comment on column user_play_logs.end_time is '结束时间';
 
-comment on column user_play_logs.break_duration is '休息时长(最大5h)';
+comment on column user_play_logs.break_at is '休息/维修时间';
+
+comment on column user_play_logs.break_duration is '休息时长(秒单位，最大5h)';
 
 comment on column user_play_logs.created_at is '创建时间';
 

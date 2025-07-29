@@ -3,7 +3,7 @@ import Config from '@/config';
 
 // 拼接连接串：postgresql://user:pwd@host:port/dbname
 const dbUrl = `postgresql://${Config.DB.user}:${Config.DB.password}` +
-    `@${Config.DB.host}:${Config.DB.port}/${Config.DB.database}`;
+    `@${Config.DB.host}:${Config.DB.port}/${Config.DB.database}?options=-c timezone=Asia/Shanghai`;
 
 export const prisma = new PrismaClient({
     datasources: {

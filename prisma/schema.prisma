@@ -38,15 +38,16 @@ model payment_orders {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model user_play_logs {
-  id             String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   qq_number      String
-  status         Int                     @default(0) @db.SmallInt
-  start_time     DateTime                @default(now()) @db.Timestamptz(6)
-  end_time       DateTime?               @db.Timestamptz(6)
-  break_duration Unsupported("interval") @default(dbgenerated("'00:00:00'::interval"))
-  created_at     DateTime                @default(now()) @db.Timestamptz(6)
-  updated_at     DateTime                @default(now()) @db.Timestamptz(6)
-  deleted_at     DateTime?               @db.Timestamptz(6)
+  status         Int       @default(0) @db.SmallInt
+  start_time     DateTime  @default(now()) @db.Timestamptz(6)
+  end_time       DateTime? @db.Timestamptz(6)
+  break_at       DateTime? @db.Timestamptz(6)
+  break_duration Int       @default(0)
+  created_at     DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime  @default(now()) @db.Timestamptz(6)
+  deleted_at     DateTime? @db.Timestamptz(6)
 
   @@index([qq_number], map: "idx_user_play_logs_qq_number_idx")
 }

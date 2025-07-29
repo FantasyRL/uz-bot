@@ -3279,10 +3279,12 @@ export namespace Prisma {
 
   export type User_play_logsAvgAggregateOutputType = {
     status: number | null
+    break_duration: number | null
   }
 
   export type User_play_logsSumAggregateOutputType = {
     status: number | null
+    break_duration: number | null
   }
 
   export type User_play_logsMinAggregateOutputType = {
@@ -3291,6 +3293,8 @@ export namespace Prisma {
     status: number | null
     start_time: Date | null
     end_time: Date | null
+    break_at: Date | null
+    break_duration: number | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -3302,6 +3306,8 @@ export namespace Prisma {
     status: number | null
     start_time: Date | null
     end_time: Date | null
+    break_at: Date | null
+    break_duration: number | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -3313,6 +3319,8 @@ export namespace Prisma {
     status: number
     start_time: number
     end_time: number
+    break_at: number
+    break_duration: number
     created_at: number
     updated_at: number
     deleted_at: number
@@ -3322,10 +3330,12 @@ export namespace Prisma {
 
   export type User_play_logsAvgAggregateInputType = {
     status?: true
+    break_duration?: true
   }
 
   export type User_play_logsSumAggregateInputType = {
     status?: true
+    break_duration?: true
   }
 
   export type User_play_logsMinAggregateInputType = {
@@ -3334,6 +3344,8 @@ export namespace Prisma {
     status?: true
     start_time?: true
     end_time?: true
+    break_at?: true
+    break_duration?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -3345,6 +3357,8 @@ export namespace Prisma {
     status?: true
     start_time?: true
     end_time?: true
+    break_at?: true
+    break_duration?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -3356,6 +3370,8 @@ export namespace Prisma {
     status?: true
     start_time?: true
     end_time?: true
+    break_at?: true
+    break_duration?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -3454,6 +3470,8 @@ export namespace Prisma {
     status: number
     start_time: Date
     end_time: Date | null
+    break_at: Date | null
+    break_duration: number
     created_at: Date
     updated_at: Date
     deleted_at: Date | null
@@ -3484,6 +3502,8 @@ export namespace Prisma {
     status?: boolean
     start_time?: boolean
     end_time?: boolean
+    break_at?: boolean
+    break_duration?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
@@ -3495,6 +3515,8 @@ export namespace Prisma {
     status?: boolean
     start_time?: boolean
     end_time?: boolean
+    break_at?: boolean
+    break_duration?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
@@ -3506,6 +3528,8 @@ export namespace Prisma {
     status?: boolean
     start_time?: boolean
     end_time?: boolean
+    break_at?: boolean
+    break_duration?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
@@ -3517,12 +3541,14 @@ export namespace Prisma {
     status?: boolean
     start_time?: boolean
     end_time?: boolean
+    break_at?: boolean
+    break_duration?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
   }
 
-  export type user_play_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qq_number" | "status" | "start_time" | "end_time" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["user_play_logs"]>
+  export type user_play_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qq_number" | "status" | "start_time" | "end_time" | "break_at" | "break_duration" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["user_play_logs"]>
 
   export type $user_play_logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user_play_logs"
@@ -3533,6 +3559,8 @@ export namespace Prisma {
       status: number
       start_time: Date
       end_time: Date | null
+      break_at: Date | null
+      break_duration: number
       created_at: Date
       updated_at: Date
       deleted_at: Date | null
@@ -3964,6 +3992,8 @@ export namespace Prisma {
     readonly status: FieldRef<"user_play_logs", 'Int'>
     readonly start_time: FieldRef<"user_play_logs", 'DateTime'>
     readonly end_time: FieldRef<"user_play_logs", 'DateTime'>
+    readonly break_at: FieldRef<"user_play_logs", 'DateTime'>
+    readonly break_duration: FieldRef<"user_play_logs", 'Int'>
     readonly created_at: FieldRef<"user_play_logs", 'DateTime'>
     readonly updated_at: FieldRef<"user_play_logs", 'DateTime'>
     readonly deleted_at: FieldRef<"user_play_logs", 'DateTime'>
@@ -5135,6 +5165,9 @@ export namespace Prisma {
 
 
 
+  /**
+   * Fields of the users model
+   */
   interface usersFieldRefs {
     readonly id: FieldRef<"users", 'String'>
     readonly qq_number: FieldRef<"users", 'String'>
@@ -5567,6 +5600,8 @@ export namespace Prisma {
     status: 'status',
     start_time: 'start_time',
     end_time: 'end_time',
+    break_at: 'break_at',
+    break_duration: 'break_duration',
     created_at: 'created_at',
     updated_at: 'updated_at',
     deleted_at: 'deleted_at'
@@ -5863,6 +5898,8 @@ export namespace Prisma {
     status?: IntFilter<"user_play_logs"> | number
     start_time?: DateTimeFilter<"user_play_logs"> | Date | string
     end_time?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    break_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    break_duration?: IntFilter<"user_play_logs"> | number
     created_at?: DateTimeFilter<"user_play_logs"> | Date | string
     updated_at?: DateTimeFilter<"user_play_logs"> | Date | string
     deleted_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
@@ -5874,6 +5911,8 @@ export namespace Prisma {
     status?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrderInput | SortOrder
+    break_at?: SortOrderInput | SortOrder
+    break_duration?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
@@ -5888,6 +5927,8 @@ export namespace Prisma {
     status?: IntFilter<"user_play_logs"> | number
     start_time?: DateTimeFilter<"user_play_logs"> | Date | string
     end_time?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    break_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
+    break_duration?: IntFilter<"user_play_logs"> | number
     created_at?: DateTimeFilter<"user_play_logs"> | Date | string
     updated_at?: DateTimeFilter<"user_play_logs"> | Date | string
     deleted_at?: DateTimeNullableFilter<"user_play_logs"> | Date | string | null
@@ -5899,6 +5940,8 @@ export namespace Prisma {
     status?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrderInput | SortOrder
+    break_at?: SortOrderInput | SortOrder
+    break_duration?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
@@ -5918,6 +5961,8 @@ export namespace Prisma {
     status?: IntWithAggregatesFilter<"user_play_logs"> | number
     start_time?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
     end_time?: DateTimeNullableWithAggregatesFilter<"user_play_logs"> | Date | string | null
+    break_at?: DateTimeNullableWithAggregatesFilter<"user_play_logs"> | Date | string | null
+    break_duration?: IntWithAggregatesFilter<"user_play_logs"> | number
     created_at?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"user_play_logs"> | Date | string
     deleted_at?: DateTimeNullableWithAggregatesFilter<"user_play_logs"> | Date | string | null
@@ -6199,6 +6244,8 @@ export namespace Prisma {
     status?: number
     start_time?: Date | string
     end_time?: Date | string | null
+    break_at?: Date | string | null
+    break_duration?: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
@@ -6210,6 +6257,8 @@ export namespace Prisma {
     status?: number
     start_time?: Date | string
     end_time?: Date | string | null
+    break_at?: Date | string | null
+    break_duration?: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
@@ -6221,6 +6270,8 @@ export namespace Prisma {
     status?: IntFieldUpdateOperationsInput | number
     start_time?: DateTimeFieldUpdateOperationsInput | Date | string
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_duration?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6232,6 +6283,8 @@ export namespace Prisma {
     status?: IntFieldUpdateOperationsInput | number
     start_time?: DateTimeFieldUpdateOperationsInput | Date | string
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_duration?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6243,6 +6296,8 @@ export namespace Prisma {
     status?: number
     start_time?: Date | string
     end_time?: Date | string | null
+    break_at?: Date | string | null
+    break_duration?: number
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
@@ -6254,6 +6309,8 @@ export namespace Prisma {
     status?: IntFieldUpdateOperationsInput | number
     start_time?: DateTimeFieldUpdateOperationsInput | Date | string
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_duration?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6265,6 +6322,8 @@ export namespace Prisma {
     status?: IntFieldUpdateOperationsInput | number
     start_time?: DateTimeFieldUpdateOperationsInput | Date | string
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    break_duration?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6659,6 +6718,8 @@ export namespace Prisma {
     status?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    break_at?: SortOrder
+    break_duration?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -6666,6 +6727,7 @@ export namespace Prisma {
 
   export type user_play_logsAvgOrderByAggregateInput = {
     status?: SortOrder
+    break_duration?: SortOrder
   }
 
   export type user_play_logsMaxOrderByAggregateInput = {
@@ -6674,6 +6736,8 @@ export namespace Prisma {
     status?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    break_at?: SortOrder
+    break_duration?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -6685,6 +6749,8 @@ export namespace Prisma {
     status?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    break_at?: SortOrder
+    break_duration?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -6692,6 +6758,7 @@ export namespace Prisma {
 
   export type user_play_logsSumOrderByAggregateInput = {
     status?: SortOrder
+    break_duration?: SortOrder
   }
 
   export type BigIntFilter<$PrismaModel = never> = {

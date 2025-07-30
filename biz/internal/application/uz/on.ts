@@ -7,14 +7,16 @@ import {
     CreateUserPlayLogInput,
     UserDTO,
     UserPlayLogDTO,
-    UserPlayLogStatus
+    UserPlayLogStatus,
+    PRIVATE_PLAY_DISCOUNT
 } from "@/internal/domain/uz/entity";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
 import {logger} from "@/cmd/server";
 import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
-import {formatDate} from "@/utils/date";
+import {privatePlayLogRepo} from "@/internal/infra/db/private_play";
+import {formatDate, getTimeDifferenceInSeconds, formatDuration} from "@/utils/date";
 
 export class StartGameCommand extends BaseCommand {
     getName(): string {
@@ -23,6 +25,24 @@ export class StartGameCommand extends BaseCommand {
 
     async execute(context: CommandContext): Promise<void> {
         const { stream, args } = context;
+
+        // 检查是否有当天的包场记录，并判断是否在包场时间段内
+        try {
+            const todayPlay = await privatePlayLogRepo.getTodayPrivatePlay();
+            if (todayPlay) {
+                const now = new Date();
+                
+                // 判断当前时间是否在包场时间段内
+                if (now >= todayPlay.start_time && now <= todayPlay.end_time) {
+                    await this.sendReply(stream, '❌ 当前处于包场时间段内，无法上机');
+                    return;
+                }
+            }
+        } catch (error) {
+            logger.error('检查包场状态失败: %s', error);
+            await this.sendReply(stream, '❌ 检查包场状态失败，请稍后重试');
+            return;
+        }
 
         // 获取用户信息
         let userInfo:UserDTO| null = null;
@@ -39,10 +59,13 @@ export class StartGameCommand extends BaseCommand {
                     play_count: BigInt(0),
                 }
                 userInfo=await userRepo.createUser(createInput);
+            }else{
+                // 更新nickname 虽然没啥用
+                userInfo=await userRepo.updateUserNickName(stream.sender.user_id.toString(),stream.sender.nickname);
             }
         }catch (error) {
             await this.sendReply(stream, UzMessages.ERROR_USER_INFO_FAILED);
-            logger.error('Error fetching or creating user:', error);
+            logger.error('Error fetching or creating user: %s', error);
             return;
         }
         // 检查是否已经在上机
@@ -51,7 +74,7 @@ export class StartGameCommand extends BaseCommand {
             playLogInfo = await userPlayLogRepo.checkIsPlaying(String(stream.sender.user_id));
         }catch (error) {
             await this.sendReply(stream, UzMessages.ERROR_PLAY_STATUS_CHECK);
-            logger.error('Error checking play log:', error);
+            logger.error('Error checking play log: %s', error);
             return;
         }
         if(playLogInfo!=null){
@@ -65,7 +88,7 @@ export class StartGameCommand extends BaseCommand {
             breakingPlayLog = await userPlayLogRepo.checkIsBreaking(String(stream.sender.user_id));
         } catch (error) {
             await this.sendReply(stream, UzMessages.ERROR_PAUSE_STATUS_CHECK);
-            logger.error('Error checking breaking play log:', error);
+            logger.error('Error checking breaking play log: %s', error);
             return;
         }
 
@@ -79,14 +102,10 @@ export class StartGameCommand extends BaseCommand {
                     await this.sendReply(stream, UzMessages.ERROR_PAUSE_RECORD_ABNORMAL);
                     return;
                 }
-                const thisPauseSec = Math.floor((now.getTime() - breakAt.getTime()) / 1000);
-                // 格式化为 HH:MM:SS
-                const h = Math.floor(thisPauseSec / 3600);
-                const m = Math.floor((thisPauseSec % 3600) / 60);
-                const s = thisPauseSec % 60;
-                const currentPauseDuration = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                const thisPauseSec = getTimeDifferenceInSeconds(breakAt, now, false);
+                const currentPauseDuration = formatDuration(thisPauseSec);
                 await userPlayLogRepo.resumePlayLog(breakingPlayLog.id, breakAt, breakDuration);
-                const resumeTimeStr = formatDate(now);
+                const resumeTimeStr = formatDate(now, false);
                 const message = UzMessages.getResumeMessage(
                     stream.sender.nickname,
                     String(stream.sender.user_id),
@@ -97,7 +116,7 @@ export class StartGameCommand extends BaseCommand {
                 return;
             } catch (error) {
                 console.error('恢复游戏失败:', error);
-                logger.error('恢复游戏失败:', error);
+                logger.error('恢复游戏失败: %s', error);
                 await this.sendReply(stream, UzMessages.ERROR_RESUME_FAILED);
                 return;
             }
@@ -109,7 +128,7 @@ export class StartGameCommand extends BaseCommand {
         }
         playLogInfo=await userPlayLogRepo.createPlayLog(createPlayLogInput);
 
-        const startTimeStr = formatDate(playLogInfo.start_time);
+        const startTimeStr = formatDate(playLogInfo.start_time, true);
 
         const message = UzMessages.getStartGameMessage(
             stream.sender.nickname, 

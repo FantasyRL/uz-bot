@@ -6,11 +6,12 @@ import {BaseCommand, CommandContext} from "@/internal/application/uz/base_comman
 import {HelpCommand} from "@/internal/application/uz/help";
 import {BreakCommand} from "@/internal/application/uz/break";
 import {OffGameCommand} from "@/internal/application/uz/off";
+import {QueryCountCommand} from "@/internal/application/uz/query_count";
+import {PrivatePlayCommand} from "@/internal/application/uz/private_play";
+import {QueryPrivatePlayCommand} from "@/internal/application/uz/query_private_play";
+import {TimerCommand} from "@/internal/application/uz/timer";
 import {OperationLogger} from "@/utils/operation_logger";
 
-export interface CommandHandler {
-    (stream: any, args: string[]): Promise<void>;
-}
 
 export class UzCommandSelector {
     private handlers: Map<string, BaseCommand> = new Map();
@@ -25,14 +26,19 @@ export class UzCommandSelector {
     }
     private registerDefaultHandlers(): void {
         // /uzj 查询人数
-        // this.register('j', new StartGameCommand());
+        this.register('j', new QueryCountCommand());
         // /uz 上机
         this.register('上机', new StartGameCommand());
         // /uz 暂停
         this.register('暂停', new BreakCommand());
         // /uz 下机
         this.register('下机', new OffGameCommand());
-
+        // /uz 计时
+        this.register('计时', new TimerCommand());
+        // /uz 包场
+        this.register('包场', new PrivatePlayCommand());
+        // /uz 查询包场
+        this.register('查询包场', new QueryPrivatePlayCommand());
         // /uz 开通套餐
 
 
@@ -52,7 +58,7 @@ export class UzCommandSelector {
             args,
             canBreak,
         };
-        const undefinedCommand='help';
+        // const undefinedCommand='help';
 
         logger.info(`解析命令: ${command}, 参数: [${args.join(', ')}]`);
 
@@ -65,11 +71,11 @@ export class UzCommandSelector {
             try {
                 await handler.execute(context);
             } catch (error) {
-                logger.error(`执行命令 ${command} 时出错:`, error);
+                logger.error(`执行命令 ${command} 时出错: %s`, error);
                 await this.sendReply(stream, '❌ 命令执行出错，请稍后重试');
             }
         } else {
-            await this.handlers.get(undefinedCommand)?.execute(context);
+            // await this.handlers.get(undefinedCommand)?.execute(context);
         }
     }
     // 发送回复消息
@@ -79,7 +85,7 @@ export class UzCommandSelector {
                 Structs.text(message)
             ]);
         } catch (error) {
-            logger.error('发送回复消息时出错:', error);
+            logger.error('发送回复消息时出错: %s', error);
         }
     }
 

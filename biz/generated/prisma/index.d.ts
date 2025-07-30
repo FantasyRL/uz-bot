@@ -33,6 +33,11 @@ export type user_play_logs = $Result.DefaultSelection<Prisma.$user_play_logsPayl
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model private_play_logs
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type private_play_logs = $Result.DefaultSelection<Prisma.$private_play_logsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.private_play_logs`: Exposes CRUD operations for the **private_play_logs** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Private_play_logs
+    * const private_play_logs = await prisma.private_play_logs.findMany()
+    * ```
+    */
+  get private_play_logs(): Prisma.private_play_logsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     operation_logs: 'operation_logs',
     payment_orders: 'payment_orders',
     user_play_logs: 'user_play_logs',
-    users: 'users'
+    users: 'users',
+    private_play_logs: 'private_play_logs'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "operation_logs" | "payment_orders" | "user_play_logs" | "users"
+      modelProps: "operation_logs" | "payment_orders" | "user_play_logs" | "users" | "private_play_logs"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      private_play_logs: {
+        payload: Prisma.$private_play_logsPayload<ExtArgs>
+        fields: Prisma.private_play_logsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.private_play_logsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.private_play_logsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          findFirst: {
+            args: Prisma.private_play_logsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.private_play_logsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          findMany: {
+            args: Prisma.private_play_logsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>[]
+          }
+          create: {
+            args: Prisma.private_play_logsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          createMany: {
+            args: Prisma.private_play_logsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.private_play_logsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>[]
+          }
+          delete: {
+            args: Prisma.private_play_logsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          update: {
+            args: Prisma.private_play_logsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          deleteMany: {
+            args: Prisma.private_play_logsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.private_play_logsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.private_play_logsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>[]
+          }
+          upsert: {
+            args: Prisma.private_play_logsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$private_play_logsPayload>
+          }
+          aggregate: {
+            args: Prisma.Private_play_logsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePrivate_play_logs>
+          }
+          groupBy: {
+            args: Prisma.private_play_logsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Private_play_logsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.private_play_logsCountArgs<ExtArgs>
+            result: $Utils.Optional<Private_play_logsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     payment_orders?: payment_ordersOmit
     user_play_logs?: user_play_logsOmit
     users?: usersOmit
+    private_play_logs?: private_play_logsOmit
   }
 
   /* Types for Logging */
@@ -5552,6 +5643,1104 @@ export namespace Prisma {
 
 
   /**
+   * Model private_play_logs
+   */
+
+  export type AggregatePrivate_play_logs = {
+    _count: Private_play_logsCountAggregateOutputType | null
+    _avg: Private_play_logsAvgAggregateOutputType | null
+    _sum: Private_play_logsSumAggregateOutputType | null
+    _min: Private_play_logsMinAggregateOutputType | null
+    _max: Private_play_logsMaxAggregateOutputType | null
+  }
+
+  export type Private_play_logsAvgAggregateOutputType = {
+    unique_id: number | null
+    price: Decimal | null
+  }
+
+  export type Private_play_logsSumAggregateOutputType = {
+    unique_id: number | null
+    price: Decimal | null
+  }
+
+  export type Private_play_logsMinAggregateOutputType = {
+    id: string | null
+    unique_id: number | null
+    qq_number: string | null
+    start_time: Date | null
+    end_time: Date | null
+    price: Decimal | null
+    remark: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type Private_play_logsMaxAggregateOutputType = {
+    id: string | null
+    unique_id: number | null
+    qq_number: string | null
+    start_time: Date | null
+    end_time: Date | null
+    price: Decimal | null
+    remark: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type Private_play_logsCountAggregateOutputType = {
+    id: number
+    unique_id: number
+    qq_number: number
+    start_time: number
+    end_time: number
+    price: number
+    remark: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type Private_play_logsAvgAggregateInputType = {
+    unique_id?: true
+    price?: true
+  }
+
+  export type Private_play_logsSumAggregateInputType = {
+    unique_id?: true
+    price?: true
+  }
+
+  export type Private_play_logsMinAggregateInputType = {
+    id?: true
+    unique_id?: true
+    qq_number?: true
+    start_time?: true
+    end_time?: true
+    price?: true
+    remark?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type Private_play_logsMaxAggregateInputType = {
+    id?: true
+    unique_id?: true
+    qq_number?: true
+    start_time?: true
+    end_time?: true
+    price?: true
+    remark?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type Private_play_logsCountAggregateInputType = {
+    id?: true
+    unique_id?: true
+    qq_number?: true
+    start_time?: true
+    end_time?: true
+    price?: true
+    remark?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type Private_play_logsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which private_play_logs to aggregate.
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of private_play_logs to fetch.
+     */
+    orderBy?: private_play_logsOrderByWithRelationInput | private_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: private_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` private_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` private_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned private_play_logs
+    **/
+    _count?: true | Private_play_logsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Private_play_logsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Private_play_logsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Private_play_logsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Private_play_logsMaxAggregateInputType
+  }
+
+  export type GetPrivate_play_logsAggregateType<T extends Private_play_logsAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrivate_play_logs]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrivate_play_logs[P]>
+      : GetScalarType<T[P], AggregatePrivate_play_logs[P]>
+  }
+
+
+
+
+  export type private_play_logsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: private_play_logsWhereInput
+    orderBy?: private_play_logsOrderByWithAggregationInput | private_play_logsOrderByWithAggregationInput[]
+    by: Private_play_logsScalarFieldEnum[] | Private_play_logsScalarFieldEnum
+    having?: private_play_logsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Private_play_logsCountAggregateInputType | true
+    _avg?: Private_play_logsAvgAggregateInputType
+    _sum?: Private_play_logsSumAggregateInputType
+    _min?: Private_play_logsMinAggregateInputType
+    _max?: Private_play_logsMaxAggregateInputType
+  }
+
+  export type Private_play_logsGroupByOutputType = {
+    id: string
+    unique_id: number
+    qq_number: string
+    start_time: Date
+    end_time: Date
+    price: Decimal
+    remark: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: Private_play_logsCountAggregateOutputType | null
+    _avg: Private_play_logsAvgAggregateOutputType | null
+    _sum: Private_play_logsSumAggregateOutputType | null
+    _min: Private_play_logsMinAggregateOutputType | null
+    _max: Private_play_logsMaxAggregateOutputType | null
+  }
+
+  type GetPrivate_play_logsGroupByPayload<T extends private_play_logsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Private_play_logsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Private_play_logsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Private_play_logsGroupByOutputType[P]>
+            : GetScalarType<T[P], Private_play_logsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type private_play_logsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    unique_id?: boolean
+    qq_number?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    price?: boolean
+    remark?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["private_play_logs"]>
+
+  export type private_play_logsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    unique_id?: boolean
+    qq_number?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    price?: boolean
+    remark?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["private_play_logs"]>
+
+  export type private_play_logsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    unique_id?: boolean
+    qq_number?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    price?: boolean
+    remark?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["private_play_logs"]>
+
+  export type private_play_logsSelectScalar = {
+    id?: boolean
+    unique_id?: boolean
+    qq_number?: boolean
+    start_time?: boolean
+    end_time?: boolean
+    price?: boolean
+    remark?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type private_play_logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "unique_id" | "qq_number" | "start_time" | "end_time" | "price" | "remark" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["private_play_logs"]>
+
+  export type $private_play_logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "private_play_logs"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      unique_id: number
+      qq_number: string
+      start_time: Date
+      end_time: Date
+      price: Prisma.Decimal
+      remark: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["private_play_logs"]>
+    composites: {}
+  }
+
+  type private_play_logsGetPayload<S extends boolean | null | undefined | private_play_logsDefaultArgs> = $Result.GetResult<Prisma.$private_play_logsPayload, S>
+
+  type private_play_logsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<private_play_logsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Private_play_logsCountAggregateInputType | true
+    }
+
+  export interface private_play_logsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['private_play_logs'], meta: { name: 'private_play_logs' } }
+    /**
+     * Find zero or one Private_play_logs that matches the filter.
+     * @param {private_play_logsFindUniqueArgs} args - Arguments to find a Private_play_logs
+     * @example
+     * // Get one Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends private_play_logsFindUniqueArgs>(args: SelectSubset<T, private_play_logsFindUniqueArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Private_play_logs that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {private_play_logsFindUniqueOrThrowArgs} args - Arguments to find a Private_play_logs
+     * @example
+     * // Get one Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends private_play_logsFindUniqueOrThrowArgs>(args: SelectSubset<T, private_play_logsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Private_play_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsFindFirstArgs} args - Arguments to find a Private_play_logs
+     * @example
+     * // Get one Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends private_play_logsFindFirstArgs>(args?: SelectSubset<T, private_play_logsFindFirstArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Private_play_logs that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsFindFirstOrThrowArgs} args - Arguments to find a Private_play_logs
+     * @example
+     * // Get one Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends private_play_logsFindFirstOrThrowArgs>(args?: SelectSubset<T, private_play_logsFindFirstOrThrowArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Private_play_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findMany()
+     * 
+     * // Get first 10 Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const private_play_logsWithIdOnly = await prisma.private_play_logs.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends private_play_logsFindManyArgs>(args?: SelectSubset<T, private_play_logsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Private_play_logs.
+     * @param {private_play_logsCreateArgs} args - Arguments to create a Private_play_logs.
+     * @example
+     * // Create one Private_play_logs
+     * const Private_play_logs = await prisma.private_play_logs.create({
+     *   data: {
+     *     // ... data to create a Private_play_logs
+     *   }
+     * })
+     * 
+     */
+    create<T extends private_play_logsCreateArgs>(args: SelectSubset<T, private_play_logsCreateArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Private_play_logs.
+     * @param {private_play_logsCreateManyArgs} args - Arguments to create many Private_play_logs.
+     * @example
+     * // Create many Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends private_play_logsCreateManyArgs>(args?: SelectSubset<T, private_play_logsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Private_play_logs and returns the data saved in the database.
+     * @param {private_play_logsCreateManyAndReturnArgs} args - Arguments to create many Private_play_logs.
+     * @example
+     * // Create many Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Private_play_logs and only return the `id`
+     * const private_play_logsWithIdOnly = await prisma.private_play_logs.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends private_play_logsCreateManyAndReturnArgs>(args?: SelectSubset<T, private_play_logsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Private_play_logs.
+     * @param {private_play_logsDeleteArgs} args - Arguments to delete one Private_play_logs.
+     * @example
+     * // Delete one Private_play_logs
+     * const Private_play_logs = await prisma.private_play_logs.delete({
+     *   where: {
+     *     // ... filter to delete one Private_play_logs
+     *   }
+     * })
+     * 
+     */
+    delete<T extends private_play_logsDeleteArgs>(args: SelectSubset<T, private_play_logsDeleteArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Private_play_logs.
+     * @param {private_play_logsUpdateArgs} args - Arguments to update one Private_play_logs.
+     * @example
+     * // Update one Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends private_play_logsUpdateArgs>(args: SelectSubset<T, private_play_logsUpdateArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Private_play_logs.
+     * @param {private_play_logsDeleteManyArgs} args - Arguments to filter Private_play_logs to delete.
+     * @example
+     * // Delete a few Private_play_logs
+     * const { count } = await prisma.private_play_logs.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends private_play_logsDeleteManyArgs>(args?: SelectSubset<T, private_play_logsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Private_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends private_play_logsUpdateManyArgs>(args: SelectSubset<T, private_play_logsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Private_play_logs and returns the data updated in the database.
+     * @param {private_play_logsUpdateManyAndReturnArgs} args - Arguments to update many Private_play_logs.
+     * @example
+     * // Update many Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Private_play_logs and only return the `id`
+     * const private_play_logsWithIdOnly = await prisma.private_play_logs.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends private_play_logsUpdateManyAndReturnArgs>(args: SelectSubset<T, private_play_logsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Private_play_logs.
+     * @param {private_play_logsUpsertArgs} args - Arguments to update or create a Private_play_logs.
+     * @example
+     * // Update or create a Private_play_logs
+     * const private_play_logs = await prisma.private_play_logs.upsert({
+     *   create: {
+     *     // ... data to create a Private_play_logs
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Private_play_logs we want to update
+     *   }
+     * })
+     */
+    upsert<T extends private_play_logsUpsertArgs>(args: SelectSubset<T, private_play_logsUpsertArgs<ExtArgs>>): Prisma__private_play_logsClient<$Result.GetResult<Prisma.$private_play_logsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Private_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsCountArgs} args - Arguments to filter Private_play_logs to count.
+     * @example
+     * // Count the number of Private_play_logs
+     * const count = await prisma.private_play_logs.count({
+     *   where: {
+     *     // ... the filter for the Private_play_logs we want to count
+     *   }
+     * })
+    **/
+    count<T extends private_play_logsCountArgs>(
+      args?: Subset<T, private_play_logsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Private_play_logsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Private_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Private_play_logsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Private_play_logsAggregateArgs>(args: Subset<T, Private_play_logsAggregateArgs>): Prisma.PrismaPromise<GetPrivate_play_logsAggregateType<T>>
+
+    /**
+     * Group by Private_play_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {private_play_logsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends private_play_logsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: private_play_logsGroupByArgs['orderBy'] }
+        : { orderBy?: private_play_logsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, private_play_logsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrivate_play_logsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the private_play_logs model
+   */
+  readonly fields: private_play_logsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for private_play_logs.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__private_play_logsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the private_play_logs model
+   */
+  interface private_play_logsFieldRefs {
+    readonly id: FieldRef<"private_play_logs", 'String'>
+    readonly unique_id: FieldRef<"private_play_logs", 'Int'>
+    readonly qq_number: FieldRef<"private_play_logs", 'String'>
+    readonly start_time: FieldRef<"private_play_logs", 'DateTime'>
+    readonly end_time: FieldRef<"private_play_logs", 'DateTime'>
+    readonly price: FieldRef<"private_play_logs", 'Decimal'>
+    readonly remark: FieldRef<"private_play_logs", 'String'>
+    readonly created_at: FieldRef<"private_play_logs", 'DateTime'>
+    readonly updated_at: FieldRef<"private_play_logs", 'DateTime'>
+    readonly deleted_at: FieldRef<"private_play_logs", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * private_play_logs findUnique
+   */
+  export type private_play_logsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which private_play_logs to fetch.
+     */
+    where: private_play_logsWhereUniqueInput
+  }
+
+  /**
+   * private_play_logs findUniqueOrThrow
+   */
+  export type private_play_logsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which private_play_logs to fetch.
+     */
+    where: private_play_logsWhereUniqueInput
+  }
+
+  /**
+   * private_play_logs findFirst
+   */
+  export type private_play_logsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which private_play_logs to fetch.
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of private_play_logs to fetch.
+     */
+    orderBy?: private_play_logsOrderByWithRelationInput | private_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for private_play_logs.
+     */
+    cursor?: private_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` private_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` private_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of private_play_logs.
+     */
+    distinct?: Private_play_logsScalarFieldEnum | Private_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * private_play_logs findFirstOrThrow
+   */
+  export type private_play_logsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which private_play_logs to fetch.
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of private_play_logs to fetch.
+     */
+    orderBy?: private_play_logsOrderByWithRelationInput | private_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for private_play_logs.
+     */
+    cursor?: private_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` private_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` private_play_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of private_play_logs.
+     */
+    distinct?: Private_play_logsScalarFieldEnum | Private_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * private_play_logs findMany
+   */
+  export type private_play_logsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter, which private_play_logs to fetch.
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of private_play_logs to fetch.
+     */
+    orderBy?: private_play_logsOrderByWithRelationInput | private_play_logsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing private_play_logs.
+     */
+    cursor?: private_play_logsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` private_play_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` private_play_logs.
+     */
+    skip?: number
+    distinct?: Private_play_logsScalarFieldEnum | Private_play_logsScalarFieldEnum[]
+  }
+
+  /**
+   * private_play_logs create
+   */
+  export type private_play_logsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a private_play_logs.
+     */
+    data: XOR<private_play_logsCreateInput, private_play_logsUncheckedCreateInput>
+  }
+
+  /**
+   * private_play_logs createMany
+   */
+  export type private_play_logsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many private_play_logs.
+     */
+    data: private_play_logsCreateManyInput | private_play_logsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * private_play_logs createManyAndReturn
+   */
+  export type private_play_logsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * The data used to create many private_play_logs.
+     */
+    data: private_play_logsCreateManyInput | private_play_logsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * private_play_logs update
+   */
+  export type private_play_logsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a private_play_logs.
+     */
+    data: XOR<private_play_logsUpdateInput, private_play_logsUncheckedUpdateInput>
+    /**
+     * Choose, which private_play_logs to update.
+     */
+    where: private_play_logsWhereUniqueInput
+  }
+
+  /**
+   * private_play_logs updateMany
+   */
+  export type private_play_logsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update private_play_logs.
+     */
+    data: XOR<private_play_logsUpdateManyMutationInput, private_play_logsUncheckedUpdateManyInput>
+    /**
+     * Filter which private_play_logs to update
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * Limit how many private_play_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * private_play_logs updateManyAndReturn
+   */
+  export type private_play_logsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * The data used to update private_play_logs.
+     */
+    data: XOR<private_play_logsUpdateManyMutationInput, private_play_logsUncheckedUpdateManyInput>
+    /**
+     * Filter which private_play_logs to update
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * Limit how many private_play_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * private_play_logs upsert
+   */
+  export type private_play_logsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the private_play_logs to update in case it exists.
+     */
+    where: private_play_logsWhereUniqueInput
+    /**
+     * In case the private_play_logs found by the `where` argument doesn't exist, create a new private_play_logs with this data.
+     */
+    create: XOR<private_play_logsCreateInput, private_play_logsUncheckedCreateInput>
+    /**
+     * In case the private_play_logs was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<private_play_logsUpdateInput, private_play_logsUncheckedUpdateInput>
+  }
+
+  /**
+   * private_play_logs delete
+   */
+  export type private_play_logsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+    /**
+     * Filter which private_play_logs to delete.
+     */
+    where: private_play_logsWhereUniqueInput
+  }
+
+  /**
+   * private_play_logs deleteMany
+   */
+  export type private_play_logsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which private_play_logs to delete
+     */
+    where?: private_play_logsWhereInput
+    /**
+     * Limit how many private_play_logs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * private_play_logs without action
+   */
+  export type private_play_logsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the private_play_logs
+     */
+    select?: private_play_logsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the private_play_logs
+     */
+    omit?: private_play_logsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5630,6 +6819,22 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const Private_play_logsScalarFieldEnum: {
+    id: 'id',
+    unique_id: 'unique_id',
+    qq_number: 'qq_number',
+    start_time: 'start_time',
+    end_time: 'end_time',
+    price: 'price',
+    remark: 'remark',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type Private_play_logsScalarFieldEnum = (typeof Private_play_logsScalarFieldEnum)[keyof typeof Private_play_logsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6077,6 +7282,85 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
   }
 
+  export type private_play_logsWhereInput = {
+    AND?: private_play_logsWhereInput | private_play_logsWhereInput[]
+    OR?: private_play_logsWhereInput[]
+    NOT?: private_play_logsWhereInput | private_play_logsWhereInput[]
+    id?: UuidFilter<"private_play_logs"> | string
+    unique_id?: IntFilter<"private_play_logs"> | number
+    qq_number?: StringFilter<"private_play_logs"> | string
+    start_time?: DateTimeFilter<"private_play_logs"> | Date | string
+    end_time?: DateTimeFilter<"private_play_logs"> | Date | string
+    price?: DecimalFilter<"private_play_logs"> | Decimal | DecimalJsLike | number | string
+    remark?: StringFilter<"private_play_logs"> | string
+    created_at?: DateTimeFilter<"private_play_logs"> | Date | string
+    updated_at?: DateTimeFilter<"private_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"private_play_logs"> | Date | string | null
+  }
+
+  export type private_play_logsOrderByWithRelationInput = {
+    id?: SortOrder
+    unique_id?: SortOrder
+    qq_number?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    price?: SortOrder
+    remark?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+  }
+
+  export type private_play_logsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    unique_id?: number
+    AND?: private_play_logsWhereInput | private_play_logsWhereInput[]
+    OR?: private_play_logsWhereInput[]
+    NOT?: private_play_logsWhereInput | private_play_logsWhereInput[]
+    qq_number?: StringFilter<"private_play_logs"> | string
+    start_time?: DateTimeFilter<"private_play_logs"> | Date | string
+    end_time?: DateTimeFilter<"private_play_logs"> | Date | string
+    price?: DecimalFilter<"private_play_logs"> | Decimal | DecimalJsLike | number | string
+    remark?: StringFilter<"private_play_logs"> | string
+    created_at?: DateTimeFilter<"private_play_logs"> | Date | string
+    updated_at?: DateTimeFilter<"private_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"private_play_logs"> | Date | string | null
+  }, "id" | "unique_id">
+
+  export type private_play_logsOrderByWithAggregationInput = {
+    id?: SortOrder
+    unique_id?: SortOrder
+    qq_number?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    price?: SortOrder
+    remark?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: private_play_logsCountOrderByAggregateInput
+    _avg?: private_play_logsAvgOrderByAggregateInput
+    _max?: private_play_logsMaxOrderByAggregateInput
+    _min?: private_play_logsMinOrderByAggregateInput
+    _sum?: private_play_logsSumOrderByAggregateInput
+  }
+
+  export type private_play_logsScalarWhereWithAggregatesInput = {
+    AND?: private_play_logsScalarWhereWithAggregatesInput | private_play_logsScalarWhereWithAggregatesInput[]
+    OR?: private_play_logsScalarWhereWithAggregatesInput[]
+    NOT?: private_play_logsScalarWhereWithAggregatesInput | private_play_logsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"private_play_logs"> | string
+    unique_id?: IntWithAggregatesFilter<"private_play_logs"> | number
+    qq_number?: StringWithAggregatesFilter<"private_play_logs"> | string
+    start_time?: DateTimeWithAggregatesFilter<"private_play_logs"> | Date | string
+    end_time?: DateTimeWithAggregatesFilter<"private_play_logs"> | Date | string
+    price?: DecimalWithAggregatesFilter<"private_play_logs"> | Decimal | DecimalJsLike | number | string
+    remark?: StringWithAggregatesFilter<"private_play_logs"> | string
+    created_at?: DateTimeWithAggregatesFilter<"private_play_logs"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"private_play_logs"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"private_play_logs"> | Date | string | null
+  }
+
   export type operation_logsCreateInput = {
     id?: string
     user_id: string
@@ -6457,6 +7741,95 @@ export namespace Prisma {
     total_amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     play_count?: BigIntFieldUpdateOperationsInput | bigint | number
     last_come_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type private_play_logsCreateInput = {
+    id?: string
+    unique_id?: number
+    qq_number: string
+    start_time: Date | string
+    end_time: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    remark: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type private_play_logsUncheckedCreateInput = {
+    id?: string
+    unique_id?: number
+    qq_number: string
+    start_time: Date | string
+    end_time: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    remark: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type private_play_logsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type private_play_logsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    unique_id?: IntFieldUpdateOperationsInput | number
+    qq_number?: StringFieldUpdateOperationsInput | string
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type private_play_logsCreateManyInput = {
+    id?: string
+    unique_id?: number
+    qq_number: string
+    start_time: Date | string
+    end_time: Date | string
+    price: Decimal | DecimalJsLike | number | string
+    remark: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type private_play_logsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qq_number?: StringFieldUpdateOperationsInput | string
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type private_play_logsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    unique_id?: IntFieldUpdateOperationsInput | number
+    qq_number?: StringFieldUpdateOperationsInput | string
+    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6859,6 +8232,55 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type private_play_logsCountOrderByAggregateInput = {
+    id?: SortOrder
+    unique_id?: SortOrder
+    qq_number?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    price?: SortOrder
+    remark?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type private_play_logsAvgOrderByAggregateInput = {
+    unique_id?: SortOrder
+    price?: SortOrder
+  }
+
+  export type private_play_logsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    unique_id?: SortOrder
+    qq_number?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    price?: SortOrder
+    remark?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type private_play_logsMinOrderByAggregateInput = {
+    id?: SortOrder
+    unique_id?: SortOrder
+    qq_number?: SortOrder
+    start_time?: SortOrder
+    end_time?: SortOrder
+    price?: SortOrder
+    remark?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type private_play_logsSumOrderByAggregateInput = {
+    unique_id?: SortOrder
+    price?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

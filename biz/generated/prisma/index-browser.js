@@ -175,6 +175,19 @@ exports.Prisma.UsersScalarFieldEnum = {
   deleted_at: 'deleted_at'
 };
 
+exports.Prisma.Private_play_logsScalarFieldEnum = {
+  id: 'id',
+  unique_id: 'unique_id',
+  qq_number: 'qq_number',
+  start_time: 'start_time',
+  end_time: 'end_time',
+  price: 'price',
+  remark: 'remark',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -195,7 +208,8 @@ exports.Prisma.ModelName = {
   operation_logs: 'operation_logs',
   payment_orders: 'payment_orders',
   user_play_logs: 'user_play_logs',
-  users: 'users'
+  users: 'users',
+  private_play_logs: 'private_play_logs'
 };
 
 /**

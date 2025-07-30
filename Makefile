@@ -28,7 +28,7 @@ help:
 
 # ─────────────── 项目运行 ───────────────
 dev:            ## 开发：热重载 + ts-node-dev
-	npm run build && CONFIG_FILE=$(CONFIG_PATH)/config.yaml npm run dev
+	rm -rf ./dist && npm run build && CONFIG_FILE=$(CONFIG_PATH)/config.yaml npm run dev
 
 start:          ## 生产：编译到 dist 并启动
 	CONFIG_FILE=dist/config/config.yaml \

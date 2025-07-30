@@ -8,7 +8,7 @@ import { PRIVATE_PLAY_DISCOUNT, PRIVATE_PLAY_DAY_START_HOUR, PAYMENT_CHANNEL_DEF
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {PaymentCalculator} from "@/utils/payment_calculator";
 import {logger} from "@/cmd/server";
-import {formatDate} from "@/utils/date";
+import {formatDate, getTimeDifferenceInSeconds} from "@/utils/date";
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
 
@@ -22,7 +22,7 @@ export class OffGameCommand extends BaseCommand {
         const qqNumber = String(stream.sender.user_id);
 
         try {
-            const currentPlayLog = await userPlayLogRepo.getLatestPlayLog(qqNumber);
+            let currentPlayLog = await userPlayLogRepo.getLatestPlayLog(qqNumber);
             if (!currentPlayLog) {
                 await this.sendReplyWithImage(stream, UzMessages.ERROR_NOT_PLAYING_OFF);
                 return;
@@ -31,6 +31,14 @@ export class OffGameCommand extends BaseCommand {
             if (currentPlayLog.status === UserPlayLogStatus.Finished) {
                 await this.sendReplyWithImage(stream, UzMessages.ERROR_GAME_ALREADY_ENDED);
                 return;
+            }
+
+            if (currentPlayLog.status === UserPlayLogStatus.Breaking) {
+                // 先结算暂停，累加暂停时长
+                const now = new Date();
+                const breakAt = currentPlayLog.break_at!;
+                const thisPauseSec = getTimeDifferenceInSeconds(breakAt, now, false);
+                currentPlayLog.break_duration+= thisPauseSec;
             }
 
             const endTime = new Date();

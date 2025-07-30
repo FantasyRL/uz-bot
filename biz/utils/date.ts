@@ -3,7 +3,7 @@
  * 将UTC+0时间转换为UTC+8时间
  */
 
-import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/entity';
+import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/constant';
 
 /**
  * 将UTC时间转换为UTC+8时间

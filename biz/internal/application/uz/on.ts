@@ -7,12 +7,9 @@ import {
     CreateUserPlayLogInput,
     UserDTO,
     UserPlayLogDTO,
-    UserPlayLogStatus,
-    PRIVATE_PLAY_DISCOUNT,
-    DEFAULT_TOTAL_TIME,
-    DEFAULT_TOTAL_AMOUNT,
-    DEFAULT_PLAY_COUNT
 } from "@/internal/domain/uz/entity";
+import { UserStatus, UserPlayLogStatus } from "@/internal/domain/uz/enum";
+import { DEFAULT_TOTAL_TIME, DEFAULT_TOTAL_AMOUNT, DEFAULT_PLAY_COUNT } from "@/internal/domain/uz/constant";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;

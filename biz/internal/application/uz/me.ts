@@ -1,6 +1,6 @@
 import { BaseCommand, CommandContext } from "@/internal/application/uz/base_command";
 import { userRepo } from "@/internal/infra/db/user";
-import { UserStatus } from "@/internal/domain/uz/entity";
+import { UserStatus } from "@/internal/domain/uz/enum";
 import { formatDate } from "@/utils/date";
 import { logger } from "@/cmd/server";
 

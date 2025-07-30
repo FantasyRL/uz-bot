@@ -1,6 +1,6 @@
 import {BaseCommand, CommandContext} from "@/internal/application/uz/base_command";
 import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
-import {UserPlayLogStatus} from "@/internal/domain/uz/entity";
+import { UserPlayLogStatus } from "@/internal/domain/uz/enum";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {logger} from "@/cmd/server";
 import {formatDate} from "@/utils/date";

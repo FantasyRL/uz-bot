@@ -1,6 +1,6 @@
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
-import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/entity';
+import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/constant';
 
 /**
  * PaymentResult

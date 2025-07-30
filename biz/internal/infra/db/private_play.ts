@@ -133,18 +133,24 @@ class PrivatePlayLogRepo {
     }
 
     /**
-     * 检查是否有活跃的包场（懒加载方式）
-     * @returns 是否有活跃的包场
+     * 检查是否有与给定时间段重叠的活跃包场（懒加载方式）
+     * @param startTime 新包场开始时间
+     * @param endTime 新包场结束时间
+     * @returns 是否有重叠的活跃包场
      */
-    async hasActivePrivatePlay(): Promise<boolean> {
-        const count = await prisma.private_play_logs.count({
+    async hasActivePrivatePlay(startTime: Date, endTime: Date): Promise<boolean> {
+        // 查询所有未结束的包场
+        const activePlays = await prisma.private_play_logs.findMany({
             where: {
                 end_time: {
-                    gt: new Date(), // 结束时间大于当前时间，即未结束
+                    gt: new Date(),
                 },
             },
         });
-        return count > 0;
+        // 检查是否有时间重叠
+        return activePlays.some(play =>
+            (startTime < play.end_time && endTime > play.start_time)
+        );
     }
 
     /**

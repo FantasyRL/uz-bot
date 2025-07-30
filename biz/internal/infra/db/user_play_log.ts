@@ -2,8 +2,8 @@ import {prisma} from "@/internal/infra/db/prisma_cli";
 import {
     CreateUserPlayLogInput,
     UserPlayLogDTO,
-    UserPlayLogStatus
 } from "@/internal/domain/uz/entity";
+import { UserPlayLogStatus } from "@/internal/domain/uz/enum";
 
 function nowSeconds(): number {
     return Math.floor(Date.now() / 1000);

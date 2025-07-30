@@ -3,7 +3,8 @@
 import {BaseCommand, CommandContext} from "@/internal/application/uz/base_command";
 import {userRepo} from "@/internal/infra/db/user";
 import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
-import {UserPlayLogStatus, GAME_STATUS_PLAYING, GAME_STATUS_PAUSED, GAME_STATUS_ERROR} from "@/internal/domain/uz/entity";
+import { UserPlayLogStatus } from "@/internal/domain/uz/enum";
+import { GAME_STATUS_PLAYING, GAME_STATUS_PAUSED, GAME_STATUS_ERROR } from "@/internal/domain/uz/constant";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {logger} from "@/cmd/server";
 import {formatDate, getTimeDifferenceInSeconds, formatDuration} from "@/utils/date";

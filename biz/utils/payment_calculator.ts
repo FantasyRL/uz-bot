@@ -1,4 +1,4 @@
-import { Prisma } from "@/generated/prisma";
+import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
 
 /**
@@ -68,16 +68,21 @@ export class PaymentCalculator {
      * @param startTime   游戏开始时间
      * @param endTime     游戏结束时间
      * @param userDiscount 用户折扣（1=无折扣，0.8=8折...）
+     * @param breakDuration 暂停时长（秒），默认为0
      * @returns PaymentResult  计算结果
      */
     static calculatePayment(
         startTime: Date,
         endTime: Date,
-        userDiscount: Decimal
+        userDiscount: Decimal,
+        breakDuration: number = 0
     ): PaymentResult {
         // ---------- 1. 计算时长（秒 & 分钟，向上取整） ----------
-        const durationMs = endTime.getTime() - startTime.getTime();
-        const durationSeconds = Math.ceil(durationMs / 1000);
+        const totalDurationMs = endTime.getTime() - startTime.getTime();
+        const totalDurationSeconds = Math.ceil(totalDurationMs / 1000);
+        
+        // 减去暂停时长，得到实际游戏时长
+        const durationSeconds = Math.max(0, totalDurationSeconds - breakDuration);
         const durationMinutes = Math.ceil(durationSeconds / 60);
 
         // ---------- 2. 计算应计费的周期数 ----------

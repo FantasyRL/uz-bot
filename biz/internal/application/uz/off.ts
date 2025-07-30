@@ -41,7 +41,12 @@ export class OffGameCommand extends BaseCommand {
                 return;
             }
 
-            const paymentResult = PaymentCalculator.calculatePayment(startTime, endTime, user.discount);
+            const paymentResult = PaymentCalculator.calculatePayment(
+                startTime,
+                endTime,
+                user.discount,
+                currentPlayLog.break_duration || 0
+            );
 
             await userPlayLogRepo.endPlayLog(currentPlayLog.id);
 

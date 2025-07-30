@@ -52,6 +52,9 @@ export class UzMessages {
 💡 提示：您可以多次暂停游戏，每次暂停都会累计暂停时长，但暂停时间不计入计费。
 
 如有问题请联系管理员！`;
+    // 新用户欢迎信息
+    static readonly WELCOME_MESSAGE = `🎉 欢迎使用 UZ游戏机器人！\n\n` +
+        `请使用 /uz help 查看可用命令和使用方法。`;
 
     /**
      * 生成上机成功消息

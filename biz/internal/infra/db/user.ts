@@ -53,5 +53,12 @@ class UserRepo {
             },
         });
     }
+
+    async updateUserNickName(qqNumber: string, nickName: string): Promise<UserDTO> {
+        return prisma.users.update({
+            where: { qq_number: qqNumber },
+            data: { nick_name: nickName, updated_at: new Date() },
+        });
+    }
 }
 export const userRepo = new UserRepo();

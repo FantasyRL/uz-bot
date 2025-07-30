@@ -5,16 +5,22 @@ import {GetGroupConfig} from "@/utils/check_group";
 import {ExtractTextMessages} from "@/utils/msg";
 import {UzCommandSelector} from "@/internal/application/uz/selector";
 import {logger} from "@/cmd/server";
+import {UserRegisterInput, UzNewUserRegister} from "@/internal/application/uz/register";
 
 export class NapcatInstance {
     private static instance: NapcatInstance;
     private napcat: NCWebsocket;
     // uz 命令选择器
     private commandSelector: UzCommandSelector;
+    // 处理新用户
+    private newUserProcesser: UzNewUserRegister;
     // 去重
     private lastProcessedMessage: {
         messageId: number;
     } | null = null;
+    private lastProcessedNoticeUserId: {
+        userId: number;
+    }| null = null;
 
     private constructor() {
         this.napcat = new NCWebsocket({
@@ -30,6 +36,7 @@ export class NapcatInstance {
             },
         }, Config.Napcat.debug);
         this.commandSelector = new UzCommandSelector();
+        this.newUserProcesser = new UzNewUserRegister();
     }
 
     public static getInstance(): NapcatInstance {
@@ -67,6 +74,36 @@ export class NapcatInstance {
                 }
             }
         });
+        this.napcat.on('notice',async(stream)=>{
+            if(stream.notice_type==='group_increase'){
+                // 去重
+                if(this.lastProcessedNoticeUserId?.userId === stream.user_id){
+                    return;
+                }
+                this.lastProcessedNoticeUserId={
+                    userId: stream.user_id,
+                }
+                // 检查是否是支持的群组
+                const groupConfig=GetGroupConfig(stream.group_id);
+                if (groupConfig==null){
+                    return;
+                }
+                let registerInput:UserRegisterInput = {
+                    userId: stream.user_id.toString(),
+                    groupId: stream.group_id.toString(),
+                    operator_id: stream.operator_id.toString()||'',
+                }
+                let msg=await this.newUserProcesser.register(registerInput);
+                if(msg){
+                    await this.napcat.send_group_msg({
+                        group_id: stream.group_id,
+                        message: [
+                            Structs.text(msg),
+                        ]
+                    })
+                }
+            }
+        })
 
         await this.napcat.connect();
         console.log('Napcat WebSocket connected.');

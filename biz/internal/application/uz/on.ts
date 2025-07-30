@@ -39,6 +39,9 @@ export class StartGameCommand extends BaseCommand {
                     play_count: BigInt(0),
                 }
                 userInfo=await userRepo.createUser(createInput);
+            }else{
+                // 更新nickname 虽然没啥用
+                userInfo=await userRepo.updateUserNickName(stream.sender.user_id.toString(),stream.sender.nickname);
             }
         }catch (error) {
             await this.sendReply(stream, UzMessages.ERROR_USER_INFO_FAILED);

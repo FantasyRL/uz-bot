@@ -8,9 +8,6 @@ import {BreakCommand} from "@/internal/application/uz/break";
 import {OffGameCommand} from "@/internal/application/uz/off";
 import {OperationLogger} from "@/utils/operation_logger";
 
-export interface CommandHandler {
-    (stream: any, args: string[]): Promise<void>;
-}
 
 export class UzCommandSelector {
     private handlers: Map<string, BaseCommand> = new Map();
@@ -52,7 +49,7 @@ export class UzCommandSelector {
             args,
             canBreak,
         };
-        const undefinedCommand='help';
+        // const undefinedCommand='help';
 
         logger.info(`解析命令: ${command}, 参数: [${args.join(', ')}]`);
 
@@ -69,7 +66,7 @@ export class UzCommandSelector {
                 await this.sendReply(stream, '❌ 命令执行出错，请稍后重试');
             }
         } else {
-            await this.handlers.get(undefinedCommand)?.execute(context);
+            // await this.handlers.get(undefinedCommand)?.execute(context);
         }
     }
     // 发送回复消息

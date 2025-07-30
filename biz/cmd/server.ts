@@ -15,7 +15,7 @@ bindRouters(app);
 
 // 全局错误处理中间件
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-    logger.error(err);
+    logger.error('Global error handler: %s', err);
     res.status(500).json({ message: 'Internal Server Error' });
 });
 
@@ -32,7 +32,7 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
         const port = Config.Server.port || 3000;
         app.listen(port, () => logger.info(`🚀 HTTP server listening on :${port}`));
     } catch (err) {
-        logger.error(err);
+        logger.error('Server startup failed: %s', err);
         process.exit(1);
     }
 })();

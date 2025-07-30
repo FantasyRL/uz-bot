@@ -43,7 +43,7 @@ export class BreakCommand extends BaseCommand{
             // 暂停游戏
             await userPlayLogRepo.pausePlayLog(currentPlayLog.id);
             
-            const pauseTimeStr = formatDate(new Date());
+                            const pauseTimeStr = formatDate(new Date(), false);
             const message = UzMessages.getPauseMessage(
                 stream.sender.nickname, 
                 qqNumber, 
@@ -54,7 +54,7 @@ export class BreakCommand extends BaseCommand{
             await this.sendReply(stream, message);
             
         } catch (error) {
-            logger.error('暂停游戏失败:', error);
+            logger.error('暂停游戏失败: %s', error);
             await this.sendReply(stream, UzMessages.ERROR_PAUSE_FAILED);
         }
     }

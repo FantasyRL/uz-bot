@@ -30,7 +30,7 @@ export class UzNewUserRegister{
 
             userInfo = await userRepo.createUser(createInput);
             if (!userInfo) {
-                logger.error("User not created:", createInput);
+                logger.error("User not created: %s", createInput);
                 return null;
             }
         }

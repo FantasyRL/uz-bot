@@ -60,5 +60,18 @@ class UserRepo {
             data: { nick_name: nickName, updated_at: new Date() },
         });
     }
+
+    /**
+     * 获取当前上机人数
+     * @returns 当前上机人数
+     */
+    async getCurrentPlayingCount(): Promise<number> {
+        const count = await prisma.user_play_logs.count({
+            where: {
+                status: 1, // Playing状态
+            },
+        });
+        return count;
+    }
 }
 export const userRepo = new UserRepo();

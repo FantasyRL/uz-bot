@@ -18,7 +18,7 @@ export abstract class BaseCommand {
                 Structs.text(message),
             ]);
         } catch (error) {
-            logger.error('发送回复消息失败:', error);
+            logger.error('发送回复消息失败: %s', error);
         }
     }
 }

@@ -168,10 +168,20 @@ export class PaymentCalculator {
     }
 
     /**
-     * 日期时间格式化：yyyy-MM-dd HH:mm:ss
+     * 日期时间格式化：yyyy-MM-dd HH:mm:ss（UTC+8）
      */
     static formatDateTime(date: Date): string {
-        // toISOString: 2025-07-29T12:34:56.000Z
-        return date.toISOString().replace('T', ' ').substring(0, 19);
+        // 转换为UTC+8时间
+        const utc8Date = new Date(date);
+        utc8Date.setHours(utc8Date.getHours() + 8);
+        
+        const year = utc8Date.getFullYear();
+        const month = String(utc8Date.getMonth() + 1).padStart(2, '0');
+        const day = String(utc8Date.getDate()).padStart(2, '0');
+        const hour = String(utc8Date.getHours()).padStart(2, '0');
+        const minute = String(utc8Date.getMinutes()).padStart(2, '0');
+        const second = String(utc8Date.getSeconds()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
     }
 }

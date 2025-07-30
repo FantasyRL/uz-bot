@@ -29,32 +29,82 @@ export class UzMessages {
     static readonly ERROR_GAME_ALREADY_ENDED = '❌ 您的游戏已经结束！';
     static readonly ERROR_OFF_FAILED = '❌ 下机失败，请稍后重试！';
 
-    // 帮助消息
-    static readonly HELP_MESSAGE = `🎮 UZ游戏机器人使用指南
+    // 计时相关消息
+    static readonly ERROR_TIMER_NOT_PLAYING = '❌ 您当前没有在上机或暂停状态，无法查看计时信息';
+    static readonly ERROR_TIMER_USER_NOT_FOUND = '❌ 用户信息不存在，请先上机';
 
-📋 可用命令:
+    // 包场相关消息
+    static readonly ERROR_PRIVATE_PLAY_ACTIVE = '❌ 当前处于包场时间段内，无法上机';
+    static readonly ERROR_PRIVATE_PLAY_PERMISSION = '❌ 权限不足，仅限管理员使用包场功能';
+    static readonly ERROR_PRIVATE_PLAY_FORMAT = '❌ 包场命令格式：/uz 包场 {qqNumber} {开始时间} {结束时间} {price} {remark}';
+    static readonly ERROR_PRIVATE_PLAY_TIME_FORMAT = '❌ 时间格式错误，请使用格式：月-日-小时，如 7-30-14';
+    static readonly ERROR_PRIVATE_PLAY_PRICE = '❌ 价格必须是正数';
+    static readonly ERROR_PRIVATE_PLAY_ACTIVE_EXISTS = '❌ 当前已有活跃的包场，无法创建新的包场';
+    static readonly ERROR_PRIVATE_PLAY_NOT_FOUND = '❌ 未找到指定的包场记录';
+    static readonly ERROR_PRIVATE_PLAY_DELETE_FORMAT = '❌ 删除包场需要指定包场ID，格式：/uz 包场 删除 {unique_id}';
+    static readonly ERROR_PRIVATE_PLAY_ID_FORMAT = '❌ 包场ID必须是数字';
+
+    // 基础帮助信息（所有用户可见）
+    private static readonly BASE_HELP_MESSAGE = `🎮 UZ游戏机器人使用指南
+
+📋 基础命令:
+• /uzj - 查询当前上机人数
 • /uz 上机 - 开始游戏，如果之前暂停会自动恢复
-• /uz 暂停 [原因] - 暂停游戏，需要说明暂停原因（可多次暂停）
+• /uz 计时 - 查看当前游戏时长和费用预估
+• /uz 暂停 [原因] - 暂停游戏，需要说明暂停原因（未开启）
 • /uz 下机 - 结束游戏并计算费用
+• /uz 查询包场 - 查看今日包场信息
 • /uz help - 显示此帮助信息
 
 💰 计费规则:
 • 基础价格：3元/15分钟
 • 满6小时送6小时活动
 • 用户折扣：根据用户自动应用
+• 包场当日：全天85折优惠（根据下机时间判断）
 • 暂停时间不计入计费时长(但是没开，哈哈)
 
 📝 使用示例:
+• /uzj
 • /uz 上机
+• /uz 计时
 • /uz 暂停 吃饭
 • /uz 下机
+• /uz 查询包场
 
-💡 提示：您可以多次暂停游戏，每次暂停都会累计暂停时长，但暂停时间不计入计费。
+💡 提示：包场时间段内无法上机，包场当日全天享受85折优惠。
 
 如有问题请联系管理员！`;
+
+    // 管理员专用帮助信息
+    private static readonly ADMIN_HELP_MESSAGE = `
+
+🔧 管理员专用命令:
+• /uz 包场 - 查看当前包场信息
+• /uz 包场 {qqNumber} {开始时间} {结束时间} {price} {remark} - 创建包场
+• /uz 包场 删除 {unique_id} - 删除包场
+
+📝 管理员使用示例:
+• /uz 包场
+• /uz 包场 123456789 7-30-14 7-30-22 460 生日聚会
+• /uz 包场 删除 1
+
+🔑 管理员权限：用户状态为896的用户`;
+
     // 新用户欢迎信息
     static readonly WELCOME_MESSAGE = `🎉 欢迎使用 UZ游戏机器人！\n\n` +
         `请使用 /uz help 查看可用命令和使用方法。`;
+
+    /**
+     * 获取帮助信息（根据用户权限）
+     * @param isAdmin 是否为管理员
+     * @returns 帮助信息
+     */
+    static getHelpMessage(isAdmin: boolean = false): string {
+        if (isAdmin) {
+            return UzMessages.BASE_HELP_MESSAGE + UzMessages.ADMIN_HELP_MESSAGE;
+        }
+        return UzMessages.BASE_HELP_MESSAGE;
+    }
 
     /**
      * 生成上机成功消息
@@ -99,8 +149,8 @@ export class UzMessages {
         finalAmount: string, 
         outTradeNo: string
     ): string {
-        return `用户${nickname}(${qqNumber})：
-游戏结束，下机时间：${endTime}
+        return `${nickname}(${qqNumber})：
+下机时间：${endTime}
 游戏时长：${duration}
 开始时间：${startTime}
 基础费用：${baseAmount}

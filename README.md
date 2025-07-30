@@ -62,3 +62,7 @@ make dev # 需要能够运行makefile
 cd migrate && npx ts-node migrate.ts
 ```
 
+# 金额测试
+```bash
+npx tsx --test ./biz/utils/payment_calculator.test.ts
+```

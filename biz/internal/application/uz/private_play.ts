@@ -21,7 +21,7 @@ export class PrivatePlayCommand extends BaseCommand {
         // 检查用户权限
         const user = await userRepo.getUserByQQ(String(stream.sender.user_id));
         if (!user || user.status !== UserStatus.Admin) {
-            await this.sendReply(stream, '❌ 权限不足，仅限管理员使用包场功能');
+            await this.sendReplyWithImage(stream, '❌ 权限不足，仅限管理员使用包场功能');
             return;
         }
 

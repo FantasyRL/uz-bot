@@ -3,7 +3,7 @@ import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
 import {userRepo} from "@/internal/infra/db/user";
 import {paymentOrderRepo} from "@/internal/infra/db/payment_order";
 import {privatePlayLogRepo} from "@/internal/infra/db/private_play";
-import {UserPlayLogStatus, PaymentOrderStatus, PRIVATE_PLAY_DISCOUNT} from "@/internal/domain/uz/entity";
+import {UserPlayLogStatus, PaymentOrderStatus, PRIVATE_PLAY_DISCOUNT, PRIVATE_PLAY_DAY_START_HOUR, PAYMENT_CHANNEL_DEFAULT, ORDER_PREFIX, NO_DISCOUNT_TEXT, DISCOUNT_SUFFIX, PRIVATE_PLAY_DISCOUNT_TEXT} from "@/internal/domain/uz/entity";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {PaymentCalculator} from "@/utils/payment_calculator";
 import {logger} from "@/cmd/server";
@@ -23,12 +23,12 @@ export class OffGameCommand extends BaseCommand {
         try {
             const currentPlayLog = await userPlayLogRepo.getLatestPlayLog(qqNumber);
             if (!currentPlayLog) {
-                await this.sendReply(stream, UzMessages.ERROR_NOT_PLAYING_OFF);
+                await this.sendReplyWithImage(stream, UzMessages.ERROR_NOT_PLAYING_OFF);
                 return;
             }
 
             if (currentPlayLog.status === UserPlayLogStatus.Finished) {
-                await this.sendReply(stream, UzMessages.ERROR_GAME_ALREADY_ENDED);
+                await this.sendReplyWithImage(stream, UzMessages.ERROR_GAME_ALREADY_ENDED);
                 return;
             }
 
@@ -37,6 +37,7 @@ export class OffGameCommand extends BaseCommand {
 
             const user = await userRepo.getUserByQQ(qqNumber);
             if (!user) {
+                logger.error('用户信息缺失: %s', qqNumber);
                 await this.sendReply(stream, UzMessages.ERROR_USER_INFO_MISSING);
                 return;
             }
@@ -53,11 +54,11 @@ export class OffGameCommand extends BaseCommand {
                     // 判断当前时间是否在包场当日（10点到次日10点）
                     const now = new Date();
                     const playDayStart = new Date(playDate);
-                    playDayStart.setHours(10, 0, 0, 0);
+                    playDayStart.setHours(PRIVATE_PLAY_DAY_START_HOUR, 0, 0, 0);
                     
                     const playDayEnd = new Date(playDate);
                     playDayEnd.setDate(playDayEnd.getDate() + 1);
-                    playDayEnd.setHours(10, 0, 0, 0);
+                    playDayEnd.setHours(PRIVATE_PLAY_DAY_START_HOUR, 0, 0, 0);
                     
                     if (now >= playDayStart && now < playDayEnd) {
                         isPrivatePlayActive = true;
@@ -91,15 +92,15 @@ export class OffGameCommand extends BaseCommand {
                 user_id: user.id,
                 qq_number: qqNumber,
                 out_trade_no: outTradeNo,
-                channel: 1,
+                channel: PAYMENT_CHANNEL_DEFAULT,
                 amount: paymentResult.finalAmount,
                 status: PaymentOrderStatus.Pending,
             });
 
             // 构建折扣信息
-            let discountInfo = user.discount.equals(1) ? '无折扣' : `${user.discount.mul(100).toFixed(0)}折`;
+            let discountInfo = user.discount.equals(1) ? NO_DISCOUNT_TEXT : `${user.discount.mul(100).toFixed(0)}${DISCOUNT_SUFFIX}`;
             if (isPrivatePlayActive) {
-                discountInfo += ` (包场当日全天85折)`;
+                discountInfo += PRIVATE_PLAY_DISCOUNT_TEXT;
             }
 
             const message = UzMessages.getOffGameMessage(
@@ -125,6 +126,6 @@ export class OffGameCommand extends BaseCommand {
     private generateOutTradeNo(): string {
         const timestamp = Date.now();
         const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-        return `UZ${timestamp}${random}`;
+        return `${ORDER_PREFIX}${timestamp}${random}`;
     }
 } 

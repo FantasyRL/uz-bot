@@ -1,5 +1,6 @@
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
+import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/entity';
 
 /**
  * PaymentResult
@@ -51,7 +52,7 @@ export class PaymentCalculator {
 
     /**
      * BONUS_THRESHOLD_HOURS
-     * 满多少小时开始触发“满赠”活动（满 6 小时）
+     * 满多少小时开始触发"满赠"活动（满 6 小时）
      */
     private static readonly BONUS_THRESHOLD_HOURS = 6;
 
@@ -173,7 +174,7 @@ export class PaymentCalculator {
     static formatDateTime(date: Date): string {
         // 转换为UTC+8时间
         const utc8Date = new Date(date);
-        utc8Date.setHours(utc8Date.getHours() + 8);
+        // utc8Date.setHours(utc8Date.getHours() + UTC_OFFSET_HOURS);
         
         const year = utc8Date.getFullYear();
         const month = String(utc8Date.getMonth() + 1).padStart(2, '0');

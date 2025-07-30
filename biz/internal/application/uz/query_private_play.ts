@@ -3,6 +3,7 @@ import {privatePlayLogRepo} from "@/internal/infra/db/private_play";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {logger} from "@/cmd/server";
 import {formatDate} from "@/utils/date";
+import {PRIVATE_PLAY_STATUS_ACTIVE, PRIVATE_PLAY_STATUS_PENDING, PRIVATE_PLAY_STATUS_ENDED} from "@/internal/domain/uz/entity";
 
 export class QueryPrivatePlayCommand extends BaseCommand {
     getName(): string {
@@ -21,10 +22,11 @@ export class QueryPrivatePlayCommand extends BaseCommand {
                 return;
             }
 
-                                   const startTime = formatDate(todayPlay.start_time, true);
-                       const endTime = formatDate(todayPlay.end_time, true);
+            const startTime = formatDate(todayPlay.start_time, true);
+            const endTime = formatDate(todayPlay.end_time, true);
             
             let message = '📋 今日包场信息：\n';
+            message += `🆔 包场ID: ${todayPlay.unique_id}\n`;
             message += `👤 发起人: ${todayPlay.qq_number}\n`;
             message += `⏰ 开始时间: ${startTime}\n`;
             message += `⏰ 结束时间: ${endTime}\n`;
@@ -34,11 +36,11 @@ export class QueryPrivatePlayCommand extends BaseCommand {
             // 判断包场状态
             const now = new Date();
             if (now >= todayPlay.start_time && now <= todayPlay.end_time) {
-                message += `\n🔴 状态: 包场进行中（无法上机）`;
+                message += `\n${PRIVATE_PLAY_STATUS_ACTIVE}`;
             } else if (now < todayPlay.start_time) {
-                message += `\n🟡 状态: 包场未开始`;
+                message += `\n${PRIVATE_PLAY_STATUS_PENDING}`;
             } else {
-                message += `\n🟢 状态: 包场已结束`;
+                message += `\n${PRIVATE_PLAY_STATUS_ENDED}`;
             }
             
             message += `\n\n💡 提示：包场当日全天享受85折优惠！`;

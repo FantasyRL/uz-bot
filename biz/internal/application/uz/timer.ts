@@ -3,7 +3,7 @@
 import {BaseCommand, CommandContext} from "@/internal/application/uz/base_command";
 import {userRepo} from "@/internal/infra/db/user";
 import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
-import {UserPlayLogStatus} from "@/internal/domain/uz/entity";
+import {UserPlayLogStatus, GAME_STATUS_PLAYING, GAME_STATUS_PAUSED, GAME_STATUS_ERROR} from "@/internal/domain/uz/entity";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {logger} from "@/cmd/server";
 import {formatDate, getTimeDifferenceInSeconds, formatDuration} from "@/utils/date";
@@ -23,7 +23,7 @@ export class TimerCommand extends BaseCommand {
             // 获取用户信息
             const userInfo = await userRepo.getUserByQQ(String(stream.sender.user_id));
             if (!userInfo) {
-                await this.sendReply(stream, '❌ 用户信息不存在，请先上机');
+                await this.sendReplyWithImage(stream, '❌ 用户信息不存在，请先上机');
                 return;
             }
 
@@ -32,7 +32,7 @@ export class TimerCommand extends BaseCommand {
             const breakingPlayLog = await userPlayLogRepo.checkIsBreaking(String(stream.sender.user_id));
 
             if (!currentPlayLog && !breakingPlayLog) {
-                await this.sendReply(stream, '❌ 您当前没有在上机或暂停状态，无法查看计时信息');
+                await this.sendReplyWithImage(stream, '❌ 您当前没有在上机或暂停状态，无法查看计时信息');
                 return;
             }
 
@@ -50,15 +50,15 @@ export class TimerCommand extends BaseCommand {
             if (playLog.status === UserPlayLogStatus.Playing) {
                 // 正在游戏中
                 currentDuration = getTimeDifferenceInSeconds(playLog.start_time, now);
-                statusText = '🟢 游戏进行中';
+                statusText = GAME_STATUS_PLAYING;
             } else if (playLog.status === UserPlayLogStatus.Breaking) {
                 // 暂停状态
                 const totalPlayTime = getTimeDifferenceInSeconds(playLog.start_time, playLog.updated_at!);
                 const breakDuration = playLog.break_duration ? Number(playLog.break_duration) : 0;
                 currentDuration = totalPlayTime - breakDuration;
-                statusText = '🟡 游戏已暂停';
+                statusText = GAME_STATUS_PAUSED;
             } else {
-                await this.sendReply(stream, '❌ 游戏状态异常');
+                await this.sendReply(stream, GAME_STATUS_ERROR);
                 return;
             }
 
@@ -71,7 +71,7 @@ export class TimerCommand extends BaseCommand {
             );
 
             // 格式化时间
-            const startTimeFormatted = formatDate(playLog.start_time, true);
+            const startTimeFormatted = formatDate(playLog.start_time, false);
             const currentTimeFormatted = formatDate(now, false); // 当前时间不需要转换时区
             const durationFormatted = formatDuration(currentDuration);
 

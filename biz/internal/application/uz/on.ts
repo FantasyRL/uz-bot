@@ -8,7 +8,10 @@ import {
     UserDTO,
     UserPlayLogDTO,
     UserPlayLogStatus,
-    PRIVATE_PLAY_DISCOUNT
+    PRIVATE_PLAY_DISCOUNT,
+    DEFAULT_TOTAL_TIME,
+    DEFAULT_TOTAL_AMOUNT,
+    DEFAULT_PLAY_COUNT
 } from "@/internal/domain/uz/entity";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {Prisma} from "@/generated/prisma";
@@ -34,7 +37,7 @@ export class StartGameCommand extends BaseCommand {
                 
                 // 判断当前时间是否在包场时间段内
                 if (now >= todayPlay.start_time && now <= todayPlay.end_time) {
-                    await this.sendReply(stream, '❌ 当前处于包场时间段内，无法上机');
+                    await this.sendReplyWithImage(stream, '❌ 当前处于包场时间段内，无法上机');
                     return;
                 }
             }
@@ -54,9 +57,9 @@ export class StartGameCommand extends BaseCommand {
                     qq_number: String(stream.sender.user_id),
                     nick_name: String(stream.sender.nickname),
                     source: String(stream.group_id),
-                    total_time: BigInt(0),
-                    total_amount: new Decimal(0),
-                    play_count: BigInt(0),
+                    total_time: BigInt(DEFAULT_TOTAL_TIME),
+                    total_amount: new Decimal(DEFAULT_TOTAL_AMOUNT),
+                    play_count: BigInt(DEFAULT_PLAY_COUNT),
                 }
                 userInfo=await userRepo.createUser(createInput);
             }else{
@@ -78,7 +81,7 @@ export class StartGameCommand extends BaseCommand {
             return;
         }
         if(playLogInfo!=null){
-            await this.sendReply(stream, UzMessages.ERROR_ALREADY_PLAYING);
+            await this.sendReplyWithImage(stream, UzMessages.ERROR_ALREADY_PLAYING);
             return;
         }
 
@@ -128,7 +131,7 @@ export class StartGameCommand extends BaseCommand {
         }
         playLogInfo=await userPlayLogRepo.createPlayLog(createPlayLogInput);
 
-        const startTimeStr = formatDate(playLogInfo.start_time, true);
+        const startTimeStr = formatDate(playLogInfo.start_time, false);
 
         const message = UzMessages.getStartGameMessage(
             stream.sender.nickname, 

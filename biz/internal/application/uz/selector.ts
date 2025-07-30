@@ -11,6 +11,7 @@ import {PrivatePlayCommand} from "@/internal/application/uz/private_play";
 import {QueryPrivatePlayCommand} from "@/internal/application/uz/query_private_play";
 import {TimerCommand} from "@/internal/application/uz/timer";
 import {OperationLogger} from "@/utils/operation_logger";
+import { MeCommand } from "@/internal/application/uz/me";
 
 
 export class UzCommandSelector {
@@ -39,9 +40,8 @@ export class UzCommandSelector {
         this.register('包场', new PrivatePlayCommand());
         // /uz 查询包场
         this.register('查询包场', new QueryPrivatePlayCommand());
-        // /uz 开通套餐
-
-
+        // /uz me
+        this.register('me', new MeCommand());
         // /uz 帮助
         this.register('help', new HelpCommand());
     }

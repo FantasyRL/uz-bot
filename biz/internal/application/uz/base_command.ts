@@ -7,6 +7,7 @@ export interface CommandContext {
     stream: GroupMessage;
     args: string[];
     canBreak: boolean;
+    canUno: boolean;
 }
 
 export abstract class BaseCommand {

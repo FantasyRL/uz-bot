@@ -26,7 +26,8 @@ export const SupportGroupSchema = z.array(
             message: "Group ID must be a valid number"
         }),
         z.object({
-            break: z.boolean()
+            break: z.boolean(),
+            uno: z.boolean(),
         })
     )
 );

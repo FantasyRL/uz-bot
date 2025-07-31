@@ -28,16 +28,17 @@ export class TimerCommand extends BaseCommand {
                 return;
             }
 
-            // 检查用户是否在上机或暂停状态
+            // 检查用户是否在上机、暂停或桌游状态
             const currentPlayLog = await userPlayLogRepo.checkIsPlaying(String(stream.sender.user_id));
             const breakingPlayLog = await userPlayLogRepo.checkIsBreaking(String(stream.sender.user_id));
+            const unoPlayLog = await userPlayLogRepo.checkIsUno(String(stream.sender.user_id));
 
-            if (!currentPlayLog && !breakingPlayLog) {
-                await this.sendReplyWithImage(stream, '❌ 您当前没有在上机或暂停状态，无法查看计时信息');
+            if (!currentPlayLog && !breakingPlayLog && !unoPlayLog) {
+                await this.sendReplyWithImage(stream, '❌ 您当前没有在上机、暂停或桌游状态，无法查看计时信息');
                 return;
             }
 
-            const playLog = currentPlayLog || breakingPlayLog;
+            const playLog = currentPlayLog || breakingPlayLog || unoPlayLog;
             if (!playLog) {
                 await this.sendReply(stream, '❌ 获取游戏记录失败');
                 return;
@@ -58,6 +59,10 @@ export class TimerCommand extends BaseCommand {
                 const breakDuration = playLog.break_duration ? Number(playLog.break_duration) : 0;
                 currentDuration = totalPlayTime - breakDuration;
                 statusText = GAME_STATUS_PAUSED;
+            } else if (playLog.status === UserPlayLogStatus.Uno) {
+                // 桌游状态
+                currentDuration = getTimeDifferenceInSeconds(playLog.start_time, now);
+                statusText = '🃏 桌游进行中';
             } else {
                 await this.sendReply(stream, GAME_STATUS_ERROR);
                 return;

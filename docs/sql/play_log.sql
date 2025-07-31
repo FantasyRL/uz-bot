@@ -8,6 +8,8 @@ create table public.user_play_logs
     end_time       timestamp(6) with time zone,
     break_at       timestamp(6) with time zone,
     break_duration integer                     default 0                 not null,
+    uno_at         timestamp(6) with time zone,
+    uno_duration   integer                     default 0                 not null,
     created_at     timestamp(6) with time zone default CURRENT_TIMESTAMP not null,
     updated_at     timestamp(6) with time zone default CURRENT_TIMESTAMP not null,
     deleted_at     timestamp(6) with time zone
@@ -19,11 +21,15 @@ comment on column public.user_play_logs.id is '记录ID，主键';
 
 comment on column public.user_play_logs.qq_number is 'qq号';
 
-comment on column public.user_play_logs.status is '状态 (0: 未开始, 1: 上机中, 2: 休息/维修,3: 已结束)';
+comment on column public.user_play_logs.status is '状态 (0: 未开始, 1: 上机中, 2: 休息/维修,3: 已结束 4: 桌游)';
 
 comment on column public.user_play_logs.start_time is '开始时间';
 
 comment on column public.user_play_logs.end_time is '结束时间';
+
+comment on column public.user_play_logs.uno_at is '桌游开始于';
+
+comment on column public.user_play_logs.uno_duration is '桌游时长(秒单位)';
 
 comment on column public.user_play_logs.break_at is '休息/维修时间';
 

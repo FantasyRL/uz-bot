@@ -5,6 +5,14 @@ export const PRIVATE_PLAY_DISCOUNT = 0.85;
 export const PRIVATE_PLAY_DAY_START_HOUR = 10;
 export const PRIVATE_PLAY_DAY_DURATION_HOURS = 24;
 
+// 桌游相关
+export const UNO_DISCOUNT = 0.89;  // 桌游期间89折
+export const UNO_DISCOUNT_TEXT = ' (桌游期间89折)';
+
+// 满赠活动相关
+export const BONUS_THRESHOLD_HOURS = 6;  // 满6小时
+export const BONUS_FREE_HOURS = 6;       // 送6小时
+
 // 时区相关
 export const UTC_OFFSET_HOURS = 8;
 export const TIMEZONE_UTC_PLUS_8 = 'UTC+8';

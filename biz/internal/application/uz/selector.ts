@@ -12,6 +12,7 @@ import {QueryPrivatePlayCommand} from "@/internal/application/uz/query_private_p
 import {TimerCommand} from "@/internal/application/uz/timer";
 import {OperationLogger} from "@/utils/operation_logger";
 import { MeCommand } from "@/internal/application/uz/me";
+import { UnoCommand } from "@/internal/application/uz/uno";
 
 
 export class UzCommandSelector {
@@ -32,6 +33,8 @@ export class UzCommandSelector {
         this.register('上机', new StartGameCommand());
         // /uz 暂停
         this.register('暂停', new BreakCommand());
+        // /uz 桌游
+        this.register('桌游', new UnoCommand());
         // /uz 下机
         this.register('下机', new OffGameCommand());
         // /uz 计时
@@ -47,7 +50,7 @@ export class UzCommandSelector {
     }
 
     // 解析并执行命令
-    public async execute(stream: any, commandText: string,canBreak:boolean): Promise<void> {
+    public async execute(stream: any, commandText: string, canBreak: boolean, canUno: boolean): Promise<void> {
         // 移除前缀 /uz 并分割命令和参数
         const cleanText = commandText.replace(/^\/uz\s*/i, '').trim();
         const parts = cleanText.split(/\s+/);
@@ -57,6 +60,7 @@ export class UzCommandSelector {
             stream,
             args,
             canBreak,
+            canUno,
         };
         // const undefinedCommand='help';
 

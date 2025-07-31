@@ -5,6 +5,7 @@ export enum UserPlayLogStatus {
     Playing = 1,
     Breaking = 2,
     Finished = 3,
+    Uno = 4,        // 桌游状态
 }
 
 export enum PaymentOrderStatus {

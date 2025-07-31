@@ -1,6 +1,6 @@
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
-import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/constant';
+import { UTC_OFFSET_HOURS, UNO_DISCOUNT, BONUS_THRESHOLD_HOURS, BONUS_FREE_HOURS } from '@/internal/domain/uz/constant';
 
 /**
  * PaymentResult
@@ -21,6 +21,17 @@ export interface PaymentResult {
     finalAmount: Decimal;
     startTime: Date;
     endTime: Date;
+}
+
+/**
+ * PaymentResultWithUno
+ * ----------------------------
+ * 包含桌游的价格计算结果
+ */
+export interface PaymentResultWithUno extends PaymentResult {
+    hasUnoTime: boolean;
+    unoAmount: Decimal;
+    normalAmount: Decimal;
 }
 
 /**
@@ -141,6 +152,132 @@ export class PaymentCalculator {
             startTime,
             endTime,
         };
+    }
+
+    /**
+     * calculatePaymentWithUno
+     * 计算包含桌游时间的价格
+     * @param startTime 游戏开始时间
+     * @param endTime 游戏结束时间
+     * @param userDiscount 用户折扣
+     * @param breakDuration 暂停时长（秒）
+     * @param unoDuration 桌游时长（秒）
+     * @returns PaymentResultWithUno 计算结果
+     */
+    static calculatePaymentWithUno(
+        startTime: Date,
+        endTime: Date,
+        userDiscount: Decimal,
+        breakDuration: number = 0,
+        unoDuration: number = 0
+    ): PaymentResultWithUno {
+        const totalDurationMs = endTime.getTime() - startTime.getTime();
+        const totalDurationSeconds = Math.ceil(totalDurationMs / 1000);
+        
+        // 减去暂停时长，得到实际游戏时长
+        const actualGameSeconds = Math.max(0, totalDurationSeconds - breakDuration);
+        const actualGameMinutes = Math.ceil(actualGameSeconds / 60);
+        
+        // 桌游时长（分钟）
+        let unoMinutes = Math.ceil(unoDuration / 60);
+        
+        // 正常游戏时长（分钟）
+        let normalMinutes = Math.max(0, actualGameMinutes - unoMinutes);
+        
+        // 处理暂停时间的优先级：先扣除正常时间，再扣除桌游时间
+        const breakMinutes = Math.ceil(breakDuration / 60);
+        if (normalMinutes > 0 && breakMinutes > 0) {
+            if (normalMinutes >= breakMinutes) {
+                // 暂停时间完全从正常时间中扣除
+                normalMinutes -= breakMinutes;
+            } else {
+                // 正常时间不够扣除，剩余暂停时间从桌游时间中扣除
+                const remainingBreakMinutes = breakMinutes - normalMinutes;
+                normalMinutes = 0;
+                unoMinutes = Math.max(0, unoMinutes - remainingBreakMinutes);
+            }
+        } else if (normalMinutes === 0 && breakMinutes > 0) {
+            // 只有桌游时间，暂停时间从桌游时间中扣除
+            unoMinutes = Math.max(0, unoMinutes - breakMinutes);
+        }
+        
+        // 计算满赠活动
+        const totalMinutes = unoMinutes + normalMinutes;
+        const bonusThresholdMinutes = BONUS_THRESHOLD_HOURS * 60; // 6小时
+        const bonusFreeMinutes = BONUS_FREE_HOURS * 60; // 6小时
+        
+        let finalUnoPrice: Decimal;
+        let finalNormalPrice: Decimal;
+        
+        if (totalMinutes > bonusThresholdMinutes) {
+            // 计算赠送的分钟数
+            const bonusMinutes = Math.min(totalMinutes - bonusThresholdMinutes, bonusFreeMinutes);
+            
+            // 按比例分配赠送时间
+            const unoRatio = totalMinutes > 0 ? unoMinutes / totalMinutes : 0;
+            const normalRatio = totalMinutes > 0 ? normalMinutes / totalMinutes : 0;
+            
+            const unoBonusMinutes = Math.floor(bonusMinutes * unoRatio);
+            const normalBonusMinutes = Math.floor(bonusMinutes * normalRatio);
+            
+            // 重新计算价格
+            finalUnoPrice = this.calculateUnoPrice(Math.max(0, unoMinutes - unoBonusMinutes), userDiscount.mul(UNO_DISCOUNT));
+            finalNormalPrice = this.calculateNormalPrice(Math.max(0, normalMinutes - normalBonusMinutes), userDiscount);
+        } else {
+            // 计算桌游价格（9折）
+            finalUnoPrice = this.calculateUnoPrice(unoMinutes, userDiscount.mul(UNO_DISCOUNT));
+            // 计算正常游戏价格
+            finalNormalPrice = this.calculateNormalPrice(normalMinutes, userDiscount);
+        }
+        
+        const finalAmount = finalUnoPrice.plus(finalNormalPrice);
+        
+        return {
+            amount: finalUnoPrice.plus(finalNormalPrice), // 原价
+            durationSeconds: actualGameSeconds,
+            durationMinutes: actualGameMinutes,
+            discount: userDiscount,
+            finalAmount,
+            startTime,
+            endTime,
+            hasUnoTime: unoMinutes > 0,
+            unoAmount: finalUnoPrice,
+            normalAmount: finalNormalPrice,
+        };
+    }
+
+    /**
+     * 计算桌游价格（9折）
+     */
+    private static calculateUnoPrice(minutes: number, discount: Decimal): Decimal {
+        if (minutes <= 0) return new Decimal(0);
+        
+        const totalCycles = Math.floor(minutes / this.CYCLE_DURATION_MIN);
+        const remainingMinutes = minutes % this.CYCLE_DURATION_MIN;
+        
+        let chargeableCycles = totalCycles;
+        if (remainingMinutes > this.FREE_MINUTES_IN_CYCLE) {
+            chargeableCycles += 1;
+        }
+        
+        return this.PRICE_PER_CYCLE.mul(chargeableCycles).mul(discount);
+    }
+
+    /**
+     * 计算正常游戏价格
+     */
+    private static calculateNormalPrice(minutes: number, discount: Decimal): Decimal {
+        if (minutes <= 0) return new Decimal(0);
+        
+        const totalCycles = Math.floor(minutes / this.CYCLE_DURATION_MIN);
+        const remainingMinutes = minutes % this.CYCLE_DURATION_MIN;
+        
+        let chargeableCycles = totalCycles;
+        if (remainingMinutes > this.FREE_MINUTES_IN_CYCLE) {
+            chargeableCycles += 1;
+        }
+        
+        return this.PRICE_PER_CYCLE.mul(chargeableCycles).mul(discount);
     }
 
     // --------------- 辅助格式化函数 ---------------

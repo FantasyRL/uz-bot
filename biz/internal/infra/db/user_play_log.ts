@@ -19,6 +19,7 @@ class UserPlayLogRepo {
     async createPlayLog(data: CreateUserPlayLogInput): Promise<UserPlayLogDTO> {
         return prisma.user_play_logs.create({data});
     }
+
     /**
      * 检查用户是否正在游戏中
      * 查询用户是否有状态为"上机中"的最新游戏记录
@@ -56,6 +57,24 @@ class UserPlayLogRepo {
     }
 
     /**
+     * 检查用户是否处于桌游状态
+     * 查询用户是否有状态为"桌游"的最新游戏记录
+     * @param qqNumber 用户QQ号
+     * @returns 游戏记录或null
+     */
+    async checkIsUno(qqNumber: string): Promise<UserPlayLogDTO | null> {
+        return prisma.user_play_logs.findFirst({
+            where: {
+                qq_number: qqNumber,
+                status: UserPlayLogStatus.Uno, // 查找桌游状态的记录
+            },
+            orderBy: {
+                start_time: 'desc',
+            },
+        });
+    }
+
+    /**
      * 暂停游戏记录
      * @param id 游戏记录ID
      */
@@ -74,7 +93,24 @@ class UserPlayLogRepo {
     }
 
     /**
-     * 恢复游戏记录
+     * 开始桌游记录
+     * @param id 游戏记录ID
+     */
+    async startUnoPlayLog(id: string): Promise<UserPlayLogDTO> {
+        return prisma.user_play_logs.update({
+            where: {
+                id:id,
+            },
+            data: {
+                status: UserPlayLogStatus.Uno,
+                uno_at: new Date(),
+                updated_at: new Date(),
+            },
+        });
+    }
+
+    /**
+     * 恢复游戏记录（优化版本，减少IO）
      * @param id 游戏记录ID
      * @param breakAt 暂停开始时间（Date）
      * @param breakDuration 当前累计暂停秒数
@@ -88,6 +124,64 @@ class UserPlayLogRepo {
                 status: UserPlayLogStatus.Playing,
                 break_at: null, // 清除暂停时间
                 break_duration: breakDuration + thisPause,
+                updated_at: now,
+            },
+        });
+    }
+
+    /**
+     * 结束桌游记录（优化版本，减少IO）
+     * @param id 游戏记录ID
+     * @param unoAt 桌游开始时间（Date）
+     * @param unoDuration 当前累计桌游秒数
+     */
+    async endUnoPlayLog(id: string, unoAt: Date, unoDuration: number): Promise<UserPlayLogDTO> {
+        const now = new Date();
+        const thisUno = Math.floor((now.getTime() - unoAt.getTime()) / 1000);
+        return prisma.user_play_logs.update({
+            where: { id:id },
+            data: {
+                status: UserPlayLogStatus.Playing,
+                uno_at: null, // 清除桌游时间
+                uno_duration: unoDuration + thisUno,
+                updated_at: now,
+            },
+        });
+    }
+
+    /**
+     * 结算暂停状态并更新（优化版本，一次IO）
+     * @param id 游戏记录ID
+     * @param currentBreakAt 当前暂停开始时间
+     * @param currentBreakDuration 当前累计暂停时长
+     * @returns 更新后的游戏记录
+     */
+    async settleBreakAndUpdate(id: string, currentBreakAt: Date, currentBreakDuration: number): Promise<UserPlayLogDTO> {
+        const now = new Date();
+        const thisPause = Math.floor((now.getTime() - currentBreakAt.getTime()) / 1000);
+        return prisma.user_play_logs.update({
+            where: { id },
+            data: {
+                break_duration: currentBreakDuration + thisPause,
+                updated_at: now,
+            },
+        });
+    }
+
+    /**
+     * 结算桌游状态并更新（优化版本，一次IO）
+     * @param id 游戏记录ID
+     * @param currentUnoAt 当前桌游开始时间
+     * @param currentUnoDuration 当前累计桌游时长
+     * @returns 更新后的游戏记录
+     */
+    async settleUnoAndUpdate(id: string, currentUnoAt: Date, currentUnoDuration: number): Promise<UserPlayLogDTO> {
+        const now = new Date();
+        const thisUno = Math.floor((now.getTime() - currentUnoAt.getTime()) / 1000);
+        return prisma.user_play_logs.update({
+            where: { id },
+            data: {
+                uno_duration: currentUnoDuration + thisUno,
                 updated_at: now,
             },
         });
@@ -112,7 +206,7 @@ class UserPlayLogRepo {
 
     /**
      * 获取用户最新的游戏记录
-     * 查询用户最新的游戏记录（包括上机中和暂停状态）
+     * 查询用户最新的游戏记录（包括上机中、暂停和桌游状态）
      * 用于下机时获取当前游戏信息
      * @param qqNumber 用户QQ号
      * @returns 游戏记录或null
@@ -122,7 +216,7 @@ class UserPlayLogRepo {
             where: {
                 qq_number: qqNumber,
                 status: {
-                    in: [UserPlayLogStatus.Playing, UserPlayLogStatus.Breaking]
+                    in: [UserPlayLogStatus.Playing, UserPlayLogStatus.Breaking, UserPlayLogStatus.Uno]
                 },
             },
             orderBy: {

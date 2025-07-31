@@ -4,9 +4,9 @@ import {userRepo} from "@/internal/infra/db/user";
 import {paymentOrderRepo} from "@/internal/infra/db/payment_order";
 import {privatePlayLogRepo} from "@/internal/infra/db/private_play";
 import { UserPlayLogStatus, PaymentOrderStatus } from "@/internal/domain/uz/enum";
-import { PRIVATE_PLAY_DISCOUNT, PRIVATE_PLAY_DAY_START_HOUR, PAYMENT_CHANNEL_DEFAULT, ORDER_PREFIX, NO_DISCOUNT_TEXT, DISCOUNT_SUFFIX, PRIVATE_PLAY_DISCOUNT_TEXT } from "@/internal/domain/uz/constant";
+import { PRIVATE_PLAY_DISCOUNT, PRIVATE_PLAY_DAY_START_HOUR, PAYMENT_CHANNEL_DEFAULT, ORDER_PREFIX, NO_DISCOUNT_TEXT, DISCOUNT_SUFFIX, PRIVATE_PLAY_DISCOUNT_TEXT, UNO_DISCOUNT, UNO_DISCOUNT_TEXT } from "@/internal/domain/uz/constant";
 import {UzMessages} from "@/internal/domain/uz/messages";
-import {PaymentCalculator} from "@/utils/payment_calculator";
+import {PaymentCalculator, PaymentResultWithUno} from "@/utils/payment_calculator";
 import {logger} from "@/cmd/server";
 import {formatDate, getTimeDifferenceInSeconds} from "@/utils/date";
 import {Prisma} from "@/generated/prisma";
@@ -33,12 +33,23 @@ export class OffGameCommand extends BaseCommand {
                 return;
             }
 
+            // 结算暂停或桌游状态（如果需要）
             if (currentPlayLog.status === UserPlayLogStatus.Breaking) {
-                // 先结算暂停，累加暂停时长
-                const now = new Date();
-                const breakAt = currentPlayLog.break_at!;
-                const thisPauseSec = getTimeDifferenceInSeconds(breakAt, now, false);
-                currentPlayLog.break_duration+= thisPauseSec;
+                // 结算暂停状态，一次IO
+                const updatedPlayLog = await userPlayLogRepo.settleBreakAndUpdate(
+                    currentPlayLog.id,
+                    currentPlayLog.break_at!,
+                    currentPlayLog.break_duration || 0
+                );
+                currentPlayLog.break_duration = updatedPlayLog.break_duration;
+            } else if (currentPlayLog.status === UserPlayLogStatus.Uno) {
+                // 结算桌游状态，一次IO
+                const updatedPlayLog = await userPlayLogRepo.settleUnoAndUpdate(
+                    currentPlayLog.id,
+                    currentPlayLog.uno_at!,
+                    currentPlayLog.uno_duration || 0
+                );
+                currentPlayLog.uno_duration = updatedPlayLog.uno_duration;
             }
 
             const endTime = new Date();
@@ -80,11 +91,13 @@ export class OffGameCommand extends BaseCommand {
                 // 如果检查包场状态失败，继续使用用户原有折扣
             }
 
-            const paymentResult = PaymentCalculator.calculatePayment(
+            // 计算桌游和正常时间的价格
+            const paymentResult = PaymentCalculator.calculatePaymentWithUno(
                 startTime,
                 endTime,
                 effectiveDiscount,
-                currentPlayLog.break_duration || 0
+                currentPlayLog.break_duration || 0,
+                currentPlayLog.uno_duration || 0
             );
 
             await userPlayLogRepo.endPlayLog(currentPlayLog.id);
@@ -111,6 +124,9 @@ export class OffGameCommand extends BaseCommand {
             if (isPrivatePlayActive) {
                 discountInfo += PRIVATE_PLAY_DISCOUNT_TEXT;
             }
+            if (paymentResult.hasUnoTime) {
+                discountInfo += UNO_DISCOUNT_TEXT;
+            }
 
             const message = UzMessages.getOffGameMessage(
                 stream.sender.nickname,
@@ -131,6 +147,8 @@ export class OffGameCommand extends BaseCommand {
             await this.sendReply(stream, UzMessages.ERROR_OFF_FAILED);
         }
     }
+
+
 
     private generateOutTradeNo(): string {
         const timestamp = Date.now();

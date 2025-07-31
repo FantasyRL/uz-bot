@@ -121,10 +121,52 @@ export class StartGameCommand extends BaseCommand {
                 return;
             }
         }
+
+        // 检查是否有桌游的游戏记录
+        let unoPlayLog: UserPlayLogDTO|null=null;
+        try {
+            unoPlayLog = await userPlayLogRepo.checkIsUno(String(stream.sender.user_id));
+        } catch (error) {
+            await this.sendReply(stream, UzMessages.ERROR_UNO_STATUS_CHECK);
+            logger.error('Error checking uno play log: %s', error);
+            return;
+        }
+
+        if (unoPlayLog!=null) {
+            // 恢复桌游的游戏
+            try {
+                const now = new Date();
+                const unoAt = unoPlayLog.uno_at;
+                const unoDuration = unoPlayLog.uno_duration;
+                if (unoAt==null) {
+                    await this.sendReply(stream, UzMessages.ERROR_UNO_RECORD_ABNORMAL);
+                    return;
+                }
+                const thisUnoSec = getTimeDifferenceInSeconds(unoAt, now, false);
+                const currentUnoDuration = formatDuration(thisUnoSec);
+                await userPlayLogRepo.endUnoPlayLog(unoPlayLog.id, unoAt, unoDuration);
+                const resumeTimeStr = formatDate(now, false);
+                const message = UzMessages.getUnoResumeMessage(
+                    stream.sender.nickname,
+                    String(stream.sender.user_id),
+                    resumeTimeStr,
+                    currentUnoDuration
+                );
+                await this.sendReply(stream, message);
+                return;
+            } catch (error) {
+                console.error('恢复桌游失败:', error);
+                logger.error('恢复桌游失败: %s', error);
+                await this.sendReply(stream, UzMessages.ERROR_UNO_RESUME_FAILED);
+                return;
+            }
+        }
         // 创建上机记录
         const createPlayLogInput:CreateUserPlayLogInput= {
             qq_number: String(stream.sender.user_id),
             status: UserPlayLogStatus.Playing,
+            break_duration: 0,
+            uno_duration: 0,
         }
         playLogInfo=await userPlayLogRepo.createPlayLog(createPlayLogInput);
 

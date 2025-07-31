@@ -37,6 +37,7 @@ export class StartGameCommand extends BaseCommand {
                     await this.sendReplyWithImage(stream, '❌ 当前处于包场时间段内，无法上机');
                     return;
                 }
+                console.info(now.toString(),todayPlay.start_time.toString(),todayPlay.end_time.toString());
             }
         } catch (error) {
             logger.error('检查包场状态失败: %s', error);

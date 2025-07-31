@@ -159,22 +159,14 @@ class PrivatePlayLogRepo {
      */
     async getTodayPrivatePlay(): Promise<PrivatePlayLogDTO | null> {
         const now = new Date();
-        const todayStart = new Date(now);
-        todayStart.setHours(10, 0, 0, 0);
-        
-        const todayEnd = new Date(todayStart);
-        todayEnd.setDate(todayEnd.getDate() + 1);
-        todayEnd.setHours(10, 0, 0, 0);
-
         return prisma.private_play_logs.findFirst({
             where: {
-                start_time: {
-                    gte: todayStart,
-                    lt: todayEnd,
+                end_time: {
+                    gte: now,
                 },
             },
             orderBy: {
-                start_time: 'desc',
+                start_time: 'asc',
             },
         });
     }

@@ -224,6 +224,24 @@ class UserPlayLogRepo {
             },
         });
     }
+
+    /**
+     * 获取所有当前游戏中的用户
+     * 查询所有状态为上机中、暂停或桌游的游戏记录
+     * @returns 游戏记录数组
+     */
+    async getAllCurrentPlayingUsers(): Promise<UserPlayLogDTO[]> {
+        return prisma.user_play_logs.findMany({
+            where: {
+                status: {
+                    in: [UserPlayLogStatus.Playing, UserPlayLogStatus.Breaking, UserPlayLogStatus.Uno]
+                },
+            },
+            orderBy: {
+                start_time: 'asc',
+            },
+        });
+    }
 }
 
 export const userPlayLogRepo = new UserPlayLogRepo();

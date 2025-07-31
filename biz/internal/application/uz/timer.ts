@@ -68,12 +68,13 @@ export class TimerCommand extends BaseCommand {
                 return;
             }
 
-            // 计算费用预估
-            const paymentResult = PaymentCalculator.calculatePayment(
+            // 计算费用预估（支持桌游）
+            const paymentResult = PaymentCalculator.calculatePaymentWithUno(
                 playLog.start_time,
                 now,
                 userInfo.discount,
-                playLog.break_duration ? Number(playLog.break_duration) : 0
+                playLog.break_duration ? Number(playLog.break_duration) : 0,
+                playLog.uno_duration ? Number(playLog.uno_duration) : 0
             );
 
             // 格式化时间
@@ -96,6 +97,10 @@ export class TimerCommand extends BaseCommand {
             message += `💰 费用预估：\n`;
             message += `• 基础费用：${PaymentCalculator.formatAmount(paymentResult.amount)}\n`;
             message += `• 用户折扣：${userInfo.discount.mul(100).toFixed(0)}%\n`;
+            if (paymentResult.hasUnoTime) {
+                message += `• 桌游费用：${PaymentCalculator.formatAmount(paymentResult.unoAmount)}\n`;
+                message += `• 正常费用：${PaymentCalculator.formatAmount(paymentResult.normalAmount)}\n`;
+            }
             message += `• 最终费用：${PaymentCalculator.formatAmount(paymentResult.finalAmount)}\n\n`;
 
             message += `💡 提示：使用 /uz 下机 结束游戏并生成订单`;

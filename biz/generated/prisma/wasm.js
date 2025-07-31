@@ -151,6 +151,8 @@ exports.Prisma.User_play_logsScalarFieldEnum = {
   end_time: 'end_time',
   break_at: 'break_at',
   break_duration: 'break_duration',
+  uno_at: 'uno_at',
+  uno_duration: 'uno_duration',
   created_at: 'created_at',
   updated_at: 'updated_at',
   deleted_at: 'deleted_at'

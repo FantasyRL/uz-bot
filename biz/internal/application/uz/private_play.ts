@@ -4,7 +4,7 @@ import {BaseCommand, CommandContext} from "@/internal/application/uz/base_comman
 import {userRepo} from "@/internal/infra/db/user";
 import {privatePlayLogRepo} from "@/internal/infra/db/private_play";
 import {UzMessages} from "@/internal/domain/uz/messages";
-import {UserStatus} from "@/internal/domain/uz/entity";
+import { UserStatus } from "@/internal/domain/uz/enum";
 import {logger} from "@/cmd/server";
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
@@ -21,7 +21,7 @@ export class PrivatePlayCommand extends BaseCommand {
         // 检查用户权限
         const user = await userRepo.getUserByQQ(String(stream.sender.user_id));
         if (!user || user.status !== UserStatus.Admin) {
-            await this.sendReply(stream, '❌ 权限不足，仅限管理员使用包场功能');
+            await this.sendReplyWithImage(stream, '❌ 权限不足，仅限管理员使用包场功能');
             return;
         }
 
@@ -34,6 +34,53 @@ export class PrivatePlayCommand extends BaseCommand {
         // 如果第一个参数是"删除"
         if (args[0] === '删除') {
             await this.deletePrivatePlay(stream, args);
+            return;
+        }
+
+        // 新增：支持/uz 包场 {qq_number} 月-日 白场/晚场 price remark
+        if (args.length >= 5 && args[1].match(/^\d{1,2}-\d{1,2}$/) && (args[2] === '白场' || args[2] === '晚场')) {
+            const qqNumber = args[0];
+            const dateStr = args[1];
+            const type = args[2];
+            const price = parseFloat(args[3]);
+            const remark = args.slice(4).join(' ');
+            const [month, day] = dateStr.split('-').map(Number);
+            const now = new Date();
+            const year = now.getFullYear();
+            let startTime, endTime;
+            if (type === '白场') {
+                startTime = new Date(year, month - 1, day, 10, 0, 0, 0);
+                endTime = new Date(year, month - 1, day, 16, 0, 0, 0);
+            } else {
+                startTime = new Date(year, month - 1, day, 16, 0, 0, 0);
+                endTime = new Date(year, month - 1, day, 22, 0, 0, 0);
+            }
+            if (isNaN(price) || price <= 0) {
+                await this.sendReply(stream, '❌ 价格必须是正数');
+                return;
+            }
+            try {
+                const hasActive = await privatePlayLogRepo.hasActivePrivatePlay(startTime, endTime);
+                if (hasActive) {
+                    await this.sendReply(stream, '❌ 当前已有活跃的包场，无法创建新的包场');
+                    return;
+                }
+                const createInput = {
+                    qq_number: qqNumber,
+                    start_time: startTime,
+                    end_time: endTime,
+                    price: new Decimal(price),
+                    remark: remark,
+                };
+                const playLog = await privatePlayLogRepo.createPrivatePlayLog(createInput);
+                const startTimeFormatted = this.formatTimeForDisplay(startTime);
+                const endTimeFormatted = this.formatTimeForDisplay(endTime);
+                const message = `包场 (${qqNumber})开始:${startTimeFormatted}结束:${endTimeFormatted} 金额：${price} remark：${remark}`;
+                await this.sendReply(stream, message);
+            } catch (error) {
+                logger.error('创建包场失败: %s', error);
+                await this.sendReply(stream, '❌ 创建包场失败，请稍后重试');
+            }
             return;
         }
 
@@ -147,7 +194,7 @@ export class PrivatePlayCommand extends BaseCommand {
 
         try {
             // 检查是否有活跃的包场
-            const hasActive = await privatePlayLogRepo.hasActivePrivatePlay();
+            const hasActive = await privatePlayLogRepo.hasActivePrivatePlay(startTime, endTime);
             if (hasActive) {
                 await this.sendReply(stream, '❌ 当前已有活跃的包场，无法创建新的包场');
                 return;

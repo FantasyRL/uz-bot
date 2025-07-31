@@ -145,3 +145,6 @@ biz/.env
 config.yaml
 
 migrate/yzcal.csv
+
+biz/static
+static

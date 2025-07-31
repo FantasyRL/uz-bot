@@ -1,4 +1,5 @@
 import { CreateUserInput } from "@/internal/domain/uz/entity";
+import { UserStatus } from "@/internal/domain/uz/enum";
 import {userRepo} from "@/internal/infra/db/user";
 import {logger} from "@/cmd/server";
 import {GroupIncreaseApprove, GroupIncreaseInvite, GroupMessage, Structs} from "node-napcat-ts";

@@ -1,6 +1,6 @@
 import {BaseCommand, CommandContext} from "@/internal/application/uz/base_command";
 import {userPlayLogRepo} from "@/internal/infra/db/user_play_log";
-import {UserPlayLogStatus} from "@/internal/domain/uz/entity";
+import { UserPlayLogStatus } from "@/internal/domain/uz/enum";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {logger} from "@/cmd/server";
 import {formatDate} from "@/utils/date";
@@ -14,12 +14,12 @@ export class BreakCommand extends BaseCommand{
         const { stream, args, canBreak } = context;
         
         if (!canBreak) {
-            await this.sendReply(stream, UzMessages.ERROR_PAUSE_NOT_ENABLED);
+            await this.sendReplyWithImage(stream, UzMessages.ERROR_PAUSE_NOT_ENABLED);
             return;
         }
         
         if (args.length == 0) {
-            await this.sendReply(stream, UzMessages.ERROR_PAUSE_REASON_REQUIRED);
+            await this.sendReplyWithImage(stream, UzMessages.ERROR_PAUSE_REASON_REQUIRED);
             return;
         }
 
@@ -30,13 +30,13 @@ export class BreakCommand extends BaseCommand{
             // 检查是否有正在进行的游戏记录（包括暂停状态）
             const currentPlayLog = await userPlayLogRepo.getLatestPlayLog(qqNumber);
             if (currentPlayLog==null) {
-                await this.sendReply(stream, UzMessages.ERROR_NOT_PLAYING);
+                await this.sendReplyWithImage(stream, UzMessages.ERROR_NOT_PLAYING);
                 return;
             }
 
             // 如果已经在暂停状态，不允许再次暂停
             if (currentPlayLog.status === UserPlayLogStatus.Breaking) {
-                await this.sendReply(stream, UzMessages.ERROR_ALREADY_PAUSED);
+                await this.sendReplyWithImage(stream, UzMessages.ERROR_ALREADY_PAUSED);
                 return;
             }
 

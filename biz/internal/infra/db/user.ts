@@ -2,6 +2,7 @@
 
 import {prisma} from "@/internal/infra/db/prisma_cli";
 import {CreateUserInput, UserDTO} from "@/internal/domain/uz/entity";
+import { UserStatus } from "@/internal/domain/uz/enum";
 import {Prisma} from "@/generated/prisma";
 
 interface UpdateUserStatsInput {
@@ -72,6 +73,42 @@ class UserRepo {
             },
         });
         return count;
+    }
+
+    /**
+     * 获取当前上机用户详细信息
+     * @returns 当前上机用户详细信息数组
+     */
+    async getCurrentPlayingUsers(): Promise<{
+        qq_number: string;
+        nick_name: string;
+        start_time: Date;
+    }[]> {
+        // 只查找status=1(Playing)的user_play_logs，且未结束
+        const logs = await prisma.user_play_logs.findMany({
+            where: {
+                status: 1,
+            },
+            orderBy: {
+                start_time: 'asc',
+            },
+        });
+        // 取出所有相关用户信息
+        const qqNumbers = logs.map(log => log.qq_number);
+        const users = await prisma.users.findMany({
+            where: {
+                qq_number: { in: qqNumbers },
+            },
+        });
+        // 合并信息
+        return logs.map(log => {
+            const user = users.find(u => u.qq_number === log.qq_number);
+            return {
+                qq_number: log.qq_number,
+                nick_name: user?.nick_name || log.qq_number,
+                start_time: log.start_time,
+            };
+        });
     }
 }
 export const userRepo = new UserRepo();

@@ -1,7 +1,7 @@
 import {BaseCommand, CommandContext} from "@/internal/application/uz/base_command";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {userRepo} from "@/internal/infra/db/user";
-import {UserStatus} from "@/internal/domain/uz/entity";
+import { UserStatus } from "@/internal/domain/uz/enum";
 import {logger} from "@/cmd/server";
 
 export class HelpCommand extends BaseCommand {

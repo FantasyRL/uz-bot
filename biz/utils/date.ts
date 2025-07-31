@@ -3,6 +3,8 @@
  * 将UTC+0时间转换为UTC+8时间
  */
 
+import { UTC_OFFSET_HOURS } from '@/internal/domain/uz/constant';
+
 /**
  * 将UTC时间转换为UTC+8时间
  * @param utcDate UTC时间
@@ -10,7 +12,7 @@
  */
 export function toUTC8(utcDate: Date): Date {
     const utc8Date = new Date(utcDate);
-    utc8Date.setHours(utc8Date.getHours() + 8);
+    utc8Date.setHours(utc8Date.getHours() + UTC_OFFSET_HOURS);
     return utc8Date;
 }
 
@@ -21,7 +23,8 @@ export function toUTC8(utcDate: Date): Date {
  * @returns 格式化后的时间字符串
  */
 export function formatDate(date: Date, isUTC: boolean = true): string {
-    const targetDate = isUTC ? toUTC8(date) : date;
+    // const targetDate = isUTC ? toUTC8(date) : date;
+    const targetDate=date;
     const year = targetDate.getFullYear().toString().slice(-2);
     const month = String(targetDate.getMonth() + 1).padStart(2, '0');
     const day = String(targetDate.getDate()).padStart(2, '0');

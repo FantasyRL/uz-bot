@@ -70,7 +70,7 @@ export class NapcatInstance {
                 // 检查是否是 /uz 开头的命令
                 const firstMsg = msgs[0].trimStart();
                 if (firstMsg.startsWith('/uz')) {
-                    await this.commandSelector.execute(stream, firstMsg, groupConfig.break);
+                    await this.commandSelector.execute(stream, firstMsg, groupConfig.break, groupConfig.uno);
                 }
             }
         });

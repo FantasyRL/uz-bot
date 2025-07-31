@@ -11,10 +11,25 @@ type Case = {
     expected: string;
 };
 
+type UnoCase = {
+    label: string;
+    seconds: number;
+    discount: Decimal;
+    breakDuration?: number;
+    unoDuration?: number;
+    expected: string;
+};
+
 function run(sec: number, discount: Decimal, breakDuration: number = 0) {
     const start = new Date(0);
     const end = new Date(sec * 1000);
     return PaymentCalculator.calculatePayment(start, end, discount, breakDuration);
+}
+
+function runUno(sec: number, discount: Decimal, breakDuration: number = 0, unoDuration: number = 0) {
+    const start = new Date(0);
+    const end = new Date(sec * 1000);
+    return PaymentCalculator.calculatePaymentWithUno(start, end, discount, breakDuration, unoDuration);
 }
 
 const cases: Case[] = [
@@ -41,9 +56,28 @@ const cases: Case[] = [
     { label: '13 h with 2h break',        seconds: 13 * 3600,      breakDuration: 2 * 3600,    discount: new Decimal(1),   expected: '¥72.00' },
 ];
 
+const unoCases: UnoCase[] = [
+    // —— 桌游测试用例 ——
+    { label: '1h 纯桌游',        seconds: 1 * 3600,               discount: new Decimal(1),   unoDuration: 1 * 3600, expected: '¥10.80' },
+    { label: '2h 混合(1h桌游+1h正常)', seconds: 2 * 3600,        discount: new Decimal(1),   unoDuration: 1 * 3600, expected: '¥22.80' },
+    { label: '1h 桌游 @ 0.8',   seconds: 1 * 3600,               discount: new Decimal(0.8), unoDuration: 1 * 3600, expected: '¥8.64' },
+    { label: '2h 混合 @ 0.8',   seconds: 2 * 3600,               discount: new Decimal(0.8), unoDuration: 1 * 3600, expected: '¥18.24' },
+    { label: '30min 桌游',       seconds: 30 * 60,                discount: new Decimal(1),   unoDuration: 30 * 60,  expected: '¥5.40' },
+    { label: '1h 桌游 + 30min 暂停', seconds: 1 * 3600,          discount: new Decimal(1),   breakDuration: 30 * 60, unoDuration: 1 * 3600, expected: '¥5.40' },
+    { label: '7h 桌游(满6送6)', seconds: 7 * 3600,               discount: new Decimal(1),   unoDuration: 7 * 3600, expected: '¥64.80' },
+    { label: '13h 桌游(满6送6)', seconds: 13 * 3600,              discount: new Decimal(1),   unoDuration: 13 * 3600, expected: '¥75.60' },
+];
+
 for (const c of cases) {
     test(`计费 - ${c.label}`, () => {
         const res = run(c.seconds, c.discount, c.breakDuration || 0);
+        assert.equal(PaymentCalculator.formatAmount(res.finalAmount), c.expected);
+    });
+}
+
+for (const c of unoCases) {
+    test(`桌游计费 - ${c.label}`, () => {
+        const res = runUno(c.seconds, c.discount, c.breakDuration || 0, c.unoDuration || 0);
         assert.equal(PaymentCalculator.formatAmount(res.finalAmount), c.expected);
     });
 }

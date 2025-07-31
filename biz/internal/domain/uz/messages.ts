@@ -24,6 +24,15 @@ export class UzMessages {
     static readonly ERROR_PAUSE_FAILED = '❌ 暂停失败，请稍后重试！';
     static readonly SUCCESS_PAUSE = '✅ 游戏已暂停，可以多次暂停！';
 
+    // 桌游相关消息
+    static readonly ERROR_UNO_NOT_ENABLED = '❌ 桌游功能未启用，请联系管理员！';
+    static readonly ERROR_UNO_REASON_REQUIRED = '❌ 桌游命令需要备注原因，如 /uz 桌游 打牌';
+    static readonly ERROR_ALREADY_UNO = '❌ 您已经在桌游状态中，请先恢复游戏！';
+    static readonly ERROR_UNO_FAILED = '❌ 开始桌游失败，请稍后重试！';
+    static readonly ERROR_UNO_STATUS_CHECK = '❌ 桌游状态检查失败，请稍后再试！';
+    static readonly ERROR_UNO_RECORD_ABNORMAL = '❌ 桌游记录异常，请稍后重试！';
+    static readonly ERROR_UNO_RESUME_FAILED = '❌ 恢复桌游失败，请稍后重试！';
+
     // 下机相关消息
     static readonly ERROR_NOT_PLAYING_OFF = '❌ 您当前没有在上机中，无法下机！';
     static readonly ERROR_GAME_ALREADY_ENDED = '❌ 您的游戏已经结束！';
@@ -52,6 +61,7 @@ export class UzMessages {
 • /uz 上机 - 开始游戏，如果之前暂停会自动恢复
 • /uz 计时 - 查看当前游戏时长和费用预估
 • /uz 暂停 [原因] - 暂停游戏，需要说明暂停原因（未开启）
+• /uz 桌游 [原因] - 开始桌游，需要说明桌游原因（未开启）
 • /uz 下机 - 结束游戏并计算费用
 • /uz 查询包场 - 查看今日包场信息
 • /uz help - 显示此帮助信息
@@ -61,6 +71,7 @@ export class UzMessages {
 • 满6小时送6小时活动
 • 用户折扣：根据用户自动应用
 • 包场当日：全天85折优惠（根据下机时间判断）
+• 桌游期间：89折优惠
 • 暂停时间不计入计费时长(但是没开，哈哈)
 
 📝 使用示例:
@@ -68,10 +79,11 @@ export class UzMessages {
 • /uz 上机
 • /uz 计时
 • /uz 暂停 吃饭
+• /uz 桌游 打牌
 • /uz 下机
 • /uz 查询包场
 
-💡 提示：包场时间段内无法上机，包场当日全天享受85折优惠。
+💡 提示：包场时间段内无法上机，包场当日全天享受85折优惠，桌游期间享受9折优惠。
 
 如有问题请联系管理员！`;
 
@@ -81,11 +93,13 @@ export class UzMessages {
 🔧 管理员专用命令:
 • /uz 包场 - 查看当前包场信息
 • /uz 包场 {qqNumber} {开始时间} {结束时间} {price} {remark} - 创建包场
+• /uz 包场 {qqNumber} {月-日} 白场/晚场 {price} {remark} - 快速创建白场/晚场（如 7-31 白场）
 • /uz 包场 删除 {unique_id} - 删除包场
 
 📝 管理员使用示例:
 • /uz 包场
 • /uz 包场 123456789 7-30-14 7-30-22 460 生日聚会
+• /uz 包场 123456789 7-31 白场 460 生日聚会
 • /uz 包场 删除 1
 
 🔑 管理员权限：用户状态为896的用户`;
@@ -132,6 +146,25 @@ export class UzMessages {
         return `用户${nickname}(${userId})：
 游戏已恢复，恢复时间：${resumeTime}
 暂停时长：${pauseDuration}
+继续享受游戏吧！`;
+    }
+
+    /**
+     * 生成桌游开始消息
+     */
+    static getUnoMessage(nickname: string, qqNumber: string, unoTime: string): string {
+        return `用户${nickname}(${qqNumber})：
+桌游已开始，开始时间：${unoTime}
+请使用 /uz 上机 来恢复游戏。`;
+    }
+
+    /**
+     * 生成桌游恢复消息
+     */
+    static getUnoResumeMessage(nickname: string, userId: string, resumeTime: string, unoDuration: string): string {
+        return `用户${nickname}(${userId})：
+桌游已结束，恢复时间：${resumeTime}
+桌游时长：${unoDuration}
 继续享受游戏吧！`;
     }
 

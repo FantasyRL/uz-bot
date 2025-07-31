@@ -7,9 +7,9 @@ import {
     CreateUserPlayLogInput,
     UserDTO,
     UserPlayLogDTO,
-    UserPlayLogStatus,
-    PRIVATE_PLAY_DISCOUNT
 } from "@/internal/domain/uz/entity";
+import { UserStatus, UserPlayLogStatus } from "@/internal/domain/uz/enum";
+import { DEFAULT_TOTAL_TIME, DEFAULT_TOTAL_AMOUNT, DEFAULT_PLAY_COUNT } from "@/internal/domain/uz/constant";
 import {UzMessages} from "@/internal/domain/uz/messages";
 import {Prisma} from "@/generated/prisma";
 import Decimal = Prisma.Decimal;
@@ -34,9 +34,10 @@ export class StartGameCommand extends BaseCommand {
                 
                 // 判断当前时间是否在包场时间段内
                 if (now >= todayPlay.start_time && now <= todayPlay.end_time) {
-                    await this.sendReply(stream, '❌ 当前处于包场时间段内，无法上机');
+                    await this.sendReplyWithImage(stream, '❌ 当前处于包场时间段内，无法上机');
                     return;
                 }
+                console.info(now.toString(),todayPlay.start_time.toString(),todayPlay.end_time.toString());
             }
         } catch (error) {
             logger.error('检查包场状态失败: %s', error);
@@ -54,9 +55,9 @@ export class StartGameCommand extends BaseCommand {
                     qq_number: String(stream.sender.user_id),
                     nick_name: String(stream.sender.nickname),
                     source: String(stream.group_id),
-                    total_time: BigInt(0),
-                    total_amount: new Decimal(0),
-                    play_count: BigInt(0),
+                    total_time: BigInt(DEFAULT_TOTAL_TIME),
+                    total_amount: new Decimal(DEFAULT_TOTAL_AMOUNT),
+                    play_count: BigInt(DEFAULT_PLAY_COUNT),
                 }
                 userInfo=await userRepo.createUser(createInput);
             }else{
@@ -78,7 +79,7 @@ export class StartGameCommand extends BaseCommand {
             return;
         }
         if(playLogInfo!=null){
-            await this.sendReply(stream, UzMessages.ERROR_ALREADY_PLAYING);
+            await this.sendReplyWithImage(stream, UzMessages.ERROR_ALREADY_PLAYING);
             return;
         }
 
@@ -121,14 +122,56 @@ export class StartGameCommand extends BaseCommand {
                 return;
             }
         }
+
+        // 检查是否有桌游的游戏记录
+        let unoPlayLog: UserPlayLogDTO|null=null;
+        try {
+            unoPlayLog = await userPlayLogRepo.checkIsUno(String(stream.sender.user_id));
+        } catch (error) {
+            await this.sendReply(stream, UzMessages.ERROR_UNO_STATUS_CHECK);
+            logger.error('Error checking uno play log: %s', error);
+            return;
+        }
+
+        if (unoPlayLog!=null) {
+            // 恢复桌游的游戏
+            try {
+                const now = new Date();
+                const unoAt = unoPlayLog.uno_at;
+                const unoDuration = unoPlayLog.uno_duration;
+                if (unoAt==null) {
+                    await this.sendReply(stream, UzMessages.ERROR_UNO_RECORD_ABNORMAL);
+                    return;
+                }
+                const thisUnoSec = getTimeDifferenceInSeconds(unoAt, now, false);
+                const currentUnoDuration = formatDuration(thisUnoSec);
+                await userPlayLogRepo.endUnoPlayLog(unoPlayLog.id, unoAt, unoDuration);
+                const resumeTimeStr = formatDate(now, false);
+                const message = UzMessages.getUnoResumeMessage(
+                    stream.sender.nickname,
+                    String(stream.sender.user_id),
+                    resumeTimeStr,
+                    currentUnoDuration
+                );
+                await this.sendReply(stream, message);
+                return;
+            } catch (error) {
+                console.error('恢复桌游失败:', error);
+                logger.error('恢复桌游失败: %s', error);
+                await this.sendReply(stream, UzMessages.ERROR_UNO_RESUME_FAILED);
+                return;
+            }
+        }
         // 创建上机记录
         const createPlayLogInput:CreateUserPlayLogInput= {
             qq_number: String(stream.sender.user_id),
             status: UserPlayLogStatus.Playing,
+            break_duration: 0,
+            uno_duration: 0,
         }
         playLogInfo=await userPlayLogRepo.createPlayLog(createPlayLogInput);
 
-        const startTimeStr = formatDate(playLogInfo.start_time, true);
+        const startTimeStr = formatDate(playLogInfo.start_time, false);
 
         const message = UzMessages.getStartGameMessage(
             stream.sender.nickname, 
